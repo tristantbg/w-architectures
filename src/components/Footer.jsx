@@ -5,7 +5,6 @@ import BackToTop from "./ui/BackToTop"
 
 const Footer = () => {
   const { options } = useStaticQuery(query)
-  console.log(this)
   return (
     <footer>
       <div className="inner pad b-t">
