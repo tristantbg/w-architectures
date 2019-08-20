@@ -1,0 +1,24 @@
+.card{
+    
+    //background: yellow;
+    figure{
+        
+    }
+    &:hover{
+        //h2{color: $color2}
+    }
+}
+
+//40px projets
+//60px home
+
+@media all and (max-width:$s){
+    .card{
+        flex-basis: 100%!important;
+        max-width: 100%!important;
+        .card-text{
+            padding-left: $margeXS/2;
+            padding-right: $margeXS/2;
+        }
+    }
+}

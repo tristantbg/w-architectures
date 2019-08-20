@@ -1,37 +1,107 @@
 {
   "Main" : {
-    "body" : {
-      "type" : "Slices",
-      "fieldset" : "Slice zone",
+    "uid" : {
+      "type" : "UID",
       "config" : {
-        "choices" : {
-          "link_item" : {
-            "type" : "Slice",
-            "fieldset" : "Link Item",
-            "description" : "Create a link for e.g. a navigation or link list",
-            "icon" : "insert_link",
-            "display" : "list",
-            "non-repeat" : {
-              "label" : {
-                "type" : "StructuredText",
-                "config" : {
-                  "multi" : "paragraph, heading1, heading2, heading3, heading4, heading5, heading6, strong, em",
-                  "label" : "Label",
-                  "placeholder" : "Name of the link"
-                }
-              },
-              "link" : {
-                "type" : "Link",
-                "config" : {
-                  "allowTargetBlank" : true,
-                  "label" : "Link",
-                  "placeholder" : "Link to the external project"
-                }
-              }
-            },
-            "repeat" : { }
+        "label" : "Slug"
+      }
+    },
+    "title" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label" : "Title"
+      }
+    },
+    "texte" : {
+      "type" : "StructuredText",
+      "config" : {
+        "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "allowTargetBlank" : true,
+        "label" : "Texte"
+      }
+    },
+    "image_featured" : {
+      "type" : "Image",
+      "config" : {
+        "constraint" : { },
+        "thumbnails" : [ ],
+        "label" : "Image Featured"
+      }
+    },
+    "images" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "image" : {
+            "type" : "Image",
+            "config" : {
+              "constraint" : { },
+              "thumbnails" : [ ],
+              "label" : "Image"
+            }
           }
-        }
+        },
+        "label" : "Images"
+      }
+    },
+    "download" : {
+      "type" : "Link",
+      "config" : {
+        "select" : "media",
+        "label" : "Download"
+      }
+    }
+  },
+  "Metas" : {
+    "year" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "paragraph",
+        "label" : "Year"
+      }
+    },
+    "localisation" : {
+      "type" : "StructuredText",
+      "config" : {
+        "single" : "paragraph",
+        "label" : "Localisation"
+      }
+    },
+    "program" : {
+      "type" : "Select",
+      "config" : {
+        "options" : [ "Musée", "Équipements", "Design", "Bureaux", "Logements" ],
+        "label" : "Program"
+      }
+    },
+    "type" : {
+      "type" : "Select",
+      "config" : {
+        "options" : [ "Réalisé", "En cours", "Concours" ],
+        "label" : "Type"
+      }
+    },
+    "fiche_technique" : {
+      "type" : "Group",
+      "config" : {
+        "fields" : {
+          "label" : {
+            "type" : "StructuredText",
+            "config" : {
+              "single" : "paragraph",
+              "label" : "Label"
+            }
+          },
+          "value" : {
+            "type" : "StructuredText",
+            "config" : {
+              "single" : "paragraph",
+              "label" : "Value"
+            }
+          }
+        },
+        "label" : "Fiche Technique"
       }
     }
   }

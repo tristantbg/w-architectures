@@ -1,0 +1,29 @@
+.table{
+    ._row{
+        padding:0.36em 0; 
+    }
+    .tr{
+        .row-header{cursor: n-resize;}
+        &.is-collapsed .row-header{cursor: s-resize;}
+    }
+    .search{
+        input{
+            width: 100%;
+            @include _placeholder{
+                color: black;
+            }
+        }
+    }
+    ._sort{
+        cursor: pointer;
+    }
+    .images-grid{
+        vertical-align: top;
+        @include flexbox();
+        @include flex-wrap(wrap);
+        figure{
+            margin-right: $rowHeight;
+            margin-bottom: $rowHeight;
+        }
+    }
+}

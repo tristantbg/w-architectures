@@ -1,0 +1,18 @@
+img{
+    max-width: 100%;
+}
+
+.hidden{display: none;}
+
+.b-t{
+    border-top: $border;
+    &.pad{padding:0.36em 0; }
+}
+.b-b{
+    border-bottom: $border;
+    &.pad{padding:0.36em 0; }
+}
+.pad{padding:0.36em 0; }
+
+.collapsed{display: none}
+img{vertical-align: top}

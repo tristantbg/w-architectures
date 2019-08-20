@@ -1,0 +1,25 @@
+.template-home{
+    .projects-liste{
+        padding-top: $rowHeight;
+        .row{
+            &:nth-child(even){
+                @include justify-content(flex-end);
+            }
+        }
+    }
+
+    .card{
+        img{
+            max-width: 100%;
+            //max-height: 40vh;
+        }
+        h2{
+            padding: 0.36em 0;
+        }
+    }
+
+}
+
+@media all and (max-width:$s){
+    
+}

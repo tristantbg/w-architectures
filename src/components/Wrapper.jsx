@@ -1,4 +1,4 @@
-import styled from '@emotion/styled'
+import styled from "@emotion/styled";
 
 const Wrapper = styled.div`
   max-width: ${props => props.theme.maxWidth};
@@ -7,6 +7,6 @@ const Wrapper = styled.div`
   @media (max-width: ${props => props.theme.breakpoints.m}) {
     padding: 0 1.5rem;
   }
-`
+`;
 
-export default Wrapper
+export default Wrapper;

@@ -1,0 +1,16 @@
+.template-agency{
+    section{
+        
+        &.images{
+            .content{
+                padding: $rowHeight 0 0;
+                .row{
+                    &:nth-child(even){
+                        @include justify-content(flex-end);
+                    }
+                    figure{margin-bottom: $rowHeight}
+                }
+            }
+        }
+    }
+}

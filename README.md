@@ -1,3 +1,2 @@
 # W-Architectures
 
-# w-architectures

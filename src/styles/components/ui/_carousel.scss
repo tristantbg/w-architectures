@@ -1,0 +1,26 @@
+.carousel{
+    
+    .slick-arrow{
+        position: absolute; top: 0;
+        width: 50%; height: 100%;
+        //background: red;
+        z-index: 249;
+        text-indent: -9999px;
+        //cursor: none;
+        &.slick-prev{
+            cursor: w-resize;
+        }
+        &.slick-next{
+            right: 0;
+            cursor: e-resize;
+        }
+    }
+}
+
+@media all and (max-width:$s){
+    .carousel{
+        .slick-arrow{
+            display: none!important;
+        }
+    }
+}

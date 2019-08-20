@@ -5,24 +5,40 @@
       "config" : {
         "single" : "heading1",
         "label" : "title",
-        "placeholder" : "Title of the page"
+        "placeholder" : "SEO Title"
       }
     },
-    "content" : {
+    "texte" : {
       "type" : "StructuredText",
       "config" : {
-        "multi" : "paragraph, strong, em, hyperlink, image, embed, list-item, o-list-item",
-        "label" : "content",
-        "placeholder" : "Content under the title"
+        "multi" : "paragraph, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label" : "Texte",
+        "placeholder" : "SEO description"
       }
     },
-    "footer" : {
-      "type" : "StructuredText",
+    "projects" : {
+      "type" : "Group",
       "config" : {
-        "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
-        "allowTargetBlank" : true,
-        "label" : "Footer",
-        "placeholder" : "Footer"
+        "fields" : {
+          "project" : {
+            "type" : "Link",
+            "config" : {
+              "select" : "document",
+              "customtypes" : [ "projects" ],
+              "label" : "Project"
+            }
+          },
+          "column" : {
+            "type" : "Select",
+            "config" : {
+              "options" : [ "2", "4", "6", "8", "10", "12" ],
+              "default_value" : "2",
+              "label" : "Column",
+              "placeholder" : "grille de 12, 12 = 100%, 6 = 50%, ..."
+            }
+          }
+        },
+        "label" : "Projects"
       }
     }
   }

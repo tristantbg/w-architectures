@@ -1,0 +1,49 @@
+.is-screensaver{
+    .screensaver{display: block}
+}
+.screensaver{
+    position: fixed; z-index: 251;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    @include anime(.4s, 0s);
+    background: white;
+    width: 100%; height: 100%;
+    z-index: 249;
+    display: none;
+    // transition-timing-function: cubic-bezier(.17,.67,.83,.67);
+    &.end{
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+        pointer-events: none;
+        .bar{
+            width: 0;
+            transform: translate(-50%, -50%) rotate(360deg)!important
+        }
+    }
+    .bar{
+        position: absolute;
+        height: $borderWidth;
+        //max-width: 60;
+        left: 50%; top: 50%;
+        background: $color1;
+        transform-origin: center center;
+        width: 0vw;
+        opacity: 0;
+        // @include anime(.4s, 0s);
+        // transition-timing-function: cubic-bezier(.17,.67,.83,.67);
+        //transition-timing-function: cubic-bezier(0.165, 0.840, 0.440, 1.000);
+        &.visible{
+            width: 85vh;
+            //width: 60vh;
+            opacity: 1;
+        }
+    }
+}
+
+@media all and (max-width:$s){
+    .intro{
+        .bar.visible{
+            width: 90vw;
+        }
+    }
+}

@@ -1,0 +1,70 @@
+/* eslint react/destructuring-assignment: 0 */
+import React, { Component } from "react";
+import { graphql } from "gatsby";
+// import { Listing, Wrapper, Title, SEO, Header } from "../components";
+// import website from "../../config/website";
+// import { LocaleContext } from "../components/Layout";
+// import LocalizedLink from "../components/LocalizedLink";
+import { Textes, Images, TexteImage } from "../slices";
+
+class Agency extends Component {
+  componentDidMount() {
+    const headlines = document.querySelectorAll("section .headline");
+    headlines.forEach(el => {
+      el.addEventListener("click", this._toggle);
+    });
+  }
+
+  componentWillUnmount() {
+    const headlines = document.querySelectorAll("section .headline");
+    headlines.forEach(el => {
+      el.removeEventListener("click", this._toggle);
+    });
+  }
+
+  _toggle(e) {
+    const parent = e.target.parentNode;
+    parent.classList.toggle("active");
+  }
+
+  _sliceZone(slices) {
+    const slice = slices.map((slice, i) => {
+      switch (slice.slice_type) {
+        case "textes":
+          return <Textes key={i} input={slice} />;
+        case "images":
+          return <Images key={i} input={slice} />;
+        case "texte_image":
+          return <TexteImage key={i} input={slice} />;
+        default:
+          return null;
+      }
+    });
+    return <div>{slice}</div>;
+  }
+
+  render() {
+    const { data } = this.props.data.page;
+
+    return (
+      <>
+        {/* <SEO
+          title={`title | ${i18n.defaultTitleAlt}`}
+          pathname={location.pathname}
+          locale={locale}
+        /> */}
+        <div className="template-agency">{this._sliceZone(data.body)}</div>
+      </>
+    );
+  }
+}
+
+export default Agency;
+
+export const pageQuery = graphql`
+  query AgencyQuery($locale: String!) {
+    page: prismicAgency(lang: { eq: $locale }) {
+      ...agency
+    }
+  }
+`;

@@ -1,0 +1,18 @@
+.burger-wrapper{
+    position: absolute;
+    right: 0; top: 0;
+    //height: $headerHeight;
+    padding: 11px 5px;
+    z-index: 250;
+    border: $border;
+    &.active {
+        .burger{
+            @include burger-to-cross();
+        }
+        & + nav{display: block}
+    }
+    .burger{
+        //transform: translateY(1px);
+        @include burger(25px, 2px, 4px);
+    }
+}

@@ -1,0 +1,64 @@
+.template-project{
+    min-height: calc(100vh - (#{$rowHeight} * 1));
+    .project-header{
+        margin-bottom: $rowHeight;
+        .related{
+            @include flexbox();
+            @include justify-content(flex-end);
+            li:last-child{
+                
+            }
+        }
+    }
+    $viewHeight: calc(100vh - (#{$rowHeight} * 5));
+    .slick-slider{
+        max-height: $viewHeight;
+        //.slick-arrow{display: none!important}
+        .slide{
+            height: $viewHeight;
+            //background: red;
+            .gatsby-image-wrapper{
+                height: 100%;
+            }
+        }
+    }
+    
+    .project-footer{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        //background: white;
+        z-index: 250;
+        &.is-collapsed{
+            .infos{
+                @include slide(bottom, 0)
+            }
+            .toggle{
+                cursor: n-resize;
+            }
+        }
+        .toggle{
+            width: 100%;
+            cursor: s-resize;
+            z-index: 20;
+            background: white;
+            //&:hover 
+        }
+        .infos{
+            position: absolute; 
+            bottom: 0;
+            z-index: 19;
+            width: 100%;
+            background: white;
+            @include anime();
+            padding: 0;
+            
+        }
+        
+    }
+}
+
+
+@media all and (max-width:$s){
+    
+}

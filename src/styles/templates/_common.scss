@@ -1,0 +1,26 @@
+.infos{
+    .texte{
+        padding: 0.36em 0; 
+    }
+}
+.fiche_technique{
+    padding: 0.36em 0!important; 
+    li{
+        @include flexbox();
+        .label{
+            flex-basis: 180px
+        }
+    }
+}
+
+section{
+    &.active{
+        .content{
+            display: block;
+            border-bottom: $border;
+        }
+    }
+    .content{
+        display: none;
+    }
+}

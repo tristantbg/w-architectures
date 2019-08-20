@@ -1,0 +1,438 @@
+@mixin flex_center_h_v {
+    @include flexbox();
+    @include align-items(center);
+    @include justify-content(center);
+}
+
+@mixin center_it {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin clearfix {
+    &:after {
+        content: '';
+        display: table;
+        width: 100%;
+        height: 0.1px;
+        clear: both;
+    }
+}
+
+
+/************************************************************************
+ Borrowed from Bourbon: http://bourbon.io/docs/#html5-input-types
+
+ Generate a variable ($all-text-inputs) with a list of all html5 input types that have a text-based input, excluding textarea.
+ http://diveintohtml5.org/forms.html
+************************************************************************/
+@function assign-inputs($inputs, $pseudo: null) {
+    $list: ();
+
+    @each $input in $inputs {
+        $input: unquote($input);
+        $input: if($pseudo, $input + ":"+ $pseudo, $input);
+        $list: append($list, $input, comma);
+    }
+
+    @return $list;
+}
+
+$inputs-list: 'input[type="email"]',
+'input[type="number"]',
+'input[type="password"]',
+'input[type="search"]',
+'input[type="tel"]',
+'input[type="text"]',
+'input[type="url"]',
+
+/* Webkit & Gecko may change the display of these in the future */
+'input[type="color"]',
+'input[type="date"]',
+'input[type="datetime"]',
+'input[type="datetime-local"]',
+'input[type="month"]',
+'input[type="time"]',
+'input[type="week"]';
+
+/* Bare inputs */
+$all-text-inputs: assign-inputs($inputs-list);
+
+/* Hover Pseudo-class */
+$all-text-inputs-hover: assign-inputs($inputs-list, hover);
+
+/* Focus Pseudo-class */
+$all-text-inputs-focus: assign-inputs($inputs-list, focus);
+
+
+
+
+// @mixin gradient($start, $end){
+//   background: -moz-linear-gradient(top, $start 0%, $end 100%); /* FF3.6-15 */
+//   background: -webkit-linear-gradient(top, $start 0%, $end 100%); /* Chrome10-25,Safari5.1-6 */
+//   background: linear-gradient(to bottom, $start 0%, $end 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+//   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+// }
+@mixin linear-gradient($direction, $color) {
+    $alhpa: rgba($color, 0);
+    background: linear-gradient(to $direction, $color 65%, $alhpa 100%);
+    // background: nth(nth($color-stops, 1), 1);
+    // background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+    // background: linear-gradient($direction, $color-stops);
+}
+
+@mixin _placeholder {
+    &::-webkit-input-placeholder {
+        @content
+    }
+
+    &:-moz-placeholder {
+        @content
+    }
+
+    &::-moz-placeholder {
+        @content
+    }
+
+    &:-ms-input-placeholder {
+        @content
+    }
+}
+
+@mixin scrollbars($size, $foreground-color, $background-color) {
+
+    // For Google Chrome
+    &::-webkit-scrollbar {
+        width: $size;
+        height: $size;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $foreground-color;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $background-color;
+    }
+
+    // For Internet Explorer
+    & {
+        scrollbar-face-color: $foreground-color;
+        scrollbar-track-color: $background-color;
+    }
+}
+
+/***********************************************************
+  ANIMATIONS
+ ***********************************************************/
+@mixin anime($duration:.2s, $delay:0s) {
+    transition: all $duration ease-out $delay;
+    -webkit-transition-timing-function: cubic-bezier(0.91, 0.01, 0, 0.99);
+    -moz-transition-timing-function: cubic-bezier(.37, .01, 0, .98);
+    -o-transition-timing-function: cubic-bezier(.37, .01, 0, .98);
+    transition-timing-function: cubic-bezier(.37, .01, 0, .98);
+}
+
+
+
+// Burger parts
+//
+// (---) top    -> &::before
+// [---] middle -> &
+// (---) bottom -> &::after
+
+
+// Vendor prefixes
+$sass-burger-add-vendor-prefixes: true !default;
+
+// Burger
+@mixin burger($width: 30px, $height: 5px, $gutter: 3px, $color: #000, $border-radius: 0, $transition-duration: .3s) {
+    $burger-height: $height !global;
+    $burger-gutter: $gutter !global;
+
+    //position: relative;
+    //margin-top: $height + $gutter;
+    //margin-bottom: $height + $gutter;
+
+    @if $sass-burger-add-vendor-prefixes {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
+
+    user-select: none;
+
+    // 1. Fixes jagged edges in Firefox, see issue #10.
+    &,
+    &::before,
+    &::after {
+        display: block;
+        width: $width;
+        height: $height;
+        background-color: $color;
+        outline: 1px solid transparent; // 1
+
+        @if $border-radius !=0 {
+            border-radius: $border-radius;
+        }
+
+        @if $sass-burger-add-vendor-prefixes {
+            -webkit-transition-property: background-color, -webkit-transform;
+            -moz-transition-property: background-color, -moz-transform;
+            -o-transition-property: background-color, -o-transform;
+        }
+
+        transition-property: background-color,
+        transform;
+
+        @if $sass-burger-add-vendor-prefixes {
+            -webkit-transition-duration: $transition-duration;
+            -moz-transition-duration: $transition-duration;
+            -o-transition-duration: $transition-duration;
+        }
+
+        transition-duration: $transition-duration;
+    }
+
+    &::before,
+    &::after {
+        position: absolute;
+        content: "";
+    }
+
+    &::before {
+        top: -($height + $gutter);
+    }
+
+    &::after {
+        top: $height + $gutter;
+    }
+}
+
+
+// Select parts of the burger
+@mixin burger-parts {
+
+    &,
+    &::before,
+    &::after {
+        @content;
+    }
+}
+
+@mixin burger-top {
+    &::before {
+        @content;
+    }
+}
+
+@mixin burger-middle {
+    & {
+        @content;
+    }
+}
+
+@mixin burger-bottom {
+    &::after {
+        @content;
+    }
+}
+
+
+// Burger animations
+@mixin burger-to-cross($color: auto) {
+    & {
+        background-color: transparent;
+        //transform: rotate(360deg); opacity: 0;
+    }
+
+    @if ($color !=auto) {
+
+        &::before,
+        &::after {
+            background-color: $color;
+        }
+    }
+    $burger-gutter: 4px;
+    $burger-height: 2px;
+    &::before {
+        @if $sass-burger-add-vendor-prefixes {
+            -webkit-transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+            -moz-transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+            -ms-transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+            -o-transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+        }
+
+        transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+    }
+
+    &::after {
+        @if $sass-burger-add-vendor-prefixes {
+            -webkit-transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+            -moz-transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+            -ms-transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+            -o-transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+        }
+
+        transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+    }
+}
+
+@mixin column($count:2, $gap:$gutter) {
+    column-count: $count;
+    column-gap: $gap;
+}
+
+@mixin chevron($cDirection:"right", $cSize: 20px, $cWidth: 1px, $cColor: black) {
+    display: block;
+    width: $cSize;
+    height: $cSize;
+    border-top: 1px solid $cColor;
+    border-right: 1px solid $cColor;
+    border-width: $cWidth;
+
+    @if $cDirection=='top' {
+        transform: rotate(-45deg);
+    }
+
+    @if $cDirection=='right' {
+        transform: rotate(45deg);
+    }
+
+    @if $cDirection=='bottom' {
+        transform: rotate(135deg);
+    }
+
+    @if $cDirection=='left' {
+        transform: rotate(225deg);
+    }
+
+}
+
+@mixin slide($direction, $opacity: 0) {
+    @if $direction=='top' {
+        transform: translateY(-100%);
+    }
+
+    @else if $direction=='right' {
+        transform: translateX(100%);
+    }
+
+    @else if $direction=='bottom' {
+        transform: translateY(100%);
+    }
+
+    @else if $direction=='left' {
+        transform: translateX(-100%);
+    }
+
+    @else if $direction=='none' {
+        transform: translateX(0) translateY(0);
+    }
+
+    opacity: $opacity;
+}
+
+@mixin vertical($angle: 90deg) {
+    position: absolute;
+    //top: 50%;
+    left: 50%;
+    //text-align: center;
+    -moz-transform: translateX(-50%) translateY(0%) rotate($angle);
+    -webkit-transform: translateX(-50%) translateY(0%) rotate($angle);
+    transform: translateX(-50%) translateY(0%) rotate($angle);
+    white-space: nowrap;
+}
+
+@mixin text-crop($line-height: 1.3, $top-adjustment: 0px, $bottom-adjustment: 0px) {
+    // Configured in Step 1
+    $top-crop: 2;
+    $bottom-crop: 3;
+    $crop-font-size: 12;
+    $crop-line-height: 1.2;
+
+    // Apply values to calculate em-based margins that work with any font size
+    $dynamic-top-crop: max(($top-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
+    $dynamic-bottom-crop: max(($bottom-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
+
+    // Mixin output
+    line-height: $line-height;
+
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        height: 0;
+        width: 0;
+    }
+
+    &::before {
+        margin-bottom: calc(-#{$dynamic-top-crop}em + #{$top-adjustment});
+    }
+
+    &::after {
+        margin-top: calc(-#{$dynamic-bottom-crop}em + #{$bottom-adjustment});
+    }
+}
+
+@mixin check-box-radio($width:16px, $bg:white, $checked:black) {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: $bg;
+    //border: 2px solid #000;
+    width: $width;
+    height: $width;
+    position: relative;
+
+    &:before {
+        //background: $checked;
+        content: '';
+        width: $width/2;
+        height: $width/2;
+        border-radius: $width;
+        background: $checked;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        @include anime();
+    }
+
+    &:checked::before {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@mixin text-crop($line-height: 1.3, $top-adjustment: 0px, $bottom-adjustment: 0px) {
+    // Configured in Step 1
+    $top-crop: 2;
+    $bottom-crop: 3;
+    $crop-font-size: 12;
+    $crop-line-height: 1.2;
+
+    // Apply values to calculate em-based margins that work with any font size
+    $dynamic-top-crop: max(($top-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
+    $dynamic-bottom-crop: max(($bottom-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
+
+    // Mixin output
+    line-height: $line-height;
+
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        height: 0;
+        width: 0;
+    }
+
+    &::before {
+        margin-bottom: calc(-#{$dynamic-top-crop}em + #{$top-adjustment});
+    }
+
+    &::after {
+        margin-top: calc(-#{$dynamic-bottom-crop}em + #{$bottom-adjustment});
+    }
+}

@@ -1,0 +1,123 @@
+{
+    "Main" : {
+      "title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Title",
+          "placeholder" : "SEO title"
+        }
+      },
+      "texte" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+          "label" : "Texte",
+          "placeholder" : "SEO texte"
+        }
+      },
+      "body" : {
+        "type" : "Slices",
+        "fieldset" : "Slice zone",
+        "config" : {
+          "choices" : {
+            "textes" : {
+              "type" : "Slice",
+              "fieldset" : "Textes",
+              "description" : "Textes",
+              "icon" : "face",
+              "display" : "list",
+              "non-repeat" : {
+                "title1" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "single" : "heading2",
+                    "label" : "Title",
+                    "placeholder" : "Section Title"
+                  }
+                }
+              },
+              "repeat" : {
+                "texte" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                    "label" : "Texte"
+                  }
+                }
+              }
+            },
+            "images" : {
+              "type" : "Slice",
+              "fieldset" : "Images",
+              "description" : "Images",
+              "icon" : "face",
+              "display" : "list",
+              "non-repeat" : {
+                "title1" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "single" : "heading2",
+                    "label" : "Title",
+                    "placeholder" : "Section title"
+                  }
+                }
+              },
+              "repeat" : {
+                "image" : {
+                  "type" : "Image",
+                  "config" : {
+                    "constraint" : { },
+                    "thumbnails" : [ ],
+                    "label" : "Image"
+                  }
+                },
+                "column" : {
+                  "type" : "Select",
+                  "config" : {
+                    "options" : [ "2", "4", "6", "8", "10", "12" ],
+                    "default_value" : "2",
+                    "label" : "Column",
+                    "placeholder" : "grille de 12, 12 = 100%, 6 = 50%, ..."
+                  }
+                }
+              }
+            },
+            "texte_image" : {
+              "type" : "Slice",
+              "fieldset" : "Texte Image",
+              "description" : "Texte Image component",
+              "icon" : "face",
+              "display" : "list",
+              "non-repeat" : {
+                "title1" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "single" : "heading2",
+                    "label" : "Title"
+                  }
+                },
+                "texte" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                    "allowTargetBlank" : true,
+                    "label" : "Texte"
+                  }
+                },
+                "image" : {
+                  "type" : "Image",
+                  "config" : {
+                    "constraint" : { },
+                    "thumbnails" : [ ],
+                    "label" : "Image"
+                  }
+                }
+              },
+              "repeat" : { }
+            }
+          }
+        }
+      }
+    }
+  }

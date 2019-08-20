@@ -1,0 +1,46 @@
+/* BASE VARIABLES
+ *******************/
+
+
+/* Sizes */
+$max-width: 1800px;
+$headerHeight: 25px;
+$rowHeight: 25px;
+$headerHeightMobile: 25px;
+
+/* Colors */
+$color1: #000;
+$color2: #126dd6;
+$color3: #a8ddff;
+$color4: #c7c7be;
+//$links: $color1;
+//$hover: $color2;
+
+$bg: white;
+
+/* PADDINGS */
+$margeXS: 12px;
+$margeS: $margeXS * 2;
+$margeM: $margeXS * 4;
+$margeL: $margeXS * 8;
+$margeXL: $margeL * 2;
+$gutter: $margeXS;
+
+/* Fonts */
+$fontPrimary: 'Theinhardt-Regular', sans-serif;
+$fontSecondary: 'Theinhardt-Light', sans-serif;
+
+$fontM: 14px;
+$fontL: 42px;
+
+$lineHeight: 103.49%;
+$letterSpacing: 0.03em;
+
+$borderWidth: 1px;
+$border: $borderWidth solid;
+
+/* Breakpoints */
+$cap: 1920px;
+$m: 1024px;
+$s: 768px;
+$xs: 500px;

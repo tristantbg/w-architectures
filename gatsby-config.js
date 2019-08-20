@@ -24,13 +24,16 @@ module.exports = {
   /* Plugins */
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-emotion',
     'gatsby-plugin-catch-links',
+    //'gatsby-transformer-remark',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sass',
     {
       resolve: 'gatsby-source-prismic',
       options: {
-        repositoryName: 'gatsby-starter-prismic',
-        accessToken: `${process.env.API_KEY}`,
+        repositoryName: `${process.env.repositoryName}`,
+        accessToken: `${process.env.accessToken}`,
         // Get the correct URLs in blog posts
         linkResolver: () => prismicLinkResolver,
         // PrismJS highlighting for labels and slices
@@ -38,14 +41,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-lodash',
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
-    {
-      resolve: 'gatsby-plugin-typography',
-      options: {
-        pathToConfigModule: 'config/typography.js',
-      },
-    },
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
@@ -67,7 +62,6 @@ module.exports = {
       },
     },
     // Must be placed at the end
-    'gatsby-plugin-offline',
-    'gatsby-plugin-netlify',
+    'gatsby-plugin-offline'
   ],
 }

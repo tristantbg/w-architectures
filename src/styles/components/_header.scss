@@ -1,0 +1,44 @@
+header{
+    //position: sticky;
+    position: fixed; width: 100%;
+    top: 0;
+    z-index: 250;
+    //margin-bottom: $margeM;
+    padding: 0 $margeS;
+    background: $bg;
+    &:hover{
+        nav{display: block}
+    }
+    .top-header{
+        
+    }
+    nav{
+        &.collapsed{display: none}
+        display: none;
+        position: absolute;
+        width: 100%;
+        background: white;
+        ul{
+            //@include flexbox();
+            li{
+                
+            }
+        }
+    }
+}
+
+.downscroll{
+    header{
+        .inner{
+            @include slide(top, 0);
+        }
+    }
+}
+
+
+@media all and (max-width:$s){
+    header{
+        padding: $margeXS;
+        
+    }
+}

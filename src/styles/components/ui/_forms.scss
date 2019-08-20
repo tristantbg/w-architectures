@@ -1,0 +1,59 @@
+/* See _mixins.scss for more on this method for handling HTML5 elements */
+#{$all-text-inputs}, 
+textarea {
+	//border-bottom: $border;
+	padding: 0px;
+    -webkit-appearance: none;
+    background: transparent;
+    border-radius: 0;
+    //max-width: 150px;
+    margin-right: .3em;
+    line-height: 38px;
+    
+}
+#{$all-text-inputs-focus},
+textarea:focus {
+	color: black;
+}
+button[type=submit],
+input[type=submit] {
+    -webkit-appearance: none;
+    border:$border;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+}
+
+/* Placeholders */
+::placeholder {
+	color: black;
+}
+
+form{
+    max-width: 300px;
+    position: relative;
+    @include flexbox()
+    #{$all-text-inputs}{
+        max-width: calc(100% - 40px);
+    }
+    &:after{
+        content: "";
+        position: absolute;
+        bottom: 8px;
+        width: calc(100% - 90px); height: 2px;
+        background-color: black;
+    }
+}
+// Customize Chrome autofill background (yellow by default)
+// input:-webkit-autofill,
+// input:-webkit-autofill:focus {
+//     -webkit-box-shadow:0 0 0 50px #6d6e6e inset; 
+//     -webkit-text-fill-color: white;
+// }
+
+/* Search form */
+input#s {
+}
+input#searchsubmit {
+}
+

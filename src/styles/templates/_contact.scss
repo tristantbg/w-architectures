@@ -1,0 +1,30 @@
+.template-contact{
+    
+    .location{
+        &.active .location-content{
+            display: block
+        }
+        .location-content{
+            display: none;
+
+        }
+        &:last-of-type{
+            //background: red
+            &.active .title{border-bottom: $border}
+            .title,
+            .map-container{border: none}
+        }
+    }
+    .map-container{
+        //height: 50vh;
+        z-index: 0;
+        padding: $rowHeight 0;
+        height: 50vh;
+        max-height: 501px;
+        border-bottom: $border;
+        .leaflet-container {
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
