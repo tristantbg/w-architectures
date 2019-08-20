@@ -9,7 +9,6 @@ import Carousel from "../components/carousel";
 
 class Project extends Component {
   render() {
-    console.log(this.props)
     const { project } = this.props.data;
     const { locales, locale, previous, next } = this.props.pageContext;
     const i18n = locales[locale];

@@ -159,14 +159,14 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  pageList.forEach(edge => {
-    createPage({
-      path: localizedSlug(edge.node),
-      component: pageTemplate,
-      context: {
-        uid: edge.node.uid,
-        locale: edge.node.lang,
-      },
-    })
-  })
+  // pageList.forEach(edge => {
+  //   createPage({
+  //     path: localizedSlug(edge.node),
+  //     component: pageTemplate,
+  //     context: {
+  //       uid: edge.node.uid,
+  //       locale: edge.node.lang,
+  //     },
+  //   })
+  // })
 }
