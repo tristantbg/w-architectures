@@ -5,16 +5,16 @@ class Location extends Component {
   constructor() {
     super();
     this.state = {
-      ready: false,
+      //ready: false,
       active: false
     };
     this._toggle = this._toggle.bind(this);
   }
 
   componentDidMount(){
-    this.setState({
-      ready: true
-    })
+    // this.setState({
+    //   ready: true
+    // })
   }
 
   _toggle(e) {
@@ -24,7 +24,7 @@ class Location extends Component {
   }
 
   render() {
-    const { active, ready } = this.state;
+    const { active } = this.state;
     const { item } = this.props;
     //console.log(input)
     return (
@@ -40,9 +40,9 @@ class Location extends Component {
                 dangerouslySetInnerHTML={{ __html: item.texte1.html }}
               />
 
-              {ready && active && (
+              {active && (
                 <div className="map-container">
-                  {/* <Map
+                  <Map
                     id={"map-" + Math.random() * 999}
                     center={[item.geoloc.latitude, item.geoloc.longitude]}
                     zoom={13}
@@ -59,7 +59,7 @@ class Location extends Component {
                         {item.title1.text} <br /> {item.texte1.text}
                       </Popup>
                     </Marker>
-                  </Map> */}
+                  </Map>
                 </div>
               )}
             </div>
