@@ -5,6 +5,7 @@ import { graphql } from "gatsby";
 // import website from "../../config/website";
 // import { LocaleContext } from "../components/Layout";
 // import LocalizedLink from "../components/LocalizedLink";
+import SEO from "../components/SEO/SEO";
 import { Textes, Images, TexteImage } from "../slices";
 
 class Agency extends Component {
@@ -44,15 +45,19 @@ class Agency extends Component {
   }
 
   render() {
+    const {locales,locale} = this.props.pageContext
+    const i18n = locales[locale]
+    
     const { data } = this.props.data.page;
 
     return (
       <>
-        {/* <SEO
-          title={`title | ${i18n.defaultTitleAlt}`}
-          pathname={location.pathname}
+        <SEO
+          title={`${data.title.text} | ${i18n.defaultTitleAlt}`}
+          desc={data.texte.text}
+          //pathname={location.pathname}
           locale={locale}
-        /> */}
+        />
         <div className="template-agency">{this._sliceZone(data.body)}</div>
       </>
     );

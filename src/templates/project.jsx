@@ -1,18 +1,15 @@
 import React, { Component } from "react";
 
 import { graphql } from "gatsby";
-// import Img from "gatsby-image"
 import LocalizedLink from "../components/LocalizedLink";
-
-import { SEO } from "../components";
-// import ProjectInfos from "../components/project-infos";
+import SEO from "../components/SEO/SEO";
 import ProjectFooter from "../components/project-footer";
 import Carousel from "../components/carousel";
-//import website from '../../config/website'
-//import { LocaleContext } from "../components/Layout";
+
 
 class Project extends Component {
   render() {
+    console.log(this.props)
     const { project } = this.props.data;
     const { locales, locale, previous, next } = this.props.pageContext;
     const i18n = locales[locale];

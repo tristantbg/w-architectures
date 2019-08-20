@@ -1,5 +1,5 @@
 .template-project{
-    min-height: calc(100vh - (#{$rowHeight} * 1));
+    min-height: calc(100vh - (#{$rowHeight} * 2));
     .project-header{
         margin-bottom: $rowHeight;
         .related{
@@ -24,9 +24,10 @@
     }
     
     .project-footer{
-        position: absolute;
-        bottom: 0;
+        position: fixed;
+        bottom: 0; left: 0;
         width: 100%;
+        padding: 0 $margeS;
         //background: white;
         z-index: 250;
         &.is-collapsed{

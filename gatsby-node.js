@@ -153,7 +153,8 @@ exports.createPages = async ({ graphql, actions }) => {
         locales: locales,
         locale: edge.node.lang,
         previous: previous,
-        next: next
+        next: next,
+        template: 'project'
       },
     })
   })

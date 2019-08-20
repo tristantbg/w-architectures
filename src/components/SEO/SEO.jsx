@@ -10,7 +10,7 @@ import i18n from '../../../config/i18n'
 
 const SEO = ({ title, desc, banner, pathname, article, node, locale }) => {
   const { site } = useStaticQuery(query)
-  const { defaultTitle, defaultDescription, siteLanguage, headline, categories } = i18n[locale]
+  const { defaultTitle, defaultDescription, siteLanguage } = i18n[locale]
 
   const {
     buildTime,
@@ -35,7 +35,6 @@ const SEO = ({ title, desc, banner, pathname, article, node, locale }) => {
     '@context': 'http://schema.org',
     '@type': 'WebPage',
     url: homeURL,
-    headline,
     inLanguage: siteLanguage,
     mainEntityOfPage: homeURL,
     description: defaultDescription,
@@ -76,14 +75,14 @@ const SEO = ({ title, desc, banner, pathname, article, node, locale }) => {
       },
       position: 1,
     },
-    {
-      '@type': 'ListItem',
-      item: {
-        '@id': `${homeURL}/categories`,
-        name: categories,
-      },
-      position: 2,
-    },
+    // {
+    //   '@type': 'ListItem',
+    //   item: {
+    //     '@id': `${homeURL}/categories`,
+    //     name: categories,
+    //   },
+    //   position: 2,
+    // },
   ]
 
   let schemaArticle = null
@@ -190,7 +189,7 @@ SEO.defaultProps = {
   pathname: null,
   article: false,
   node: null,
-  locale: 'de-de',
+  locale: 'fr-fr',
 }
 
 const query = graphql`

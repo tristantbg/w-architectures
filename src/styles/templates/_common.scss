@@ -1,10 +1,10 @@
 .infos{
     .texte{
-        padding: 0.36em 0; 
+        padding: $rowPad; 
     }
 }
 .fiche_technique{
-    padding: 0.36em 0!important; 
+    padding: $rowPad!important; 
     li{
         @include flexbox();
         .label{

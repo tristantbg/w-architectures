@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+
 import LocalizedLink from "./LocalizedLink";
 import { Link } from "gatsby";
 import website from "../../config/website";
@@ -16,25 +16,22 @@ import website from "../../config/website";
 
 const Header = ({ invert }) => (
   <header>
-    <div className="top-header b-b pad">
+    <div className="top-header b-b ">
       <div className="row between-xs">
         <div className="col-xs">
-          <LocalizedLink to="/" aria-label="Back to Home">
+          <LocalizedLink 
+          to="/" 
+          aria-label="Back to Home"
+          className="pad">
             {website.title} [+]
           </LocalizedLink>
         </div>
         <div className="col-xs text-right">
-          <div data-name="locale-switcher ">
-            <Link hrefLang="fr-fr" to="/">
-              Fr
-            </Link>{" "}
-            <Link hrefLang="en-gb" to="/en">
-              En
-            </Link>{" "}
-            <Link hrefLang="de-de" to="/de">
-              De
-            </Link>
-          </div>
+          <ul className="locale-switcher">
+            <li><Link hrefLang="fr-fr" to="/">Fr</Link></li>
+            <li><Link hrefLang="en-gb" to="/en">En</Link></li>
+            <li><Link hrefLang="de-de" to="/de">De</Link></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -56,11 +53,3 @@ const Header = ({ invert }) => (
 );
 
 export default Header;
-
-// Header.propTypes = {
-//   invert: PropTypes.bool
-// };
-
-// Header.defaultProps = {
-//   invert: false,
-// }

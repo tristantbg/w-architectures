@@ -6,13 +6,13 @@ img{
 
 .b-t{
     border-top: $border;
-    &.pad{padding:0.36em 0; }
+    &.pad{padding: $rowPad; }
 }
 .b-b{
     border-bottom: $border;
-    &.pad{padding:0.36em 0; }
+    &.pad{padding: $rowPad; }
 }
-.pad{padding:0.36em 0; }
+.pad{padding: $rowPad; }
 
 .collapsed{display: none}
 img{vertical-align: top}

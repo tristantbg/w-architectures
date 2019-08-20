@@ -18,6 +18,7 @@ module.exports = {
     year: 'Année',
     program: 'Programme',
     type: 'Type',
+    backToTop: 'Haut de page'
   },
   'en-gb': {
     default: false,
@@ -36,5 +37,6 @@ module.exports = {
     year: 'Year',
     program: 'Program',
     type: 'Type',
+    backToTop: 'Back to top'
   },
 }

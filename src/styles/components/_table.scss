@@ -1,6 +1,6 @@
 .table{
     ._row{
-        padding:0.36em 0; 
+        padding:$rowPad; 
     }
     .tr{
         .row-header{cursor: n-resize;}

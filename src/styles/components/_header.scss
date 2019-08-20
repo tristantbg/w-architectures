@@ -10,7 +10,12 @@ header{
         nav{display: block}
     }
     .top-header{
-        
+        padding: $rowPad;
+        .locale-switcher{
+            @include flexbox()
+            @include justify-content(flex-end);
+            a{padding-left: .4em}
+        }
     }
     nav{
         &.collapsed{display: none}
@@ -38,7 +43,7 @@ header{
 
 @media all and (max-width:$s){
     header{
-        padding: $margeXS;
+        //padding: $margeXS;
         
     }
 }

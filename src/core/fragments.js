@@ -92,6 +92,9 @@ export const query = graphql`
       title {
         text
       }
+      texte {
+        text
+      }
       body {
         ... on Node {
           ... on PrismicAgencyBodyTextes {

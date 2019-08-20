@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { graphql } from "gatsby";
 import Helmet from "react-helmet";
-import { SEO } from "../components";
+import SEO from "../components/SEO/SEO";
 import { TexteImage, Locations } from "../slices";
 
 class Contact extends Component {
@@ -48,12 +48,8 @@ class Contact extends Component {
       <>
         <SEO
           title={`Contact | ${i18n.defaultTitleAlt}`}
-          //pathname={location.pathname}
           locale={locale}
           desc={data.texte.text}
-          //banner={image_featured.url}
-          //node={project}
-          article
         />
         <Helmet>
           <link

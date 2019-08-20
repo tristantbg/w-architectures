@@ -1,23 +1,17 @@
 import React, { Component } from "react";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet-universal";
+// import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 
 class Location extends Component {
   constructor() {
     super();
     this.state = {
-      //ready: false,
       active: false
     };
     this._toggle = this._toggle.bind(this);
   }
 
-  componentDidMount(){
-    // this.setState({
-    //   ready: true
-    // })
-  }
-
-  _toggle(e) {
+  _toggle() {
     this.setState({
       active: !this.state.active
     });
@@ -31,7 +25,8 @@ class Location extends Component {
       <div className={"location " + (active ? "active" : "")}>
         <div className="row">
           <div className={"col-md-12"}>
-            <div className="title b-b pad" onClick={e => this._toggle(e)}>
+            <div className="title b-b pad" 
+            onClick={this._toggle}>
               {item.title1.text}
             </div>
             <div className="location-content">
@@ -43,7 +38,7 @@ class Location extends Component {
               {active && (
                 <div className="map-container">
                   <Map
-                    id={"map-" + Math.random() * 999}
+                    id={"map-" + (Math.random() * 999)}
                     center={[item.geoloc.latitude, item.geoloc.longitude]}
                     zoom={13}
                     scrollWheelZoom={false}
