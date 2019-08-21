@@ -123,8 +123,12 @@ p {
 	&:empty{display: none}
 }
 .texte{
-	p{text-indent: $margeM}
-	p:first-child{text-indent: 0}
+	//p{text-indent: $margeM}
+	//p:first-child{text-indent: 0}
+	p{
+		margin-bottom: 1em;
+		&:last-child{margin-bottom: 0}
+	}
 }
 
 strong {

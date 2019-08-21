@@ -6,14 +6,16 @@ import { TexteImage, Locations } from "../slices";
 
 class Contact extends Component {
   componentDidMount() {
-    const headlines = document.querySelectorAll("section .headline");
+    const headlines = document.querySelectorAll("section h2");
     headlines.forEach(el => {
       el.addEventListener("click", this._toggle);
     });
+
+    headlines[0].click()
   }
 
   componentWillUnmount() {
-    const headlines = document.querySelectorAll("section .headline");
+    const headlines = document.querySelectorAll("section h2");
     headlines.forEach(el => {
       el.removeEventListener("click", this._toggle);
     });

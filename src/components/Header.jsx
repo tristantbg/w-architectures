@@ -16,39 +16,41 @@ import website from "../../config/website";
 
 const Header = ({ invert }) => (
   <header>
-    <div className="top-header b-b ">
-      <div className="row between-xs">
-        <div className="col-xs">
-          <LocalizedLink 
-          to="/" 
-          aria-label="Back to Home"
-          className="pad">
-            {website.title} [+]
-          </LocalizedLink>
-        </div>
-        <div className="col-xs text-right">
-          <ul className="locale-switcher">
-            <li><Link hrefLang="fr-fr" to="/">Fr</Link></li>
-            <li><Link hrefLang="en-gb" to="/en">En</Link></li>
-            <li><Link hrefLang="de-de" to="/de">De</Link></li>
-          </ul>
+    <div className="inner">
+      <div className="top-header b-b ">
+        <div className="row between-xs">
+          <div className="col-xs">
+            <LocalizedLink 
+            to="/" 
+            aria-label="Back to Home"
+            className="pad">
+              {website.title} [+]
+            </LocalizedLink>
+          </div>
+          <div className="col-xs text-right">
+            <ul className="locale-switcher">
+              <li><Link hrefLang="fr-fr" to="/">Fr</Link></li>
+              <li><Link hrefLang="en-gb" to="/en">En</Link></li>
+              <li><Link hrefLang="de-de" to="/de">De</Link></li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
 
-    <nav className="nav-wrap  headline">
-      <ul>
-        <li className="b-b pad">
-          <LocalizedLink to="/projects">Projects</LocalizedLink>
-        </li>
-        <li className="b-b pad">
-          <LocalizedLink to="/agence">Agence</LocalizedLink>
-        </li>
-        <li className="b-b pad">
-          <LocalizedLink to="/contact">Contact</LocalizedLink>
-        </li>
-      </ul>
-    </nav>
+      <nav className="nav-wrap  headline">
+        <ul>
+          <li className="b-b pad">
+            <LocalizedLink to="/projects">Projects</LocalizedLink>
+          </li>
+          <li className="b-b pad">
+            <LocalizedLink to="/agence">Agence</LocalizedLink>
+          </li>
+          <li className="b-b pad">
+            <LocalizedLink to="/contact">Contact</LocalizedLink>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </header>
 );
 

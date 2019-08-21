@@ -6,18 +6,20 @@ import { graphql } from "gatsby";
 // import { LocaleContext } from "../components/Layout";
 // import LocalizedLink from "../components/LocalizedLink";
 import SEO from "../components/SEO/SEO";
-import { Textes, Images, TexteImage } from "../slices";
+import { Textes, Images, TexteImage, Distinctions } from "../slices";
 
 class Agency extends Component {
   componentDidMount() {
-    const headlines = document.querySelectorAll("section .headline");
+    const headlines = document.querySelectorAll("section h2");
     headlines.forEach(el => {
       el.addEventListener("click", this._toggle);
     });
+
+    headlines[0].click()
   }
 
   componentWillUnmount() {
-    const headlines = document.querySelectorAll("section .headline");
+    const headlines = document.querySelectorAll("section h2");
     headlines.forEach(el => {
       el.removeEventListener("click", this._toggle);
     });
@@ -25,6 +27,7 @@ class Agency extends Component {
 
   _toggle(e) {
     const parent = e.target.parentNode;
+    console.log(parent)
     parent.classList.toggle("active");
   }
 
@@ -37,6 +40,8 @@ class Agency extends Component {
           return <Images key={i} input={slice} />;
         case "texte_image":
           return <TexteImage key={i} input={slice} />;
+        case "distinctions":
+          return <Distinctions key={i} input={slice} />;
         default:
           return null;
       }

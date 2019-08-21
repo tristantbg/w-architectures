@@ -8,7 +8,7 @@ const TexteImage = ({ input }) => {
       <div className="content pad">
         <div className="row">
           <div className="col-md-6">
-            <div
+            <div className="texte"
               dangerouslySetInnerHTML={{ __html: input.primary.texte.html }}
             />
           </div>

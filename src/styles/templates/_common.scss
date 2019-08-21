@@ -14,6 +14,7 @@
 }
 
 section{
+    h2{cursor: pointer;}
     &.active{
         .content{
             display: block;

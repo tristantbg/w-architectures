@@ -142,6 +142,27 @@ export const query = graphql`
               }
             }
           }
+          ... on PrismicAgencyBodyDistinctions {
+            slice_type
+            primary {
+              title1 {
+                text
+              }
+            }
+            items {
+              title1 {
+                text
+              }
+              texte1 {
+                html
+              }
+              image {
+                localFile {
+                  ...fluidImage
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -194,6 +215,7 @@ export const query = graphql`
             }
           }
         }
+        
       }
     }
   }

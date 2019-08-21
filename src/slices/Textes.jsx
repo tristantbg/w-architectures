@@ -9,7 +9,8 @@ const Textes = ({ input }) => {
         <div className="row">
           {input.items.map((item, i) => (
             <div className={"col-md-" + column} key={i}>
-              <div dangerouslySetInnerHTML={{ __html: item.texte.html }} />
+              <div className="texte"
+              dangerouslySetInnerHTML={{ __html: item.texte.html }} />
             </div>
           ))}
         </div>

@@ -12,5 +12,29 @@
                 }
             }
         }
+
+        &.distinctions{
+            .distinction{
+                &.active .distinction-content{
+                    display: block;
+                    border-bottom: $border;
+                }
+                .distinction-content{
+                    display: none;
+                    .texte{
+                        columns: 3;
+                    }
+                    figure{
+                        padding: $rowHeight 0;
+                    }
+                }
+                &:last-of-type{
+                    //background: red
+                    &.active .title{border-bottom: $border}
+                    .title,
+                    .distinction-content{border: none}
+                }
+            }
+        }
     }
 }
