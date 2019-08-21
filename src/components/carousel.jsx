@@ -12,7 +12,7 @@ class Carousel extends Component {
       autoplaySpeed: 5000,
       accessibility: true,
       infinite: true,
-      //speed: 50,
+      speed: 150,
       slidesToShow: 1,
       slidesToScroll: 1
     };
