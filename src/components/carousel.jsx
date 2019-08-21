@@ -9,9 +9,10 @@ class Carousel extends Component {
       fade: true,
       dots: false,
       autoplay: true,
+      autoplaySpeed: 5000,
       accessibility: true,
       infinite: true,
-      speed: 50,
+      //speed: 50,
       slidesToShow: 1,
       slidesToScroll: 1
     };

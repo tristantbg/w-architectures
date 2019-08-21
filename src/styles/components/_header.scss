@@ -23,6 +23,7 @@ header{
         position: absolute;
         width: 100%;
         background: white;
+        padding-bottom: $rowHeight;
         ul{
             //@include flexbox();
             li{

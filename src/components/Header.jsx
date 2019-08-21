@@ -1,57 +1,55 @@
 import React from "react";
 
-import LocalizedLink from "./LocalizedLink";
+
 import { Link } from "gatsby";
 import website from "../../config/website";
-// const StyledHeader = styled.nav`
-//   padding-bottom: 2rem;
-//   a {
-//     color: ${props => (props.invert ? props.theme.colors.greyLight : props.theme.colors.greyDark)};
-//     font-weight: 400;
-//     font-style: normal;
-//     font-family: 'Source Sans Pro', -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial',
-//       sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-//   }
-// `
+import locales from "../../config/i18n";
+import { LocaleContext } from "./Layout";
+import LocalizedLink from "./LocalizedLink";
 
-const Header = ({ invert }) => (
-  <header>
-    <div className="inner">
-      <div className="top-header b-b ">
-        <div className="row between-xs">
-          <div className="col-xs">
-            <LocalizedLink 
-            to="/" 
-            aria-label="Back to Home"
-            className="pad">
-              {website.title} [+]
-            </LocalizedLink>
-          </div>
-          <div className="col-xs text-right">
-            <ul className="locale-switcher">
-              <li><Link hrefLang="fr-fr" to="/">Fr</Link></li>
-              <li><Link hrefLang="en-gb" to="/en">En</Link></li>
-              <li><Link hrefLang="de-de" to="/de">De</Link></li>
-            </ul>
+const Header = () => {
+  const lang = React.useContext(LocaleContext);
+  const i18n = lang.i18n[lang.locale];
+  
+  return(
+    <header>
+      <div className="inner">
+        <div className="top-header b-b ">
+          <div className="row between-xs">
+            <div className="col-xs">
+              <LocalizedLink 
+              to="/" 
+              aria-label="Back to Home"
+              className="pad">
+                {website.title} [+]
+              </LocalizedLink>
+            </div>
+            <div className="col-xs text-right">
+              <ul className="locale-switcher">
+                {Object.values(locales).map((value,i) => (
+                  <li key={i}><Link hrefLang={value.locale} to={"/"+(value.default ? '' : value.path)}>{value.localeName}</Link></li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
 
-      <nav className="nav-wrap  headline">
-        <ul>
-          <li className="b-b pad">
-            <LocalizedLink to="/projects">Projects</LocalizedLink>
-          </li>
-          <li className="b-b pad">
-            <LocalizedLink to="/agence">Agence</LocalizedLink>
-          </li>
-          <li className="b-b pad">
-            <LocalizedLink to="/contact">Contact</LocalizedLink>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-);
+        <nav className="nav-wrap  headline">
+          <ul>
+            <li className="b-b pad">
+              <LocalizedLink to="/projects">{i18n["projects"]}</LocalizedLink>
+            </li>
+            <li className="b-b pad">
+              <LocalizedLink to="/agence">{i18n["agency"]}</LocalizedLink>
+            </li>
+            <li className="b-b pad">
+              <LocalizedLink to="/contact">{i18n["contact"]}</LocalizedLink>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  )
+}
 
 export default Header;

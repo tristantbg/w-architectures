@@ -207,14 +207,14 @@ p{
 }
 
 
-@media all and (max-width:$s){
-	body,h1,h2,h3,.fM{
-		font-size: 20px;
-	}
-	.fS{font-size: 20px}
-	.fXS{font-size: 12px}
-	.texte p{
-		text-indent: 20px;
-		&:first-child{text-indent: 0}
-	}
-}
+// @media all and (max-width:$s){
+// 	body,h1,h2,h3,.fM{
+// 		font-size: 20px;
+// 	}
+// 	.fS{font-size: 20px}
+// 	.fXS{font-size: 12px}
+// 	.texte p{
+// 		text-indent: 20px;
+// 		&:first-child{text-indent: 0}
+// 	}
+// }
