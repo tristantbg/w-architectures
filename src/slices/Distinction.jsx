@@ -24,8 +24,7 @@ class Distinction extends Component {
       <div className={"distinction " + (active ? "active" : "")}>
         <div className="row">
           <div className={"col-md-12"}>
-            <div className="title b-b pad" 
-            onClick={this._toggle}>
+            <div className="title b-b pad" onClick={this._toggle}>
               {item.title1.text}
             </div>
             <div className="distinction-content">
@@ -33,14 +32,11 @@ class Distinction extends Component {
                 className="texte pad"
                 dangerouslySetInnerHTML={{ __html: item.texte1.html }}
               />
-              {item.image &&
+              {item.image && (
                 <figure>
-                  <Img
-                  fluid={item.image.localFile.childImageSharp.fluid}
-                  />
+                  <Img fluid={item.image.localFile.childImageSharp.fluid} />
                 </figure>
-              }
-              
+              )}
             </div>
           </div>
         </div>

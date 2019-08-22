@@ -15,7 +15,7 @@ class Agency extends Component {
       el.addEventListener("click", this._toggle);
     });
 
-    headlines[0].click()
+    headlines[0].click();
   }
 
   componentWillUnmount() {
@@ -27,7 +27,7 @@ class Agency extends Component {
 
   _toggle(e) {
     const parent = e.target.parentNode;
-    console.log(parent)
+    console.log(parent);
     parent.classList.toggle("active");
   }
 
@@ -50,9 +50,9 @@ class Agency extends Component {
   }
 
   render() {
-    const {locales,locale} = this.props.pageContext
-    const i18n = locales[locale]
-    
+    const { locales, locale } = this.props.pageContext;
+    const i18n = locales[locale];
+
     const { data } = this.props.data.page;
 
     return (

@@ -5,7 +5,6 @@ import { LocaleContext } from "./Layout";
 import locales from "../../config/i18n";
 
 const LocalizedLink = ({ to, ...props }) => {
-  
   const { locale } = React.useContext(LocaleContext);
   // console.log(locales)
   // console.log(to,locale)

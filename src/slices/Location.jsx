@@ -25,8 +25,7 @@ class Location extends Component {
       <div className={"location " + (active ? "active" : "")}>
         <div className="row">
           <div className={"col-md-12"}>
-            <div className="title b-b pad" 
-            onClick={this._toggle}>
+            <div className="title b-b pad" onClick={this._toggle}>
               {item.title1.text}
             </div>
             <div className="location-content">
@@ -38,7 +37,7 @@ class Location extends Component {
               {active && (
                 <div className="map-container">
                   <Map
-                    id={"map-" + (Math.random() * 999)}
+                    id={"map-" + Math.random() * 999}
                     center={[item.geoloc.latitude, item.geoloc.longitude]}
                     zoom={13}
                     scrollWheelZoom={false}

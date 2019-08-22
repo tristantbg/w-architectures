@@ -8,24 +8,28 @@ import LocalizedLink from "./LocalizedLink";
 const Header = () => {
   const lang = React.useContext(LocaleContext);
   const i18n = lang.i18n[lang.locale];
-  
-  return(
+
+  return (
     <header>
       <div className="inner">
         <div className="top-header b-b ">
           <div className="row between-xs">
             <div className="col-xs">
-              <LocalizedLink 
-              to="/" 
-              aria-label="Back to Home"
-              className="pad">
+              <LocalizedLink to="/" aria-label="Back to Home" className="pad">
                 {website.title} [+]
               </LocalizedLink>
             </div>
             <div className="col-xs text-right">
               <ul className="locale-switcher">
-                {Object.values(locales).map((value,i) => (
-                  <li key={i}><Link hrefLang={value.locale} to={"/"+(value.default ? '' : value.path)}>{value.localeName}</Link></li>
+                {Object.values(locales).map((value, i) => (
+                  <li key={i}>
+                    <Link
+                      hrefLang={value.locale}
+                      to={"/" + (value.default ? "" : value.path)}
+                    >
+                      {value.localeName}
+                    </Link>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -47,7 +51,7 @@ const Header = () => {
         </nav>
       </div>
     </header>
-  )
-}
+  );
+};
 
 export default Header;

@@ -11,7 +11,7 @@ class Contact extends Component {
       el.addEventListener("click", this._toggle);
     });
 
-    headlines[0].click()
+    headlines[0].click();
   }
 
   componentWillUnmount() {

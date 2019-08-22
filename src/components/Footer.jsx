@@ -1,10 +1,10 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import website from "../../config/website";
-import BackToTop from "./ui/BackToTop"
+import BackToTop from "./ui/BackToTop";
 
 const Footer = () => {
-  const { options } = useStaticQuery(query)
+  const { options } = useStaticQuery(query);
   return (
     <footer>
       <div className="inner pad b-t">
@@ -12,20 +12,28 @@ const Footer = () => {
           <div className="col-xs">
             <ul>
               <li>{website.title}</li>
-              <li><a href={`mailto:${options.data.contact.text}`}>{options.data.contact.text}</a></li>
+              <li>
+                <a href={`mailto:${options.data.contact.text}`}>
+                  {options.data.contact.text}
+                </a>
+              </li>
               <li>{options.data.tel.text}</li>
             </ul>
           </div>
           <div className="col-xs">
             <ul className="footer-right">
-              <li><BackToTop /></li>
-              <li><a href={`mailto:${options.data.contact.text}`}>Contact</a></li>
+              <li>
+                <BackToTop />
+              </li>
+              <li>
+                <a href={`mailto:${options.data.contact.text}`}>Contact</a>
+              </li>
             </ul>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 };
 
 export default Footer;
@@ -33,14 +41,14 @@ export default Footer;
 const query = graphql`
   query Options {
     options: prismicOptions {
-    data {
-      tel {
-        text
-      }
-      contact {
-        text
+      data {
+        tel {
+          text
+        }
+        contact {
+          text
+        }
       }
     }
   }
-  }
-`
+`;

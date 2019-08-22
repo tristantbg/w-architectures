@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 // import { useStaticQuery, graphql } from "gatsby";
-import Transition from "./Transition"
+import Transition from "./Transition";
 import Header from "./Header";
-import Footer from './Footer'
+import Footer from "./Footer";
 // import SkipNavLink from "./SkipNavLink";
 import i18n from "../../config/i18n";
 
@@ -12,7 +12,6 @@ require("../styles/index.scss");
 const LocaleContext = React.createContext();
 
 const Layout = ({ children, location, pageContext: { locale, template } }) => {
-  
   return (
     <LocaleContext.Provider value={{ locale, i18n }}>
       <>
@@ -23,10 +22,7 @@ const Layout = ({ children, location, pageContext: { locale, template } }) => {
           <Transition location={location}>{children}</Transition>
         </main>
 
-        {template !== "project" &&
-          <Footer />
-        }
-
+        {template !== "project" && <Footer />}
       </>
     </LocaleContext.Provider>
   );

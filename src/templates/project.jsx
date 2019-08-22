@@ -6,7 +6,6 @@ import SEO from "../components/SEO/SEO";
 import ProjectFooter from "../components/project-footer";
 import Carousel from "../components/carousel";
 
-
 class Project extends Component {
   render() {
     const { project } = this.props.data;

@@ -1,51 +1,51 @@
-import React from "react"
+import React from "react";
 import {
-    TransitionGroup,
-    Transition as ReactTransition,
-} from "react-transition-group"
+  TransitionGroup,
+  Transition as ReactTransition
+} from "react-transition-group";
 
-const timeout = 250
+const timeout = 250;
 const getTransitionStyles = {
-    entering: {
-        position: `absolute`,
-        opacity: 0,
-    },
-    entered: {
-        transition: `opacity ${timeout}ms ease-in-out`,
-        opacity: 1,
-    },
-    exiting: {
-        transition: `opacity ${timeout}ms ease-in-out`,
-        opacity: 0,
-    },
-}
+  entering: {
+    position: `absolute`,
+    opacity: 0
+  },
+  entered: {
+    transition: `opacity ${timeout}ms ease-in-out`,
+    opacity: 1
+  },
+  exiting: {
+    transition: `opacity ${timeout}ms ease-in-out`,
+    opacity: 0
+  }
+};
 
 class Transition extends React.PureComponent {
-    render() {
-        const { children, location } = this.props
+  render() {
+    const { children, location } = this.props;
 
-        return (
-            <TransitionGroup>
-                <ReactTransition
-                    key={location.pathname}
-                    timeout={{
-                        enter: timeout,
-                        exit: (timeout/2),
-                    }}
-                >
-                    {status => (
-                        <div
-                            style={{
-                                ...getTransitionStyles[status],
-                            }}
-                        >
-                            {children}
-                        </div>
-                    )}
-                </ReactTransition>
-            </TransitionGroup>
-        )
-    }
+    return (
+      <TransitionGroup>
+        <ReactTransition
+          key={location.pathname}
+          timeout={{
+            enter: timeout,
+            exit: timeout / 2
+          }}
+        >
+          {status => (
+            <div
+              style={{
+                ...getTransitionStyles[status]
+              }}
+            >
+              {children}
+            </div>
+          )}
+        </ReactTransition>
+      </TransitionGroup>
+    );
+  }
 }
 
-export default Transition
+export default Transition;

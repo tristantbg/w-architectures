@@ -10,7 +10,7 @@ const Distinctions = ({ input }) => {
       <div className="content">
         {input.items.map((item, i) => (
           <Distinction item={item} key={i} />
-            // <pre key={i}>{JSON.stringify(item)}</pre>
+          // <pre key={i}>{JSON.stringify(item)}</pre>
         ))}
       </div>
     </section>
