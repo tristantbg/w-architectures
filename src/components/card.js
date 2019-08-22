@@ -4,7 +4,11 @@ import LocalizedLink from "./LocalizedLink";
 
 class Card extends Component {
   render() {
-    const { url, title, image, column } = this.props;
+    const { 
+      url, 
+      title, 
+      image, 
+      column } = this.props;
 
     return (
       <div className={"card col-xs-" + column}>
