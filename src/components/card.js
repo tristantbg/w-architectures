@@ -7,8 +7,9 @@ class Card extends Component {
     const { 
       url, 
       title, 
-      image, 
-      column } = this.props;
+      column,
+      image
+    } = this.props;
 
     return (
       <div className={"card col-xs-" + column}>
