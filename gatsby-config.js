@@ -40,6 +40,12 @@ module.exports = {
         htmlSerializer: () => prismicHtmlSerializer,
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-layout`,
+    //   options: {
+    //     component: require.resolve(`./src/components/Layout.jsx`),
+    //   },
+    // },
     'gatsby-plugin-lodash',
     {
       resolve: 'gatsby-plugin-google-analytics',

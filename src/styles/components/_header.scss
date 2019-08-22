@@ -9,6 +9,7 @@ header{
     &:hover{
         nav{display: block}
     }
+    &.p-e-n{pointer-events: none}
     .top-header{
         padding: $rowPad;
         .locale-switcher{

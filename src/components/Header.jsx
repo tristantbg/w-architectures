@@ -1,6 +1,4 @@
 import React from "react";
-
-
 import { Link } from "gatsby";
 import website from "../../config/website";
 import locales from "../../config/i18n";

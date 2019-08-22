@@ -155,7 +155,7 @@ const SEO = ({ title, desc, banner, pathname, article, node, locale }) => {
         {!article && <script type="application/ld+json">{JSON.stringify(schemaOrgWebPage)}</script>}
         {article && <script type="application/ld+json">{JSON.stringify(schemaArticle)}</script>}
         <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
-        <script src="https://unpkg.com/pace-js@1.0.2/pace.min.js"></script>
+        
       </Helmet>
       <Facebook
         desc={seo.description}
