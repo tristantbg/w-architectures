@@ -18,14 +18,13 @@ export const wrapRootElement = ({ element }) => {
 
 export const onRouteUpdate = ({ location }) => {
     //console.log('new pathname', location.pathname)
-    console.log(document.querySelector("header"))
     if(document){
         const header = document.querySelector("header")
         if(header){
             header.classList.add("p-e-n")
             setTimeout(() => {
                 header.classList.remove("p-e-n")
-            }, 1500)
+            }, 150)
         }
         
     }
