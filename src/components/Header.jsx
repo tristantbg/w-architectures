@@ -16,7 +16,7 @@ const Header = () => {
           <div className="row between-xs">
             <div className="col-xs">
               <LocalizedLink to="/" aria-label="Back to Home" className="pad">
-                {website.title} [+]
+                {website.title} <span className="icone">[+]</span>
               </LocalizedLink>
             </div>
             <div className="col-xs text-right">
