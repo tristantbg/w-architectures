@@ -2,7 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import { Listing, Wrapper, Title, SEO, Header } from "../components";
+import SEO from "../components/SEO/SEO";
 import website from "../../config/website";
 import { LocaleContext } from "../components/Layout";
 import LocalizedLink from "../components/LocalizedLink";
@@ -11,17 +11,26 @@ const Page = ({ pageContext: { locale }, data: { page }, location }) => {
   const lang = React.useContext(LocaleContext);
   const i18n = lang.i18n[lang.locale];
 
-  const { title } = page.data;
+  const { title, texte } = page.data;
 
   return (
     <>
       <SEO
-        title={`title | ${i18n.defaultTitleAlt}`}
+        title={`${title.text} | ${i18n.defaultTitleAlt}`}
+        desc={texte.text}
         pathname={location.pathname}
         locale={locale}
       />
       <div className="template-page">
-        <h1>{title.text}</h1>
+        <h1 className="b-b pad">{title.text}</h1>
+        <div className="row">
+          <div className="cl-xs-12 col-md-6">
+            <div
+            className="texte pad"
+            dangerouslySetInnerHTML={{ __html: texte.html }} />
+          </div>
+        </div>
+        
       </div>
     </>
   );
@@ -36,6 +45,10 @@ export const pageQuery = graphql`
       data {
         title {
           text
+        }
+        texte {
+          text
+          html
         }
       }
     }

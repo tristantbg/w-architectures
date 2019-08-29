@@ -120,12 +120,21 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
-        
+        pages: allPrismicPage {
+          edges {
+            node {
+              uid
+              lang
+            }
+          }
+        }
       }
     `)
   )
 
   const projectsList = result.data.projects.edges
+  const pageList = result.data.pages.edges
+  
   const projectsFr = projectsList.filter(function (p) {
     return p.node.lang === "fr-fr";
   });
@@ -188,14 +197,15 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  // pageList.forEach(edge => {
-  //   createPage({
-  //     path: localizedSlug(edge.node),
-  //     component: pageTemplate,
-  //     context: {
-  //       uid: edge.node.uid,
-  //       locale: edge.node.lang,
-  //     },
-  //   })
-  // })
+  
+  pageList.forEach(edge => {
+    createPage({
+      path: localizedSlug(edge.node),
+      component: pageTemplate,
+      context: {
+        uid: edge.node.uid,
+        locale: edge.node.lang,
+      },
+    })
+  })
 }

@@ -14,7 +14,8 @@ class Carousel extends Component {
       infinite: true,
       speed: 150,
       slidesToShow: 1,
-      slidesToScroll: 1
+      slidesToScroll: 1,
+      lazyLoad: 'progressive'
     };
 
     return (
