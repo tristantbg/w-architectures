@@ -55,27 +55,6 @@ class Tr extends Component {
                     Tag="figure"
                   />
                 ))}
-                {data.images.map(({ image }, i) => (
-                  <Img
-                    key={i}
-                    fixed={image.localFile.childImageSharp.fixed}
-                    Tag="figure"
-                  />
-                ))}
-                {data.images.map(({ image }, i) => (
-                  <Img
-                    key={i}
-                    fixed={image.localFile.childImageSharp.fixed}
-                    Tag="figure"
-                  />
-                ))}
-                {data.images.map(({ image }, i) => (
-                  <Img
-                    key={i}
-                    fixed={image.localFile.childImageSharp.fixed}
-                    Tag="figure"
-                  />
-                ))}
               </div>
               <ProjectInfos data={data} />
             </div>

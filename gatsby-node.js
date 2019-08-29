@@ -23,8 +23,8 @@ exports.onCreatePage = ({ page, actions }) => {
     //console.log(page.path, name)
     // Create the "slugs" for the pages. Unless default language, add prefix àla "/en"
     const localizedPath = locales[lang].default 
-      ? page.path 
-      : `${locales[lang].path}${page.path}`
+    ? page.path 
+    : `${locales[lang].path}${page.path}`
     console.log(localizedPath)
     return createPage({
       ...page,
@@ -115,35 +115,64 @@ exports.createPages = async ({ graphql, actions }) => {
         projects: allPrismicProjects {
           edges {
             node {
-              id
               uid
               lang
             }
           }
         }
-        pages: allPrismicPage {
-          edges {
-            node {
-              id
-              uid
-              lang
-            }
-          }
-        }
+        
       }
     `)
   )
 
   const projectsList = result.data.projects.edges
-  const pageList = result.data.pages.edges
+  const projectsFr = projectsList.filter(function (p) {
+    return p.node.lang === "fr-fr";
+  });
+  const projectsEn = projectsList.filter(function (p) {
+    return p.node.lang === "en-gb";
+  });
 
-  projectsList.forEach((edge, index) => {
-    // The uid you assigned in Prismic is the slug!
-    console.log(localizedSlug(edge.node))
-    const previous = index === 0 ? projectsList[projectsList.length - 1].node : projectsList[index - 1].node
-    const next = index === projectsList.length - 1 ? projectsList[0].node : projectsList[index + 1].node
+  const length = projectsFr.length
+  //const pageList = result.data.pages.edges
+
+  projectsFr.forEach((edge, index) => {
+    
+    const previous = index === 0 
+    ? projectsFr[length - 1].node 
+    : projectsFr[index - 1].node
+
+    const next = index === length - 1 
+    ? projectsFr[0].node 
+    : projectsFr[index + 1].node
 // console.log(previous)
-// console.log(next)
+// console.log(localizedSlug(edge.node))
+    createPage({
+      path: localizedSlug(edge.node),
+      component: projectTemplate,
+      context: {
+        // Pass the unique ID (uid) through context so the template can filter by it
+        uid: edge.node.uid,
+        locales: locales,
+        locale: edge.node.lang,
+        previous: previous,
+        next: next,
+        template: 'project'
+      },
+    })
+  })
+
+  projectsEn.forEach((edge, index) => {
+    
+    const previous = index === 0 
+    ? projectsEn[length - 1].node 
+    : projectsEn[index - 1].node
+
+    const next = index === length - 1 
+    ? projectsEn[0].node 
+    : projectsEn[index + 1].node
+// console.log(previous)
+// console.log(localizedSlug(edge.node))
     createPage({
       path: localizedSlug(edge.node),
       component: projectTemplate,

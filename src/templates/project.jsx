@@ -11,7 +11,8 @@ class Project extends Component {
     const { project } = this.props.data;
     const { locales, locale, previous, next } = this.props.pageContext;
     const i18n = locales[locale];
-
+console.log(previous)
+console.log(next)
     const { title, image_featured, images } = project.data;
 
     return (
@@ -33,7 +34,7 @@ class Project extends Component {
                 <ul className="related">
                   <li>
                     <LocalizedLink to={previous.uid}>
-                      {i18n["prev"]}
+                      {i18n["prev"]} 
                     </LocalizedLink>
                   </li>{" "}
                   /{" "}
