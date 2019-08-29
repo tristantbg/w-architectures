@@ -112,7 +112,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await wrapper(
     graphql(`
       {
-        projects: allPrismicProjects {
+        projects: allPrismicProject {
           edges {
             node {
               uid

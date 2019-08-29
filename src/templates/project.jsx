@@ -60,7 +60,7 @@ export default Project;
 
 export const pageQuery = graphql`
   query ProjectBySlug($uid: String!, $locale: String!) {
-    project: prismicProjects(uid: { eq: $uid }, lang: { eq: $locale }) {
+    project: prismicProject(uid: { eq: $uid }, lang: { eq: $locale }) {
       uid
       ...project
     }

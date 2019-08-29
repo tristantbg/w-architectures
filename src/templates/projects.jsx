@@ -60,7 +60,7 @@ export default Projects;
 
 export const pageQuery = graphql`
   query AllProjects($locale: String!) {
-    projects: allPrismicProjects(filter: { lang: { eq: $locale } }) {
+    projects: allPrismicProject(filter: { lang: { eq: $locale } }) {
       edges {
         node {
           uid

@@ -43,7 +43,7 @@ export const query = graphql`
     }
   }
 
-  fragment project on PrismicProjects {
+  fragment project on PrismicProject {
     data {
       title {
         text

@@ -1,0 +1,116 @@
+{
+    "Main" : {
+      "uid" : {
+        "type" : "UID",
+        "config" : {
+          "label" : "Slug"
+        }
+      },
+      "title" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1, heading2, heading3, heading4, heading5, heading6",
+          "label" : "Title"
+        }
+      },
+      "texte" : {
+        "type" : "StructuredText",
+        "config" : {
+          "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+          "allowTargetBlank" : true,
+          "label" : "Texte"
+        }
+      },
+      "image_featured" : {
+        "type" : "Image",
+        "config" : {
+          "constraint" : { },
+          "thumbnails" : [ ],
+          "label" : "Image Featured"
+        }
+      },
+      "images" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "image" : {
+              "type" : "Image",
+              "config" : {
+                "constraint" : { },
+                "thumbnails" : [ ],
+                "label" : "Image"
+              }
+            }
+          },
+          "label" : "Images"
+        }
+      },
+      "download" : {
+        "type" : "Link",
+        "config" : {
+          "select" : "media",
+          "label" : "Download"
+        }
+      }
+    },
+    "Metas" : {
+      "year" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "paragraph",
+          "label" : "Year"
+        }
+      },
+      "localisation" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "paragraph",
+          "label" : "Localisation"
+        }
+      },
+      "program" : {
+        "type" : "Select",
+        "config" : {
+          "options" : [ "Musée", "Équipements", "Design", "Bureaux", "Logements" ],
+          "label" : "Program"
+        }
+      },
+      "type" : {
+        "type" : "Select",
+        "config" : {
+          "options" : [ "Réalisé", "En cours", "Concours" ],
+          "label" : "Type"
+        }
+      },
+      "patrimoine" : {
+        "type" : "Select",
+        "config" : {
+          "options" : [ "false", "true" ],
+          "default_value" : "false",
+          "label" : "Patrimoine"
+        }
+      },
+      "fiche_technique" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "label" : {
+              "type" : "StructuredText",
+              "config" : {
+                "single" : "paragraph",
+                "label" : "Label"
+              }
+            },
+            "value" : {
+              "type" : "StructuredText",
+              "config" : {
+                "single" : "paragraph",
+                "label" : "Value"
+              }
+            }
+          },
+          "label" : "Fiche Technique"
+        }
+      }
+    }
+  }
