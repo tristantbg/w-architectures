@@ -1,8 +1,16 @@
 .template-contact{
     
     .location{
-        &.active .location-content{
-            display: block
+        &.active{
+            .title{
+                cursor: n-resize;
+            }
+            .location-content{
+                display: block
+            }
+        } 
+        .title{
+            cursor: s-resize;
         }
         .location-content{
             display: none;

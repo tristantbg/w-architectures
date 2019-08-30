@@ -2,6 +2,8 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import website from "../../config/website";
 import BackToTop from "./ui/BackToTop";
+// import { LocaleContext } from "./Layout";
+import LocalizedLink from "./LocalizedLink";
 
 const Footer = () => {
   const { options } = useStaticQuery(query);
@@ -26,7 +28,8 @@ const Footer = () => {
                 <BackToTop />
               </li>
               <li>
-                <a href={`mailto:${options.data.contact.text}`}>Contact</a>
+                <LocalizedLink to="contact">Contact</LocalizedLink>
+                {/* <a href={`mailto:${options.data.contact.text}`}>Contact</a> */}
               </li>
             </ul>
           </div>

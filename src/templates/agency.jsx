@@ -63,7 +63,11 @@ class Agency extends Component {
           //pathname={location.pathname}
           locale={locale}
         />
-        <div className="template-agency">{this._sliceZone(data.body)}</div>
+        <div className="template-agency">
+          <h1 className="b-b pad">{data.title.text}</h1>  
+          {this._sliceZone(data.body)}
+        
+        </div>
       </>
     );
   }
