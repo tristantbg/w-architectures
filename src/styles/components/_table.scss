@@ -4,10 +4,13 @@
     }
     .tr{
         .row-header{cursor: n-resize;}
-        &.is-collapsed .row-header{cursor: s-resize;}
-        &:hover{
-            background: $color2
-        }
+        &.is-collapsed{
+            &:hover{
+                background: $color2
+            }
+            .row-header{cursor: s-resize;}
+        } 
+        
     }
     .table-actions{
         @include flexbox();

@@ -11,8 +11,8 @@ header{
         .site-title{
             .title-detail{
                 .plus{
-                    //opacity: 0;
-                    transform: scale(0) translateX(100%);
+                    opacity: 0;
+                    //transform: scale(0) translateX(100%);
                 }
                 .detail{
                     width: 200px;
@@ -45,10 +45,11 @@ header{
             &::before{content: "["}
             &::after{content: "]"}
             .plus,
-            .detail{@include anime(.4s, 0s);}
+            .detail{@include anime(.6s, 0s);}
             .plus{
                 position: absolute;
                 left: 50%;
+                opacity: 1;
                 transform: translateX(-50%);
             }
             .detail{
