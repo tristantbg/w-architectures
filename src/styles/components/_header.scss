@@ -8,6 +8,19 @@ header{
     background: $bg;
     &:hover{
         nav{display: block}
+        .site-title{
+            .title-detail{
+                .plus{
+                    //opacity: 0;
+                    transform: scale(0) translateX(100%);
+                }
+                .detail{
+                    width: 200px;
+                    opacity: 1;
+                }
+            }
+        }
+        
     }
     &.p-e-n{pointer-events: none}
     .top-header{
@@ -18,6 +31,36 @@ header{
             a{padding-left: .4em}
         }
     }
+    .site-title{
+        @include flexbox();
+        .title{margin-right: .4em}
+        .title-detail{
+            @include flexbox();
+            @include justify-content(space-between);
+            min-width: 18px;
+            &::before,
+            &::after{
+
+            }
+            &::before{content: "["}
+            &::after{content: "]"}
+            .plus,
+            .detail{@include anime(.4s, 0s);}
+            .plus{
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .detail{
+                width: 0;
+                overflow: hidden;
+                white-space: nowrap;
+                background: white;
+                opacity: 0;
+            }
+        }
+    }
+    
     nav{
         &.collapsed{display: none}
         display: none;

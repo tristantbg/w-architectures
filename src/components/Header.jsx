@@ -15,8 +15,12 @@ const Header = () => {
         <div className="top-header b-b ">
           <div className="row between-xs">
             <div className="col-xs">
-              <LocalizedLink to="/" aria-label="Back to Home" className="pad">
-                {website.title} <span className="icone">[+]</span>
+              <LocalizedLink to="/" aria-label="Back to Home" className="site-title ">
+                <div className="title">{website.title}</div>
+                <div className="title-detail">
+                  <div className="plus">+</div>
+                  <div className="detail"><span>{website.titleDetail}</span></div>
+                </div>  
               </LocalizedLink>
             </div>
             <div className="col-xs text-right">
