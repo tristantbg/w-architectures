@@ -14,24 +14,26 @@ class Table extends Component {
       columns: []
     };
 
-    this.columns = ["title", "localisation", "year", "program", "type"];
+    this.columns = ["title", "localisation", "year", "program", "type", "patrimoine"];
     this._sortBy = this._sortBy.bind(this);
+    this._toggleSelection = this._toggleSelection.bind(this);
+    this._toggle = this._toggle.bind(this);
   }
 
   componentWillMount() {
     this.props.data.forEach(element => {
-      element.node.data.visible = true;
+      element.visible = true;
     });
   }
 
   componentWillUnmount() {
     PubSub.unsubscribe("SEARCH", this._handleSearch.bind(this));
-    PubSub.unsubscribe("SEARCH.RESET", this._handleSearchReset.bind(this));
+    PubSub.unsubscribe("SEARCH.RESET", this._reset.bind(this));
   }
 
   componentDidMount() {
     PubSub.subscribe("SEARCH", this._handleSearch.bind(this));
-    PubSub.subscribe("SEARCH.RESET", this._handleSearchReset.bind(this));
+    PubSub.subscribe("SEARCH.RESET", this._reset.bind(this));
   }
 
   _filterBy(key) {
@@ -64,7 +66,8 @@ class Table extends Component {
     console.log(key);
     let arrayCopy = [...this.props.data];
     arrayCopy.sort(this._compareBy(key));
-    console.table(arrayCopy[0].node.data.title.text);
+    console.table(arrayCopy[0].title.text);
+
     this.setState({
       data: arrayCopy,
       filtered: true,
@@ -76,45 +79,45 @@ class Table extends Component {
     //console.log(this.state.order)
     if (this.state.order == "ASC") {
       return function(a, b) {
-        //console.log(a.node.data[key], b.node.data[key])
-        if (typeof a.node.data[key] === "object") {
+        //console.log(a[key], b[key])
+        if (typeof a[key] === "object") {
           if (
-            a.node.data[key].text.toLowerCase() <
-            b.node.data[key].text.toLowerCase()
+            a[key].text.toLowerCase() <
+            b[key].text.toLowerCase()
           )
             return -1;
           if (
-            a.node.data[key].text.toLowerCase() >
-            b.node.data[key].text.toLowerCase()
+            a[key].text.toLowerCase() >
+            b[key].text.toLowerCase()
           )
             return 1;
           return 0;
         } else {
-          if (a.node.data[key].toLowerCase() < b.node.data[key].toLowerCase())
+          if (a[key].toLowerCase() < b[key].toLowerCase())
             return -1;
-          if (a.node.data[key].toLowerCase() > b.node.data[key].toLowerCase())
+          if (a[key].toLowerCase() > b[key].toLowerCase())
             return 1;
           return 0;
         }
       };
     } else {
       return function(a, b) {
-        if (typeof a.node.data[key] === "object") {
+        if (typeof a[key] === "object") {
           if (
-            a.node.data[key].text.toLowerCase() <
-            b.node.data[key].text.toLowerCase()
+            a[key].text.toLowerCase() <
+            b[key].text.toLowerCase()
           )
             return 1;
           if (
-            a.node.data[key].text.toLowerCase() >
-            b.node.data[key].text.toLowerCase()
+            a[key].text.toLowerCase() >
+            b[key].text.toLowerCase()
           )
             return -1;
           return 0;
         } else {
-          if (a.node.data[key].toLowerCase() < b.node.data[key].toLowerCase())
+          if (a[key].toLowerCase() < b[key].toLowerCase())
             return 1;
-          if (a.node.data[key].toLowerCase() > b.node.data[key].toLowerCase())
+          if (a[key].toLowerCase() > b[key].toLowerCase())
             return -1;
           return 0;
         }
@@ -130,7 +133,7 @@ class Table extends Component {
     var _data = [];
     for (var i in arrayCopy) {
       const row = arrayCopy[i];
-      const rowData = row.node.data;
+      const rowData = row;
       rowData.visible = false;
       for (var j in columns) {
         if (rowData[columns[j]]) {
@@ -165,7 +168,7 @@ class Table extends Component {
     // });
   }
 
-  _handleSearchReset() {
+  _reset() {
     let arrayCopy = [...this.props.data];
     for (var i in arrayCopy) {
       const row = arrayCopy[i];
@@ -175,6 +178,32 @@ class Table extends Component {
       filtered: true,
       data: arrayCopy
     });
+  }
+
+  _toggleSelection(e){
+
+    e.target.classList.toggle("active")
+    if(e.target.classList.contains("active")){
+      console.log("toggle")
+      let arrayCopy = [...this.props.data];
+      for (var i in arrayCopy) {
+        const row = arrayCopy[i];
+        if(row.selection === "true")
+          row.visible = true;
+        else
+          row.visible = false;
+      }
+      this.setState({
+        filtered: true,
+        data: arrayCopy
+      });
+    }else{
+      this._reset()
+    }
+    
+  }
+  _toggle(){
+
   }
 
   render() {
@@ -189,13 +218,24 @@ class Table extends Component {
     return (
       <div className={"table " + orderClass}>
         <div className="table-header">
-          <div className="_row b-b">Projects</div>
+          
           <div className="_row b-b">
             <div className="row">
               <div className="col-md-6">
                 <div className="row between-xs">
                   <div className="_td col-xs-8">
-                    Sélection | Tout ouvrir | Tout télécharger
+                    <ul className="table-actions">
+                      <li>
+                        <div onClick={this._toggleSelection}>{translate["selection"]}</div>
+                      </li>
+                      <li>
+                        <div onClick={this._toggle}>{translate["openAll"]}</div>
+                      </li>
+                      <li>
+                        <div >{translate["downloadAll"]}</div>
+                      </li>
+                    </ul>
+                    
                   </div>
                   <div className="_td col-xs-4">
                     <div
@@ -227,6 +267,11 @@ class Table extends Component {
                       {translate["type"]}
                     </div>
                   </div>
+                  <div className="_td col-xs">
+                    <div className="_sort" onClick={() => this._sortBy("patrimoine")}>
+                      {translate["patrimoine"]}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -235,8 +280,8 @@ class Table extends Component {
             <Search />
           </div>
           <div className="table-content">
-            {data.map(({ node }, i) => (
-              <Tr key={i} data={node.data} />
+            {data.map((tr, i) => (
+              <Tr key={i} data={tr} />
             ))}
           </div>
         </div>

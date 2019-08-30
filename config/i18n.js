@@ -22,6 +22,10 @@ module.exports = {
     year: 'Année',
     program: 'Programme',
     type: 'Type',
+    patrimoine: 'Patrimoine',
+    selection: "Sélection",
+    openAll: "Tout ouvrir",
+    downloadAll: "Tout télécharger",
     backToTop: 'Haut de page'
   },
   'en-gb': {
@@ -45,6 +49,10 @@ module.exports = {
     year: 'Year',
     program: 'Program',
     type: 'Type',
+    patrimoine: 'Heritage',
+    selection: "Selection",
+    openAll: "Open all",
+    downloadAll: "Download all",
     backToTop: 'Back to top'
   },
 }

@@ -8,7 +8,7 @@ class Carousel extends Component {
     const settings = {
       fade: true,
       dots: false,
-      autoplay: true,
+      autoplay: false,
       autoplaySpeed: 5000,
       accessibility: true,
       infinite: true,
@@ -18,16 +18,18 @@ class Carousel extends Component {
       lazyLoad: 'progressive'
     };
 
+    const style = {
+      backgroundPosition: "center top",
+      backgroundSize: "contain"
+    }
+
     return (
       <div className="carousel">
         <Slider {...settings}>
           <div className="slide">
             <BackgroundImage
               fluid={image_featured.localFile.childImageSharp.fluid}
-              style={{
-                backgroundPosition: "left center",
-                backgroundSize: "auto"
-              }}
+              style={style}
             />
           </div>
 
@@ -35,10 +37,7 @@ class Carousel extends Component {
             <div key={i} className="slide">
               <BackgroundImage
                 fluid={image.localFile.childImageSharp.fluid}
-                style={{
-                  backgroundPosition: "left center",
-                  backgroundSize: "auto"
-                }}
+                style={style}
               />
             </div>
           ))}

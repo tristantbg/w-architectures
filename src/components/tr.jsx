@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Img from "gatsby-image";
+import ProjectTitle from "./project-title";
 import ProjectInfos from "./project-infos";
 
 class Tr extends Component {
@@ -21,17 +22,24 @@ class Tr extends Component {
   render() {
     const { collapsed } = this.state;
     const { data } = this.props;
-
+//console.log(data)
     if (!data.visible) {
       return null;
     } else {
+      const isSelection = (data.selection === 'true')
       return (
-        <div className={"tr b-b " + (collapsed ? "is-collapsed" : "")}>
+        <div className={"tr b-b " + (collapsed ? "is-collapsed" : "")} data-selection={isSelection}>
           <div className="row-header _row" onClick={this._toggle}>
             <div className="row">
               <div className="col-md-6">
                 <div className="row between-xs">
-                  <div className="_td col-xs-8">{data.title.text}</div>
+                  <div className="_td col-xs-8">
+                    <ProjectTitle 
+                      title={data.title.text}
+                      localisation={data.localisation.text}
+                      year={data.year.text}
+                    />
+                  </div>
                   <div className="_td col-xs-4">{data.localisation.text}</div>
                 </div>
               </div>
@@ -40,6 +48,11 @@ class Tr extends Component {
                   <div className="_td col-xs">{data.year.text}</div>
                   <div className="_td col-xs">{data.program}</div>
                   <div className="_td col-xs">{data.type}</div>
+                  <div className="_td col-xs">
+                    {data.patrimoine && data.patrimoine === "true" &&
+                      <span className="">×</span>
+                    }
+                  </div>
                 </div>
               </div>
             </div>

@@ -9,62 +9,56 @@ import Table from "../components/table";
 
 const Projects = ({
   pageContext: { locale },
-  data: { projects },
+  data: { page : {data : {title, texte, projects}} },
   location
 }) => {
   const _LocaleContext = React.useContext(LocaleContext);
   const i18n = _LocaleContext.i18n[locale];
-
+console.log(projects)
+  const _projects = projects.map(el =>  el.project.document[0].data)
+  console.log(_projects)
   return (
     <>
       <SEO
-        title={`Projects | ${i18n.defaultTitleAlt}`}
-        desc="Project liste"
+        title={`${title.text} | ${i18n.defaultTitleAlt}`}
+        desc={texte.text}
         pathname={location.pathname}
         locale={locale}
       />
       <div className="template-projects">
-        <Table data={projects.edges} />
+        <h1 className="b-b pad">{title.text}</h1>
+        <Table data={_projects} />
       </div>
     </>
   );
 };
 
-// class Projects extends Component {
-//   render(){
-//     const {locales,locale} = this.props.pageContext
-//     const i18n = locales[locale]
-//     console.log(i18n)
-//     //const lang = React.useContext(LocaleContext);
-//     //const i18n = lang.i18n[lang.locale];
-
-//     const {projects} = this.props.data
-//     console.log(this.props)
-//     return (
-//       <>
-//         <SEO
-//           title={`Projects | ${i18n.defaultTitleAlt}`}
-//           desc="Project liste"
-//           //pathname={location.pathname}
-//           locale={locale}
-//         />
-//         <div className="template-projects">
-//           <Table data={projects.edges} />
-//         </div>
-//       </>
-//     );
-//   }
-// }
-
 export default Projects;
 
 export const pageQuery = graphql`
-  query AllProjects($locale: String!) {
-    projects: allPrismicProject(filter: { lang: { eq: $locale } }) {
-      edges {
-        node {
-          uid
-          ...project
+  query Projects($locale: String!) {
+    # projects: allPrismicProject(filter: { lang: { eq: $locale } }) {
+    #   edges {
+    #     node {
+    #       uid
+    #       ...project
+    #     }
+    #   }
+    # }
+    page: prismicProjects(lang: {eq: $locale}) {
+      data {
+        title {
+          text
+        }
+        texte {
+          text
+        }
+        projects {
+          project {
+            document {
+              ...project
+            }
+          }
         }
       }
     }

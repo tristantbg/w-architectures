@@ -28,6 +28,8 @@ const Index = ({ data: { homepage }, pageContext: { locale }, location }) => {
               column={column}
               url={project.document[0].uid}
               title={project.document[0].data.title.text}
+              localisation={project.document[0].data.localisation.text}
+              year={project.document[0].data.year.text}
               image={project.document[0].data.image_featured}
             />
           </div>
@@ -56,6 +58,12 @@ export const pageQuery = graphql`
               uid
               data {
                 title {
+                  text
+                }
+                localisation {
+                  text
+                }
+                year {
                   text
                 }
                 image_featured {

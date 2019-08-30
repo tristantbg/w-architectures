@@ -51,6 +51,7 @@ export const query = graphql`
       texte {
         html
       }
+      selection
       year {
         text
       }
@@ -59,6 +60,7 @@ export const query = graphql`
       }
       program
       type
+      patrimoine
       fiche_technique {
         label {
           text

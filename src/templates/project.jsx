@@ -5,6 +5,7 @@ import LocalizedLink from "../components/LocalizedLink";
 import SEO from "../components/SEO/SEO";
 import ProjectFooter from "../components/project-footer";
 import Carousel from "../components/carousel";
+import ProjectTitle from "../components/project-title";
 
 class Project extends Component {
   render() {
@@ -13,7 +14,7 @@ class Project extends Component {
     const i18n = locales[locale];
 // console.log(previous)
 // console.log(next)
-    const { title, image_featured, images } = project.data;
+    const { title, localisation, year, image_featured, images } = project.data;
 
     return (
       <>
@@ -29,7 +30,12 @@ class Project extends Component {
         <div className="template-project">
           <div className="project-header b-b pad">
             <div className="row between-xs">
-              <h1 className="col-xs fM fP">{title.text}</h1>
+              <h1 className="col-xs fM fP">
+                <ProjectTitle 
+                title={title.text}
+                localisation={localisation.text}
+                year={year.text} />
+              </h1>
               <div className="col-xs ">
                 <ul className="related">
                   <li>

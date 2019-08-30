@@ -5,6 +5,24 @@
     .tr{
         .row-header{cursor: n-resize;}
         &.is-collapsed .row-header{cursor: s-resize;}
+        &:hover{
+            background: $color2
+        }
+    }
+    .table-actions{
+        @include flexbox();
+        li{
+            padding-right: 1em;
+            position: relative;
+            cursor: pointer;
+            &::after{
+                content: "|"; 
+                position: absolute;
+                right: .3em; top: 0;
+                
+            }
+            &:last-child::after{display: none}
+        }
     }
     .search{
         input{
