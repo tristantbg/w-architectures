@@ -6,8 +6,7 @@ header{
     //margin-bottom: $margeM;
     padding: 0 $margeS;
     background: $bg;
-    &:hover{
-        nav{display: block}
+    &.active{
         .site-title{
             .title-detail{
                 .plus{
@@ -20,11 +19,18 @@ header{
                 }
             }
         }
-        
+
+        nav{
+            @include slide(none, 1);
+            pointer-events: auto;
+        }
     }
-    &.p-e-n{pointer-events: none}
+    
+   
     .top-header{
         padding: $rowPad;
+        background: white;
+        z-index: 2;
         .locale-switcher{
             @include flexbox()
             @include justify-content(flex-end);
@@ -33,6 +39,8 @@ header{
     }
     .site-title{
         @include flexbox();
+        &:hover,
+        &:active{color: $color1}
         .title{margin-right: .4em}
         .title-detail{
             @include flexbox();
@@ -64,11 +72,14 @@ header{
     
     nav{
         &.collapsed{display: none}
-        display: none;
+        z-index: 1;
         position: absolute;
         width: 100%;
         background: white;
         padding-bottom: $rowHeight;
+        @include anime();
+        @include slide(top, 0)
+        pointer-events: none;
         ul{
             //@include flexbox();
             li{
@@ -76,6 +87,11 @@ header{
             }
         }
     }
+}
+
+.pace-running header{
+    pointer-events: none!important;
+    nav{@include slide(top, 0)}
 }
 
 .downscroll{

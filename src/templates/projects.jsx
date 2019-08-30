@@ -14,9 +14,9 @@ const Projects = ({
 }) => {
   const _LocaleContext = React.useContext(LocaleContext);
   const i18n = _LocaleContext.i18n[locale];
-console.log(projects)
+
   const _projects = projects.map(el =>  el.project.document[0].data)
-  console.log(_projects)
+  
   return (
     <>
       <SEO

@@ -4,7 +4,8 @@ import { LocaleContext } from "./Layout";
 const ProjectInfos = ({ data }) => {
   const lang = React.useContext(LocaleContext);
   const i18n = lang.i18n[lang.locale];
-
+  const columns = ["localisation","year","program","type"]
+  
   return (
     <div className="project-infos ">
       <div className="infos b-t">
@@ -26,7 +27,23 @@ const ProjectInfos = ({ data }) => {
           </div>
           <div className="col-xs-12 col-md-6">
             <div className="fiche_technique">
-              <div className="row">
+              {columns.map((col, i) => (
+                <div className="row" key={i}>
+                <div className="col-xs label">{i18n[col]}</div>
+                <div className="col-xs value">
+                  {typeof data[col] === "string" &&
+                    <span>{data[col]}</span>
+                  }
+                  {typeof data[col] === "object" &&
+                    <span>{data[col].text}</span>
+                  }
+                </div>
+                <div className="col-xs"></div>
+                <div className="col-xs"></div>
+                </div>
+              ))}
+
+              {/* <div className="row">
                 <div className="col-xs label">{i18n["localisation"]}</div>
                 <div className="col-xs value">{data.localisation.text}</div>
                 <div className="col-xs"></div>
@@ -49,7 +66,7 @@ const ProjectInfos = ({ data }) => {
                 <div className="col-xs value">{data.type}</div>
                 <div className="col-xs"></div>
                 <div className="col-xs"></div>
-              </div>
+              </div> */}
 
               {data.fiche_technique.map((item, i) => (
                 <div className="row" key={i}>

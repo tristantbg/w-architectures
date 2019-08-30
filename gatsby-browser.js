@@ -18,16 +18,18 @@ export const wrapRootElement = ({ element }) => {
 
 export const onRouteUpdate = ({ location }) => {
     //console.log('new pathname', location.pathname)
-    if(document){
-        const header = document.querySelector("header")
-        if(header){
-            header.classList.add("p-e-n")
-            setTimeout(() => {
-                header.classList.remove("p-e-n")
-            }, 150)
-        }
+    // if(document){
+    //     const header = document.querySelector("header")
+    //     const footer = document.querySelector("footer")
         
-    }
+    //     if(header){
+    //         header.classList.add("p-e-n")
+    //         setTimeout(() => {
+    //             header.classList.remove("p-e-n")
+    //         }, 500)
+    //     }
+    //     //if(footer)footer.blur()
+    // }
     PubSub.publish('ROUTE_UPDATE', {
         location: location
     })

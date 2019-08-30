@@ -68,6 +68,22 @@ h1,h2,h3,h4,h5,h6 {
 
 h1,h2,h3,h4,h5,h6{font-weight: normal;}
 
+/* Links */
+//a{text-decoration: none;}
+a,.btn {
+	color: $color1;
+	text-decoration: none;
+	&:focus,
+	&:active,
+	&:hover {
+		color: $color2;
+	}
+	//&.btn:hover{color: #fff}
+}
+p{
+	a{color: $color1}
+}
+
 .button{
 	display: inline-block;
 	padding: 2px $margeXS;
@@ -190,21 +206,7 @@ sub {
 
 
 
-/* Links */
-//a{text-decoration: none;}
-a,.btn {
-	color: $color1;
-	text-decoration: none;
-	&:focus,
-	&:active,
-	&:hover {
-		//color: $hover;
-	}
-	//&.btn:hover{color: #fff}
-}
-p{
-	a{color: $color1}
-}
+
 
 
 // @media all and (max-width:$s){

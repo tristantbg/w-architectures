@@ -13,6 +13,8 @@ img{
     &.pad{padding: $rowPad; }
 }
 .pad{padding: $rowPad; }
-
+.headline.pad{
+    padding-top: 0.43em;
+}
 .collapsed{display: none}
 img{vertical-align: top}
