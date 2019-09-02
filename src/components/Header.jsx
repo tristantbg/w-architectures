@@ -26,7 +26,7 @@ class Header extends Component {
   }
 
   render() {
-    console.log(this)
+    //console.log(this)
     const {locale} = this.props.context
     const i18n = this.props.context.i18n[locale]
     const {active} = this.state
@@ -37,8 +37,7 @@ class Header extends Component {
     return (
       <header className={_headerClass}
       onMouseEnter={this._toggle}
-      onMouseLeave={this._toggle}
-      >
+      onMouseLeave={this._toggle} >
         <div className="inner">
           <div className="top-header b-b ">
             <div className="row between-xs">

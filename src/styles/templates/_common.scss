@@ -1,3 +1,11 @@
+.liste-images{
+    .row{
+        &:nth-child(even){
+            @include justify-content(flex-end);
+            
+        }
+    }
+}
 .infos{
     .texte{
         padding: $rowPad; 

@@ -29,8 +29,8 @@ $gutter: $margeXS;
 $fontPrimary: 'Theinhardt-Regular', sans-serif;
 $fontSecondary: 'Theinhardt-Light', sans-serif;
 
-$fontM: 14px;
-$fontL: 42px;
+$fontM: 1.4rem;
+$fontL: $fontM * 3;
 
 $lineHeight: 103.49%;
 $letterSpacing: 0.03em;

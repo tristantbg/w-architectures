@@ -96,6 +96,14 @@ export const query = graphql`
       texte {
         text
       }
+      images{
+        column
+        image{
+          localFile {
+            ...fluidImage
+          }
+        }
+      }
       body {
         ... on Node {
           ... on PrismicAgencyBodyTextes {
@@ -143,7 +151,7 @@ export const query = graphql`
               }
             }
           }
-          ... on PrismicAgencyBodyDistinctions {
+          ... on PrismicAgencyBodyListe {
             slice_type
             primary {
               title1 {

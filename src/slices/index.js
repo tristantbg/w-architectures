@@ -2,6 +2,6 @@ import Textes from "./Textes";
 import Images from "./Images";
 import TexteImage from "./TexteImage";
 import Locations from "./Locations";
-import Distinctions from "./Distinctions";
+import Liste from "./Liste";
 
-export { Textes, Images, TexteImage, Locations, Distinctions };
+export { Textes, Images, TexteImage, Locations, Liste };

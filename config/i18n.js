@@ -25,6 +25,7 @@ module.exports = {
     patrimoine: 'Patrimoine',
     selection: "Sélection",
     openAll: "Tout ouvrir",
+    closeAll: "Tout fermer",
     downloadAll: "Tout télécharger",
     backToTop: 'Haut de page'
   },
@@ -52,6 +53,7 @@ module.exports = {
     patrimoine: 'Heritage',
     selection: "Selection",
     openAll: "Open all",
+    closeAll: "Close all",
     downloadAll: "Download all",
     backToTop: 'Back to top'
   },

@@ -83,7 +83,7 @@ header{
         ul{
             //@include flexbox();
             li{
-                
+                a:hover{color: $color2}
             }
         }
     }

@@ -32,7 +32,7 @@
 }
 	
 
-  
+html{font-size: 10px} 
 body {
 	color: $color1;
 	font-family: $fontPrimary;
@@ -76,12 +76,17 @@ a,.btn {
 	&:focus,
 	&:active,
 	&:hover {
-		color: $color2;
+		//color: $color2;
 	}
 	//&.btn:hover{color: #fff}
 }
 p{
-	a{color: $color1}
+	a{
+		color: $color1;
+		&:focus,
+		&:active,
+		&:hover{color: $color2;}
+	}
 }
 
 .button{

@@ -4,22 +4,20 @@
         &.images{
             .content{
                 padding: $rowHeight 0 0;
-                .row{
-                    &:nth-child(even){
-                        @include justify-content(flex-end);
-                    }
-                    figure{margin-bottom: $rowHeight}
-                }
             }
+            figure{margin-bottom: $rowHeight}
         }
-
-        &.distinctions{
-            .distinction{
-                &.active .distinction-content{
+        &.featured-images{
+            .content{display: block}
+        }
+   
+        &.liste{
+            .liste-item{
+                &.active .item-content{
                     display: block;
                     border-bottom: $border;
                 }
-                .distinction-content{
+                .item-content{
                     display: none;
                     .texte{
                         columns: 3;
@@ -32,7 +30,7 @@
                     //background: red
                     &.active .title{border-bottom: $border}
                     .title,
-                    .distinction-content{border: none}
+                    .item-content{border: none}
                 }
             }
         }

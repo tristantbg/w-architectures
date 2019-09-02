@@ -1,11 +1,7 @@
 .template-home{
     .projects-liste{
         padding-top: $rowHeight;
-        .row{
-            &:nth-child(even){
-                @include justify-content(flex-end);
-            }
-        }
+        
     }
 
     .card{

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PubSub from "pubsub-js";
 import { ContextHoc } from "../context/ContextHoc";
 import Search from "./search";
-import Tr from "./tr";
+import TableTr from "./table-tr";
 
 class Table extends Component {
   constructor(props) {
@@ -11,13 +11,15 @@ class Table extends Component {
       data: this.props.data,
       filtered: false,
       order: "ASC",
-      columns: []
+      columns: [],
+      collapse: true
     };
 
     this.columns = ["title", "localisation", "year", "program", "type", "patrimoine"];
     this._sortBy = this._sortBy.bind(this);
     this._toggleSelection = this._toggleSelection.bind(this);
     this._toggle = this._toggle.bind(this);
+    //this._collapse = this._collapse.bind(this);
   }
 
   componentWillMount() {
@@ -29,11 +31,19 @@ class Table extends Component {
   componentWillUnmount() {
     PubSub.unsubscribe("SEARCH", this._handleSearch.bind(this));
     PubSub.unsubscribe("SEARCH.RESET", this._reset.bind(this));
+
+    PubSub.unsubscribe("TABLE", this._onToggle.bind(this));
+    //this.refs.table.removeEventListener("click", this._toggle)
   }
 
   componentDidMount() {
     PubSub.subscribe("SEARCH", this._handleSearch.bind(this));
     PubSub.subscribe("SEARCH.RESET", this._reset.bind(this));
+
+    PubSub.subscribe("TABLE", this._onToggle.bind(this));
+    //this._handleToggle()
+    //this.trLength = document.querySelectorAll(".is-collapsed").length
+    //this.refs.table.addEventListener("click", this._toggle)
   }
 
   _filterBy(key) {
@@ -199,45 +209,66 @@ class Table extends Component {
       });
     }else{
       this._reset()
-    }
-    
+    }  
   }
-  _toggle(){
 
+  _onToggle(){
+    //console.log(e,d)
+    const { data } = this.props
+    setTimeout(() => {
+      const collapsedLength = document.querySelectorAll(".is-collapsed").length
+      //console.log(collapsedLength, data.length)
+      this.setState({
+        collapse: (collapsedLength === data.length)
+      })
+    }, 50)
+  }
+
+  _toggle(){
+    const { collapse } = this.state
+    //console.log("collapse",collapse)
+
+    if(!collapse){
+      PubSub.publish("TABLE.COLLAPSE", {status: true})
+    }else{
+      PubSub.publish("TABLE.COLLAPSE", {status: false})
+    }
   }
 
   render() {
-    const { filtered, order } = this.state;
+    const { filtered, order, collapse } = this.state;
     const { data } = filtered ? this.state : this.props;
     const orderClass = order.toLowerCase();
-    //console.log(data);
     //console.log(data);
     const { i18n, locale } = this.props.context;
     const translate = i18n[locale];
     //console.log(this.props);
     return (
-      <div className={"table " + orderClass}>
+      <div className={"table " + orderClass} ref="table">
         <div className="table-header">
-          
           <div className="_row b-b">
             <div className="row">
-              <div className="col-md-6">
+              <div className="col-xs col-md-6 hidden-xs">
                 <div className="row between-xs">
-                  <div className="_td col-xs-8">
+                  <div className="_td col-md-8 ">
                     <ul className="table-actions">
                       <li>
                         <div onClick={this._toggleSelection}>{translate["selection"]}</div>
                       </li>
                       <li>
-                        <div onClick={this._toggle}>{translate["openAll"]}</div>
+                        <div onClick={this._toggle}> 
+                          {collapse
+                            ? <span>{translate["openAll"]}</span>
+                            : <span>{translate["closeAll"]}</span>
+                          }
+                        </div>
                       </li>
                       <li>
                         <div >{translate["downloadAll"]}</div>
                       </li>
                     </ul>
-                    
                   </div>
-                  <div className="_td col-xs-4">
+                  <div className="_td col-xs col-md-4">
                     <div
                       className="_sort"
                       onClick={() => this._sortBy("localisation")}
@@ -247,7 +278,7 @@ class Table extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-md-6">
+              <div className="col-xs col-md-6">
                 <div className="row between-xs">
                   <div className="_td col-xs">
                     <div className="_sort" onClick={() => this._sortBy("year")}>
@@ -279,12 +310,13 @@ class Table extends Component {
           <div className="_row b-b">
             <Search />
           </div>
-          <div className="table-content">
-            {data.map((tr, i) => (
-              <Tr key={i} data={tr} />
-            ))}
-          </div>
         </div>
+        <div className="table-content">
+          {data.map((tr, i) => (
+            <TableTr key={i} data={tr} collapse={collapse} />
+          ))}
+        </div>
+        
       </div>
     );
   }

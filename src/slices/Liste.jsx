@@ -1,20 +1,19 @@
 import React from "react";
-import Distinction from "./Distinction";
+import ListeItem from "./ListeItem";
 
-const Distinctions = ({ input }) => {
+const Liste = ({ input }) => {
   //const {input} = this.props
   //console.log(input)
   return (
-    <section className="distinctions">
+    <section className="liste">
       <h2 className="headline b-b pad">{input.primary.title1.text}</h2>
       <div className="content">
         {input.items.map((item, i) => (
-          <Distinction item={item} key={i} />
-          // <pre key={i}>{JSON.stringify(item)}</pre>
+          <ListeItem item={item} key={i} />
         ))}
       </div>
     </section>
   );
 };
 
-export default Distinctions;
+export default Liste;

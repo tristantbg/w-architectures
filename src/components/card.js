@@ -15,7 +15,7 @@ class Card extends Component {
     } = this.props;
 
     return (
-      <div className={"card col-xs-" + column}>
+      <div className={"card col-xs col-md-" + column}>
         <LocalizedLink to={url} aria-label="go to project">
           <Img fluid={image.localFile.childImageSharp.fluid} />
           <h2 className="fM">

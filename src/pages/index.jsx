@@ -21,7 +21,7 @@ const Index = ({ data: { homepage }, pageContext: { locale }, location }) => {
         locale={locale}
       />
 
-      <div className="projects-liste">
+      <div className="projects-liste liste-images">
         {homepage.data.projects.map(({ column, project }, i) => (
           <div key={i} className="row">
             <Card

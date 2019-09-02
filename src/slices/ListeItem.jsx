@@ -21,13 +21,13 @@ class Distinction extends Component {
     const { item } = this.props;
     //console.log(input)
     return (
-      <div className={"distinction " + (active ? "active" : "")}>
+      <div className={"liste-item " + (active ? "active" : "")}>
         <div className="row">
           <div className={"col-md-12"}>
             <div className="title b-b pad" onClick={this._toggle}>
               {item.title1.text}
             </div>
-            <div className="distinction-content">
+            <div className="item-content">
               <div
                 className="texte pad"
                 dangerouslySetInnerHTML={{ __html: item.texte1.html }}
