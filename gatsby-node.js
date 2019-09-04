@@ -142,16 +142,16 @@ exports.createPages = async ({ graphql, actions }) => {
     return p.node.lang === "en-gb";
   });
 
-  const length = projectsFr.length
+  const lengthFr = projectsFr.length
   //const pageList = result.data.pages.edges
 
   projectsFr.forEach((edge, index) => {
     
     const previous = index === 0 
-    ? projectsFr[length - 1].node 
+    ? projectsFr[lengthFr - 1].node 
     : projectsFr[index - 1].node
 
-    const next = index === length - 1 
+    const next = index === lengthFr - 1 
     ? projectsFr[0].node 
     : projectsFr[index + 1].node
 // console.log(previous)
@@ -171,31 +171,35 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  projectsEn.forEach((edge, index) => {
+  if(projectsEn.length){
+    const lengthEn = projectsEn.length
+    projectsEn.forEach((edge, index) => {
     
-    const previous = index === 0 
-    ? projectsEn[length - 1].node 
-    : projectsEn[index - 1].node
-
-    const next = index === length - 1 
-    ? projectsEn[0].node 
-    : projectsEn[index + 1].node
-// console.log(previous)
-// console.log(localizedSlug(edge.node))
-    createPage({
-      path: localizedSlug(edge.node),
-      component: projectTemplate,
-      context: {
-        // Pass the unique ID (uid) through context so the template can filter by it
-        uid: edge.node.uid,
-        locales: locales,
-        locale: edge.node.lang,
-        previous: previous,
-        next: next,
-        template: 'project'
-      },
+      const previous = index === 0 
+      ? projectsEn[lengthEn - 1].node 
+      : projectsEn[index - 1].node
+  
+      const next = index === lengthEn - 1 
+      ? projectsEn[0].node 
+      : projectsEn[index + 1].node
+  // console.log(previous)
+  // console.log(localizedSlug(edge.node))
+      createPage({
+        path: localizedSlug(edge.node),
+        component: projectTemplate,
+        context: {
+          // Pass the unique ID (uid) through context so the template can filter by it
+          uid: edge.node.uid,
+          locales: locales,
+          locale: edge.node.lang,
+          previous: previous,
+          next: next,
+          template: 'project'
+        },
+      })
     })
-  })
+  }
+  
 
   
   pageList.forEach(edge => {
