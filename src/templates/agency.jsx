@@ -56,7 +56,7 @@ class Agency extends Component {
     const i18n = locales[locale];
 
     const { data } = this.props.data.page;
-console.log(data)
+// console.log(data)
     return (
       <>
         <SEO

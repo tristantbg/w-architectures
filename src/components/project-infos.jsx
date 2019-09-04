@@ -31,10 +31,11 @@ const ProjectInfos = ({ data }) => {
                 <div className="row" key={i}>
                 <div className="col-xs label">{i18n[col]}</div>
                 <div className="col-xs value">
-                  {typeof data[col] === "string" &&
+              
+                  {data[col] && typeof data[col] === "string" &&
                     <span>{data[col]}</span>
                   }
-                  {typeof data[col] === "object" &&
+                  {data[col] && typeof data[col] === "object" &&
                     <span>{data[col].text}</span>
                   }
                 </div>
@@ -42,31 +43,6 @@ const ProjectInfos = ({ data }) => {
                 <div className="col-xs"></div>
                 </div>
               ))}
-
-              {/* <div className="row">
-                <div className="col-xs label">{i18n["localisation"]}</div>
-                <div className="col-xs value">{data.localisation.text}</div>
-                <div className="col-xs"></div>
-                <div className="col-xs"></div>
-              </div>
-              <div className="row">
-                <div className="col-xs label">{i18n["year"]}</div>
-                <div className="col-xs value">{data.year.text}</div>
-                <div className="col-xs"></div>
-                <div className="col-xs"></div>
-              </div>
-              <div className="row">
-                <div className="col-xs label">{i18n["program"]}</div>
-                <div className="col-xs value">{data.program}</div>
-                <div className="col-xs"></div>
-                <div className="col-xs"></div>
-              </div>
-              <div className="row">
-                <div className="col-xs label">{i18n["type"]}</div>
-                <div className="col-xs value">{data.type}</div>
-                <div className="col-xs"></div>
-                <div className="col-xs"></div>
-              </div> */}
 
               {data.fiche_technique.map((item, i) => (
                 <div className="row" key={i}>
