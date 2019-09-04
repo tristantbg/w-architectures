@@ -15,7 +15,7 @@ exports.onCreatePage = ({ page, actions }) => {
   deletePage(page)
 
   Object.keys(locales).map(lang => {
-    if(lang.active){
+    //if(lang.active){
       // Remove the trailing slash from the path, e.g. --> /categories
       page.path = replaceTrailing(page.path)
 
@@ -35,7 +35,7 @@ exports.onCreatePage = ({ page, actions }) => {
           //name,
         },
       })
-    }
+    //}
     
   })
 }

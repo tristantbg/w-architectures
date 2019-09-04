@@ -7,7 +7,7 @@ import { LocaleContext } from "../components/Layout";
 import SEO from "../components/SEO";
 import Card from "../components/card";
 
-const Index = ({ data: { homepage }, pageContext: { locale }, location }) => {
+const HomePage = ({ data: { homepage }, pageContext: { locale }, location }) => {
   const lang = React.useContext(LocaleContext);
   //console.log(data)
   const i18n = lang.i18n[lang.locale];
@@ -39,10 +39,10 @@ const Index = ({ data: { homepage }, pageContext: { locale }, location }) => {
   );
 };
 
-export default Index;
+export default HomePage;
 
 export const pageQuery = graphql`
-  query IndexQuery($locale: String!) {
+  query HomePageQuery($locale: String!) {
     homepage: prismicHomepage(lang: { eq: $locale }) {
       data {
         title {
