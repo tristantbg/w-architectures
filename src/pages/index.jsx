@@ -11,7 +11,7 @@ const Index = ({ data: { homepage }, pageContext: { locale }, location }) => {
   const lang = React.useContext(LocaleContext);
   //console.log(data)
   const i18n = lang.i18n[lang.locale];
-  // console.log(location)
+  // console.log(homepage)
   return (
     <div className="template-home">
       <SEO

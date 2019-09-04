@@ -4,7 +4,7 @@ import Slider from "react-slick";
 
 class Carousel extends Component {
   render() {
-    const { image_featured, images } = this.props;
+    const { images } = this.props;
     const settings = {
       fade: true,
       dots: false,
@@ -20,27 +20,33 @@ class Carousel extends Component {
 
     const style = {
       backgroundPosition: "center top",
-      backgroundSize: "contain"
+      backgroundSize: "cover"
     }
 
     return (
       <div className="carousel">
         <Slider {...settings}>
-          {/* <div className="slide">
-            <BackgroundImage
-              fluid={image_featured.localFile.childImageSharp.fluid}
-              style={style}
-            />
-          </div> */}
-
-          {images.map(({ image }, i) => (
+        
+          {images.map(({ image }, i) => {
+            if(image.localFile){
+              return(
+                <div key={i} className="slide">
+                  <BackgroundImage
+                    fluid={image.localFile.childImageSharp.fluid}
+                    style={style}
+                  />
+                </div>
+              )
+            }
+          })}
+          {/* {images.map(({ image }, i) => (
             <div key={i} className="slide">
               <BackgroundImage
                 fluid={image.localFile.childImageSharp.fluid}
                 style={style}
               />
             </div>
-          ))}
+          ))} */}
         </Slider>
       </div>
     );

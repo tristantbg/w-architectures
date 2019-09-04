@@ -52,7 +52,7 @@ class Project extends Component {
             </div>
           </div>
           <div className="project-images carousel">
-            <Carousel image_featured={image_featured} images={images} />
+            <Carousel images={images} />
           </div>
 
           <ProjectFooter i18n={i18n} data={project.data} />
