@@ -26,12 +26,12 @@ class Carousel extends Component {
     return (
       <div className="carousel">
         <Slider {...settings}>
-          <div className="slide">
+          {/* <div className="slide">
             <BackgroundImage
               fluid={image_featured.localFile.childImageSharp.fluid}
               style={style}
             />
-          </div>
+          </div> */}
 
           {images.map(({ image }, i) => (
             <div key={i} className="slide">
