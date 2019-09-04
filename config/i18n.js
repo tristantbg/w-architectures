@@ -2,6 +2,7 @@ const website = require('./website')
 
 module.exports = {
   'fr-fr': {
+    active: true,
     default: true,
     path: 'fr',
     locale: 'fr-fr',
@@ -17,6 +18,7 @@ module.exports = {
     next: 'Projet suivant',
     infos: 'Informations',
     close: 'Fermer',
+    openProject: 'Ouvrir la page projet',
     download: 'Télécharger la fiche projet',
     localisation: 'Localisation',
     year: 'Année',
@@ -30,6 +32,7 @@ module.exports = {
     backToTop: 'Haut de page'
   },
   'en-gb': {
+    active: false,
     default: false,
     path: 'en',
     locale: 'en-gb',
@@ -45,6 +48,7 @@ module.exports = {
     next: 'Next project',
     infos: 'Informations',
     close: 'Close',
+    openProject: 'Open the project page',
     download: 'Download la fiche projet',
     localisation: 'Localisation',
     year: 'Year',

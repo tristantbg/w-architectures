@@ -3,14 +3,36 @@ import BackgroundImage from "gatsby-background-image";
 import Slider from "react-slick";
 
 class Carousel extends Component {
+  componentDidMount(){
+    document.addEventListener('keyup', e => {
+      const key = e.key || e.keyCode;
+      switch(key){
+          case "Escape":
+              //this._close()
+          break;
+
+          case "ArrowRight":
+              document.querySelector("button.slick-next").click()
+          break;
+
+          case "ArrowLeft":
+              document.querySelector("button.slick-prev").click()
+          break;
+
+          default:
+          break;
+      }
+      
+  })
+  }
   render() {
     const { images } = this.props;
     const settings = {
       fade: true,
       dots: false,
-      autoplay: false,
+      //autoplay: false,
       autoplaySpeed: 5000,
-      accessibility: true,
+      //accessibility: true,
       infinite: true,
       speed: 150,
       slidesToShow: 1,

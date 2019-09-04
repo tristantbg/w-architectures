@@ -15,7 +15,12 @@ const Projects = ({
   const _LocaleContext = React.useContext(LocaleContext);
   const i18n = _LocaleContext.i18n[locale];
 
-  const _projects = projects.map(el =>  el.project.document[0].data)
+  const _projects = projects.map(el =>  {
+    el.project.document[0].data.uid = el.project.document[0].uid
+    return el.project.document[0].data
+    
+  })
+  console.log(_projects[0])
   
   return (
     <>
@@ -37,14 +42,7 @@ export default Projects;
 
 export const pageQuery = graphql`
   query Projects($locale: String!) {
-    # projects: allPrismicProject(filter: { lang: { eq: $locale } }) {
-    #   edges {
-    #     node {
-    #       uid
-    #       ...project
-    #     }
-    #   }
-    # }
+
     page: prismicProjects(lang: {eq: $locale}) {
       data {
         title {
@@ -56,6 +54,7 @@ export const pageQuery = graphql`
         projects {
           project {
             document {
+              uid
               ...project
             }
           }

@@ -1,24 +1,31 @@
 import React, { Component } from "react";
+import LocalizedLink from "./LocalizedLink";
 import { LocaleContext } from "./Layout";
 
-const ProjectInfos = ({ data }) => {
+const ProjectInfos = ({ data, embed }) => {
   const lang = React.useContext(LocaleContext);
   const i18n = lang.i18n[lang.locale];
   const columns = ["localisation","year","program","type"]
-  
+  // console.log(data)
   return (
     <div className="project-infos ">
       <div className="infos b-t">
         <div className="row">
-          {data.download && data.download.url && (
-            <div className="col-xs-12">
-              <div className="b-b pad">
+          <div className="col-xs-12">
+            <div className="b-b pad">
+              {embed &&
+                <LocalizedLink to={data.uid}>
+                  {i18n["openProject"]}
+                </LocalizedLink>
+              }
+              {data.download && data.download.url && (
                 <a href={data.download.url} target="_blank">
                   {i18n["download"]}
                 </a>
-              </div>
+              )}
             </div>
-          )}
+          </div>
+          
           <div className="col-xs-12 col-md-6">
             <div
               className="texte"

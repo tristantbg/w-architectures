@@ -15,25 +15,28 @@ exports.onCreatePage = ({ page, actions }) => {
   deletePage(page)
 
   Object.keys(locales).map(lang => {
-    // Remove the trailing slash from the path, e.g. --> /categories
-    page.path = replaceTrailing(page.path)
+    if(lang.active){
+      // Remove the trailing slash from the path, e.g. --> /categories
+      page.path = replaceTrailing(page.path)
 
-    // Remove the leading AND traling slash from path, e.g. --> categories
-    const name = replaceBoth(page.path)
-    //console.log(page.path, name)
-    // Create the "slugs" for the pages. Unless default language, add prefix àla "/en"
-    const localizedPath = locales[lang].default 
-    ? page.path 
-    : `${locales[lang].path}${page.path}`
-    console.log(localizedPath)
-    return createPage({
-      ...page,
-      path: localizedPath,
-      context: {
-        locale: lang
-        //name,
-      },
-    })
+      // Remove the leading AND traling slash from path, e.g. --> categories
+      const name = replaceBoth(page.path)
+      //console.log(page.path, name)
+      // Create the "slugs" for the pages. Unless default language, add prefix àla "/en"
+      const localizedPath = locales[lang].default 
+      ? page.path 
+      : `${locales[lang].path}${page.path}`
+      console.log(localizedPath)
+      return createPage({
+        ...page,
+        path: localizedPath,
+        context: {
+          locale: lang
+          //name,
+        },
+      })
+    }
+    
   })
 }
 
@@ -56,6 +59,8 @@ exports.createPages = async ({ graphql, actions }) => {
   const agencyTemplate = require.resolve('./src/templates/agency.jsx')
 
   Object.keys(locales).forEach(lang => {
+    console.log(lang)
+    // if(lang !== "fr-fr")continue
     //////////////////////////////////
     const localizedProjectsPath = locales[lang].default 
     ? '/projects' 
@@ -103,11 +108,7 @@ exports.createPages = async ({ graphql, actions }) => {
             //i18n: locales[lang]
         },
     })
-
-    
   })
-
-  
 
   const result = await wrapper(
     graphql(`
@@ -138,13 +139,11 @@ exports.createPages = async ({ graphql, actions }) => {
   const projectsFr = projectsList.filter(function (p) {
     return p.node.lang === "fr-fr";
   });
-  const projectsEn = projectsList.filter(function (p) {
-    return p.node.lang === "en-gb";
-  });
+  // const projectsEn = projectsList.filter(function (p) {
+  //   return p.node.lang === "en-gb";
+  // });
 
   const lengthFr = projectsFr.length
-  //const pageList = result.data.pages.edges
-
   projectsFr.forEach((edge, index) => {
     
     const previous = index === 0 
@@ -171,34 +170,34 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  if(projectsEn.length){
-    const lengthEn = projectsEn.length
-    projectsEn.forEach((edge, index) => {
+  // if(projectsEn.length){
+  //   const lengthEn = projectsEn.length
+  //   projectsEn.forEach((edge, index) => {
     
-      const previous = index === 0 
-      ? projectsEn[lengthEn - 1].node 
-      : projectsEn[index - 1].node
+  //     const previous = index === 0 
+  //     ? projectsEn[lengthEn - 1].node 
+  //     : projectsEn[index - 1].node
   
-      const next = index === lengthEn - 1 
-      ? projectsEn[0].node 
-      : projectsEn[index + 1].node
-  // console.log(previous)
-  // console.log(localizedSlug(edge.node))
-      createPage({
-        path: localizedSlug(edge.node),
-        component: projectTemplate,
-        context: {
-          // Pass the unique ID (uid) through context so the template can filter by it
-          uid: edge.node.uid,
-          locales: locales,
-          locale: edge.node.lang,
-          previous: previous,
-          next: next,
-          template: 'project'
-        },
-      })
-    })
-  }
+  //     const next = index === lengthEn - 1 
+  //     ? projectsEn[0].node 
+  //     : projectsEn[index + 1].node
+  // // console.log(previous)
+  // // console.log(localizedSlug(edge.node))
+  //     createPage({
+  //       path: localizedSlug(edge.node),
+  //       component: projectTemplate,
+  //       context: {
+  //         // Pass the unique ID (uid) through context so the template can filter by it
+  //         uid: edge.node.uid,
+  //         locales: locales,
+  //         locale: edge.node.lang,
+  //         previous: previous,
+  //         next: next,
+  //         template: 'project'
+  //       },
+  //     })
+  //   })
+  // }
   
 
   

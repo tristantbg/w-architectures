@@ -136,7 +136,7 @@ class Table extends Component {
   }
 
   _handleSearch(e, searchTerm) {
-    console.log(searchTerm);
+    //console.log(searchTerm);
     let columns = this.columns;
     let arrayCopy = [...this.props.data];
     //console.log(arrayCopy)
@@ -194,7 +194,7 @@ class Table extends Component {
 
     e.target.classList.toggle("active")
     if(e.target.classList.contains("active")){
-      console.log("toggle")
+      //console.log("toggle")
       let arrayCopy = [...this.props.data];
       for (var i in arrayCopy) {
         const row = arrayCopy[i];

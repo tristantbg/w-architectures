@@ -51,7 +51,7 @@ class Header extends Component {
                 </LocalizedLink>
               </div>
               <div className="col-xs text-right">
-                <ul className="locale-switcher">
+                {/* <ul className="locale-switcher">
                   {Object.values(locales).map((value, i) => (
                     <li key={i}>
                       <Link
@@ -62,7 +62,7 @@ class Header extends Component {
                       </Link>
                     </li>
                   ))}
-                </ul>
+                </ul> */}
               </div>
             </div>
           </div>

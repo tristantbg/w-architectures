@@ -31,7 +31,7 @@ class ProjectFooter extends Component {
     return (
       <div className={"project-footer " + (collapsed ? "is-collapsed" : "")}>
         <div className="detail">
-          <ProjectInfos data={data} />
+          <ProjectInfos data={data} embed={false} />
         </div>
         <div className="toggle b-t pad" onClick={this._toggle}>
           {collapsed ? lang["infos"] : lang["close"]}

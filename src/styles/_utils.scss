@@ -9,10 +9,14 @@ img{
     &.pad{padding: $rowPad; }
 }
 .b-b{
+    
     border-bottom: $border;
     &.pad{padding: $rowPad; }
 }
-.pad{padding: $rowPad; }
+.pad{
+    padding: $rowPad; 
+    &:empty{display: none;}
+}
 .headline.pad{
     padding-top: 0.43em;
 }

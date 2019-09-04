@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Img from "gatsby-image";
 import PubSub from "pubsub-js";
-import ProjectTitle from "./project-title";
+// import ProjectTitle from "./project-title";
 import ProjectInfos from "./project-infos";
 
 class TableTr extends Component {
@@ -22,10 +22,10 @@ class TableTr extends Component {
     PubSub.subscribe("TABLE.COLLAPSE", this._onCollapse.bind(this));
   }
   componentWillReceiveProps(){
-    console.log(this.props)
+    // console.log(this.props)
   }
   _onCollapse(e,d){
-    console.log(d.status)
+    // console.log(d.status)
     this.setState({
       collapsed: d.status
     });
@@ -87,7 +87,7 @@ class TableTr extends Component {
                   />
                 ))}
               </div>
-              <ProjectInfos data={data} />
+              <ProjectInfos data={data} embed={true} />
             </div>
           )}
         </div>
