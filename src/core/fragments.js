@@ -21,7 +21,7 @@ export const query = graphql`
 
   fragment fluidImage on File {
     childImageSharp {
-      fluid(maxWidth: 1000, quality: 100) {
+      fluid(maxWidth: 2500, quality: 80) {
         ...GatsbyImageSharpFluid_withWebp
       }
     }
@@ -35,13 +35,13 @@ export const query = graphql`
     }
   }
 
-  fragment sharp on File {
-    childImageSharp {
-      fluid(maxWidth: 1280, quality: 80) {
-        ...GatsbyImageSharpFluid
-      }
-    }
-  }
+  # fragment sharp on File {
+  #   childImageSharp {
+  #     fluid(maxWidth: 1280, quality: 80) {
+  #       ...GatsbyImageSharpFluid
+  #     }
+  #   }
+  # }
 
   fragment project on PrismicProject {
     data {

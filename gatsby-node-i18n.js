@@ -14,27 +14,35 @@ exports.onCreatePage = ({ page, actions }) => {
   // First delete the pages so we can re-create them
   deletePage(page)
 
-  page.path = replaceTrailing(page.path)
+  Object.keys(locales).map(lang => {
+    //if(lang.active){
+      // Remove the trailing slash from the path, e.g. --> /categories
+      page.path = replaceTrailing(page.path)
 
-  // Remove the leading AND traling slash from path, e.g. --> categories
-  const name = replaceBoth(page.path)
-  //console.log(page.path, name)
-  // Create the "slugs" for the pages. Unless default language, add prefix àla "/en"
-  const localizedPath = page.path
-  console.log(localizedPath)
-  return createPage({
-    ...page,
-    path: localizedPath,
-    context: {
-      locale: "fr-fr"
-      //name,
-    },
+      // Remove the leading AND traling slash from path, e.g. --> categories
+      const name = replaceBoth(page.path)
+      //console.log(page.path, name)
+      // Create the "slugs" for the pages. Unless default language, add prefix àla "/en"
+      const localizedPath = locales[lang].default 
+      ? page.path 
+      : `${locales[lang].path}${page.path}`
+      console.log(localizedPath)
+      return createPage({
+        ...page,
+        path: localizedPath,
+        context: {
+          locale: lang
+          //name,
+        },
+      })
+    //}
+    
   })
 }
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const lang = "fr-fr"
+
   // 
   // createPage({
   //   path: "/projects",
@@ -50,52 +58,62 @@ exports.createPages = async ({ graphql, actions }) => {
   const contactTemplate = require.resolve('./src/templates/contact.jsx')
   const agencyTemplate = require.resolve('./src/templates/agency.jsx')
 
-  //////////////////////////////////
-  const localizedProjectsPath = '/projects' 
-  console.log(localizedProjectsPath)
-  createPage({
-      path: localizedProjectsPath,
-      component: projectsTemplate,
-      context: {
-          template: 'projects',
-          locale: lang,
-          locales: locales,
-          //i18n: locales[lang]
-      },
-  })
+  Object.keys(locales).forEach(lang => {
+    console.log(lang)
+    // if(lang !== "fr-fr")continue
+    //////////////////////////////////
+    const localizedProjectsPath = locales[lang].default 
+    ? '/projects' 
+    : `/${locales[lang].path}/projects`
+    console.log(localizedProjectsPath)
+    createPage({
+        path: localizedProjectsPath,
+        component: projectsTemplate,
+        context: {
+            template: 'projects',
+            locale: lang,
+            locales: locales,
+            //i18n: locales[lang]
+        },
+    })
 
-  //////////////////////////////////
-  const localizedAgencePath = '/agence' 
-  console.log(localizedAgencePath)
-  createPage({
-      path: localizedAgencePath,
-      component: agencyTemplate,
-      context: {
-          template: 'agence',
-          locale: lang,
-          locales: locales,
-          //i18n: locales[lang]
-      },
-  })
+    //////////////////////////////////
+    const localizedAgencePath = locales[lang].default 
+    ? '/agence' 
+    : `/${locales[lang].path}/agence`
+    console.log(localizedAgencePath)
+    createPage({
+        path: localizedAgencePath,
+        component: agencyTemplate,
+        context: {
+            template: 'agence',
+            locale: lang,
+            locales: locales,
+            //i18n: locales[lang]
+        },
+    })
 
-  //////////////////////////////////
-  const localizedContactPath = '/contact' 
-  console.log(localizedProjectsPath)
-  createPage({
-      path: localizedContactPath,
-      component: contactTemplate,
-      context: {
-          template: 'contact',
-          locale: lang,
-          locales: locales,
-          //i18n: locales[lang]
-      },
+    //////////////////////////////////
+    const localizedContactPath = locales[lang].default 
+    ? '/contact' 
+    : `/${locales[lang].path}/contact`
+    console.log(localizedProjectsPath)
+    createPage({
+        path: localizedContactPath,
+        component: contactTemplate,
+        context: {
+            template: 'contact',
+            locale: lang,
+            locales: locales,
+            //i18n: locales[lang]
+        },
+    })
   })
 
   const result = await wrapper(
     graphql(`
       {
-        projects: allPrismicProject(filter: {lang: {eq: "fr-fr"}}) {
+        projects: allPrismicProject {
           edges {
             node {
               uid
@@ -103,21 +121,29 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
-        
+        pages: allPrismicPage {
+          edges {
+            node {
+              uid
+              lang
+            }
+          }
+        }
       }
     `)
   )
 
-  const projectsFr = result.data.projects.edges
+  const projectsList = result.data.projects.edges
+  const pageList = result.data.pages.edges
   
-  
-  
+  const projectsFr = projectsList.filter(function (p) {
+    return p.node.lang === "fr-fr";
+  });
   // const projectsEn = projectsList.filter(function (p) {
   //   return p.node.lang === "en-gb";
   // });
 
   const lengthFr = projectsFr.length
-
   projectsFr.forEach((edge, index) => {
     
     const previous = index === 0 
@@ -175,14 +201,14 @@ exports.createPages = async ({ graphql, actions }) => {
   
 
   
-  // pageList.forEach(edge => {
-  //   createPage({
-  //     path: localizedSlug(edge.node),
-  //     component: pageTemplate,
-  //     context: {
-  //       uid: edge.node.uid,
-  //       locale: edge.node.lang,
-  //     },
-  //   })
-  // })
+  pageList.forEach(edge => {
+    createPage({
+      path: localizedSlug(edge.node),
+      component: pageTemplate,
+      context: {
+        uid: edge.node.uid,
+        locale: edge.node.lang,
+      },
+    })
+  })
 }

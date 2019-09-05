@@ -34,7 +34,7 @@ class Carousel extends Component {
       autoplaySpeed: 5000,
       //accessibility: true,
       infinite: true,
-      speed: 150,
+      speed: 0,
       slidesToShow: 1,
       slidesToScroll: 1,
       lazyLoad: 'progressive'
@@ -55,6 +55,7 @@ class Carousel extends Component {
                 <div key={i} className="slide">
                   <BackgroundImage
                     fluid={image.localFile.childImageSharp.fluid}
+                    fadeIn={false}
                     style={style}
                   />
                 </div>
