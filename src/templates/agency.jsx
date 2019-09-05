@@ -1,10 +1,5 @@
-/* eslint react/destructuring-assignment: 0 */
 import React, { Component } from "react";
 import { graphql } from "gatsby";
-// import { Listing, Wrapper, Title, SEO, Header } from "../components";
-// import website from "../../config/website";
-// import { LocaleContext } from "../components/Layout";
-// import LocalizedLink from "../components/LocalizedLink";
 import Img from "gatsby-image";
 import SEO from "../components/SEO/SEO";
 import { Textes, Images, TexteImage, Liste } from "../slices";

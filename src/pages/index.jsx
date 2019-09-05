@@ -1,11 +1,8 @@
 import React from "react";
-// import PropTypes from 'prop-types'
 import { graphql } from "gatsby";
-// import { Listing, Wrapper, Title } from '../components'
-// import website from '../../config/website'
 import { LocaleContext } from "../components/Layout";
 import SEO from "../components/SEO";
-import Card from "../components/card";
+import HomeCard from "../components/HomeCard";
 
 const HomePage = ({
   data: { homepage },
@@ -28,7 +25,7 @@ const HomePage = ({
       <div className="projects-liste liste-images">
         {homepage.data.projects.map(({ column, project }, i) => (
           <div key={i} className="row">
-            <Card
+            <HomeCard
               column={column}
               url={project.document[0].uid}
               title={project.document[0].data.title.text}

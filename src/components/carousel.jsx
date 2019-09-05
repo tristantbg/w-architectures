@@ -12,6 +12,7 @@ class Carousel extends Component {
 
   _onKeyboard(e) {
     const key = e.key || e.keyCode;
+    // console.log(key)
     switch (key) {
       case "ArrowRight":
         document.querySelector("button.slick-next").click();
@@ -40,36 +41,36 @@ class Carousel extends Component {
       lazyLoad: "progressive"
     };
 
-    const style = {
-      backgroundPosition: "center top",
-      backgroundSize: "cover"
-    };
+    // const style = {
+    //   backgroundPosition: "center top",
+    //   backgroundSize: "cover"
+    // };
 
     return (
       <div className="carousel">
-        <Slider {...settings}>
+        slider
+        {/* <Slider {...settings}>
           {images.map(({ image }, i) => {
             if (image.localFile) {
+              const isPortrait = image.localFile.childImageSharp.fluid.aspectRatio < 1
+
               return (
                 <div key={i} className="slide">
                   <BackgroundImage
                     fluid={image.localFile.childImageSharp.fluid}
                     fadeIn={false}
-                    style={style}
+                    style={{
+                      backgroundPosition: "center top",
+                      backgroundSize: isPortrait ? "contain" : "cover"
+                    }}
                   />
                 </div>
               );
             }
           })}
-          {/* {images.map(({ image }, i) => (
-            <div key={i} className="slide">
-              <BackgroundImage
-                fluid={image.localFile.childImageSharp.fluid}
-                style={style}
-              />
-            </div>
-          ))} */}
-        </Slider>
+          
+       
+        </Slider> */}
       </div>
     );
   }

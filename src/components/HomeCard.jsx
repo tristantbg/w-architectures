@@ -3,7 +3,7 @@ import Img from "gatsby-image";
 import LocalizedLink from "./LocalizedLink";
 import ProjectTitle from "./project-title";
 
-class Card extends Component {
+class HomeCard extends Component {
   render() {
     const { url, title, localisation, year, column, image } = this.props;
     // console.log(title)
@@ -27,4 +27,4 @@ class Card extends Component {
   }
 }
 
-export default Card;
+export default HomeCard;

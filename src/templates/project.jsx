@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import { graphql } from "gatsby";
 import LocalizedLink from "../components/LocalizedLink";
 import SEO from "../components/SEO/SEO";
@@ -40,12 +39,8 @@ class Project extends Component {
               <div className="col-xs ">
                 <ul className="related">
                   <li>
-                    <LocalizedLink to={previous.uid}>
-                      {i18n["prev"]}
-                    </LocalizedLink>
-                  </li>{" "}
-                  /{" "}
-                  <li>
+                    <LocalizedLink to={previous.uid}>{i18n["prev"]}</LocalizedLink>
+                  </li><li>
                     <LocalizedLink to={next.uid}>{i18n["next"]}</LocalizedLink>
                   </li>
                 </ul>

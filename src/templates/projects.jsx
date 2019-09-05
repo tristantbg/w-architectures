@@ -1,10 +1,7 @@
-/* eslint react/destructuring-assignment: 0 */
-import React, { Component } from "react";
-// import PropTypes from "prop-types";
+import React from "react";
 import { graphql } from "gatsby";
 import SEO from "../components/SEO/SEO";
 import { LocaleContext } from "../components/Layout";
-// import LocalizedLink from "../components/LocalizedLink";
 import Table from "../components/table";
 
 const Projects = ({
