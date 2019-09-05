@@ -48,8 +48,7 @@ class Carousel extends Component {
 
     return (
       <div className="carousel">
-        slider
-        {/* <Slider {...settings}>
+        <Slider {...settings}>
           {images.map(({ image }, i) => {
             if (image.localFile) {
               const isPortrait = image.localFile.childImageSharp.fluid.aspectRatio < 1
@@ -70,7 +69,7 @@ class Carousel extends Component {
           })}
           
        
-        </Slider> */}
+        </Slider>
       </div>
     );
   }
