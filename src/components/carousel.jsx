@@ -3,27 +3,28 @@ import BackgroundImage from "gatsby-background-image";
 import Slider from "react-slick";
 
 class Carousel extends Component {
+  componentWillUnmount(){
+    document.removeEventListener('keyup', this._onKeyboard)
+  }
   componentDidMount(){
-    document.addEventListener('keyup', e => {
-      const key = e.key || e.keyCode;
-      switch(key){
-          case "Escape":
-              //this._close()
-          break;
+    document.addEventListener('keyup', this._onKeyboard)
+  }
 
-          case "ArrowRight":
-              document.querySelector("button.slick-next").click()
-          break;
+  _onKeyboard(e){
+    const key = e.key || e.keyCode;
+    switch(key){
+      case "ArrowRight":
+          document.querySelector("button.slick-next").click()
+        break;
 
-          case "ArrowLeft":
-              document.querySelector("button.slick-prev").click()
-          break;
+      case "ArrowLeft":
+          document.querySelector("button.slick-prev").click()
+        break;
 
-          default:
-          break;
-      }
-      
-  })
+      default:
+        break;
+    }  
+    
   }
   render() {
     const { images } = this.props;

@@ -20,7 +20,7 @@ const Projects = ({
     return el.project.document[0].data
     
   })
-  console.log(_projects[0])
+  //console.log(_projects[0])
   
   return (
     <>

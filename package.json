@@ -10,19 +10,13 @@
     "dev": "gatsby develop -o -H $HOSTNAME -p 8000",
     "develop": "gatsby develop",
     "serve": "gatsby serve",
-    "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
-    "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore",
-    "lint:ci": "yarn lint --format junit -o results/eslint/result.xml",
     "format": "prettier --write src/**/*.{js,jsx}"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.14",
-    "@emotion/styled": "^10.0.14",
+    
     "@reach/skip-nav": "^0.1.3",
     "dotenv": "^8.0.0",
-    "emotion": "^10.0.14",
-    "emotion-server": "^10.0.14",
-    "emotion-theming": "^10.0.14",
+
     "gatsby": "^2.13.15",
     "gatsby-background-image": "^0.8.3",
     "gatsby-image": "^2.2.4",
@@ -31,7 +25,7 @@
     "gatsby-plugin-layout": "^1.1.4",
     "gatsby-plugin-lodash": "^3.1.0",
     "gatsby-plugin-manifest": "^2.2.1",
-    "gatsby-plugin-netlify": "^2.1.0",
+
     "gatsby-plugin-offline": "^2.2.1",
     "gatsby-plugin-react-helmet": "^3.1.0",
     "gatsby-plugin-sass": "^2.1.1",
