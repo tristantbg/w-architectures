@@ -56,7 +56,7 @@ class Agency extends Component {
     const i18n = locales[locale];
 
     const { data } = this.props.data.page;
-// console.log(data)
+    // console.log(data)
     return (
       <>
         <SEO
@@ -66,16 +66,16 @@ class Agency extends Component {
           locale={locale}
         />
         <div className="template-agency">
-          <h1 className="b-b pad">{data.title.text}</h1>  
-          
+          <h1 className="b-b pad">{data.title.text}</h1>
+
           {this._sliceZone(data.body)}
 
-          {data.images &&
+          {data.images && (
             <section className="featured-images images liste-images">
               <div className="content">
-                {data.images.map(({image,column},i) => (
+                {data.images.map(({ image, column }, i) => (
                   <div className="row" key={i}>
-                    <div className={"col-md-"+column}>
+                    <div className={"col-md-" + column}>
                       <Img
                         fluid={image.localFile.childImageSharp.fluid}
                         Tag="figure"
@@ -85,8 +85,7 @@ class Agency extends Component {
                 ))}
               </div>
             </section>
-          }
-          
+          )}
         </div>
       </>
     );

@@ -5,7 +5,7 @@ import { LocaleContext } from "./Layout";
 const ProjectInfos = ({ data, embed }) => {
   const lang = React.useContext(LocaleContext);
   const i18n = lang.i18n[lang.locale];
-  const columns = ["localisation","year","program","type"]
+  const columns = ["localisation", "year", "program", "type"];
   // console.log(data)
   return (
     <div className="project-infos ">
@@ -13,11 +13,11 @@ const ProjectInfos = ({ data, embed }) => {
         <div className="row">
           <div className="col-xs-12">
             <div className="b-b pad">
-              {embed &&
+              {embed && (
                 <LocalizedLink to={data.uid}>
                   {i18n["openProject"]}
                 </LocalizedLink>
-              }
+              )}
               {data.download && data.download.url && (
                 <a href={data.download.url} target="_blank">
                   {i18n["download"]}
@@ -25,7 +25,7 @@ const ProjectInfos = ({ data, embed }) => {
               )}
             </div>
           </div>
-          
+
           <div className="col-xs-12 col-md-6">
             <div
               className="texte"
@@ -36,18 +36,17 @@ const ProjectInfos = ({ data, embed }) => {
             <div className="fiche_technique">
               {columns.map((col, i) => (
                 <div className="row" key={i}>
-                <div className="col-xs label">{i18n[col]}</div>
-                <div className="col-xs value">
-              
-                  {data[col] && typeof data[col] === "string" &&
-                    <span>{data[col]}</span>
-                  }
-                  {data[col] && typeof data[col] === "object" &&
-                    <span>{data[col].text}</span>
-                  }
-                </div>
-                <div className="col-xs"></div>
-                <div className="col-xs"></div>
+                  <div className="col-xs label">{i18n[col]}</div>
+                  <div className="col-xs value">
+                    {data[col] && typeof data[col] === "string" && (
+                      <span>{data[col]}</span>
+                    )}
+                    {data[col] && typeof data[col] === "object" && (
+                      <span>{data[col].text}</span>
+                    )}
+                  </div>
+                  <div className="col-xs"></div>
+                  <div className="col-xs"></div>
                 </div>
               ))}
 

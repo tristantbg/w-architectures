@@ -7,7 +7,11 @@ import { LocaleContext } from "../components/Layout";
 import SEO from "../components/SEO";
 import Card from "../components/card";
 
-const HomePage = ({ data: { homepage }, pageContext: { locale }, location }) => {
+const HomePage = ({
+  data: { homepage },
+  pageContext: { locale },
+  location
+}) => {
   const lang = React.useContext(LocaleContext);
   //console.log(data)
   const i18n = lang.i18n[lang.locale];

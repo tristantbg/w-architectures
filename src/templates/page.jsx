@@ -26,11 +26,11 @@ const Page = ({ pageContext: { locale }, data: { page }, location }) => {
         <div className="row">
           <div className="cl-xs-12 col-md-6">
             <div
-            className="texte pad"
-            dangerouslySetInnerHTML={{ __html: texte.html }} />
+              className="texte pad"
+              dangerouslySetInnerHTML={{ __html: texte.html }}
+            />
           </div>
         </div>
-        
       </div>
     </>
   );

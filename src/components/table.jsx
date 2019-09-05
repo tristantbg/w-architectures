@@ -15,7 +15,14 @@ class Table extends Component {
       collapse: true
     };
 
-    this.columns = ["title", "localisation", "year", "program", "type", "patrimoine"];
+    this.columns = [
+      "title",
+      "localisation",
+      "year",
+      "program",
+      "type",
+      "patrimoine"
+    ];
     this._sortBy = this._sortBy.bind(this);
     this._toggleSelection = this._toggleSelection.bind(this);
     this._toggle = this._toggle.bind(this);
@@ -73,10 +80,10 @@ class Table extends Component {
   }
 
   _sortBy(key) {
-    console.log(key);
+    //console.log(key);
     let arrayCopy = [...this.props.data];
     arrayCopy.sort(this._compareBy(key));
-    console.table(arrayCopy[0].title.text);
+    //console.table(arrayCopy[0].title.text);
 
     this.setState({
       data: arrayCopy,
@@ -91,44 +98,24 @@ class Table extends Component {
       return function(a, b) {
         //console.log(a[key], b[key])
         if (typeof a[key] === "object") {
-          if (
-            a[key].text.toLowerCase() <
-            b[key].text.toLowerCase()
-          )
-            return -1;
-          if (
-            a[key].text.toLowerCase() >
-            b[key].text.toLowerCase()
-          )
-            return 1;
+          if (a[key].text.toLowerCase() < b[key].text.toLowerCase()) return -1;
+          if (a[key].text.toLowerCase() > b[key].text.toLowerCase()) return 1;
           return 0;
         } else {
-          if (a[key].toLowerCase() < b[key].toLowerCase())
-            return -1;
-          if (a[key].toLowerCase() > b[key].toLowerCase())
-            return 1;
+          if (a[key].toLowerCase() < b[key].toLowerCase()) return -1;
+          if (a[key].toLowerCase() > b[key].toLowerCase()) return 1;
           return 0;
         }
       };
     } else {
       return function(a, b) {
         if (typeof a[key] === "object") {
-          if (
-            a[key].text.toLowerCase() <
-            b[key].text.toLowerCase()
-          )
-            return 1;
-          if (
-            a[key].text.toLowerCase() >
-            b[key].text.toLowerCase()
-          )
-            return -1;
+          if (a[key].text.toLowerCase() < b[key].text.toLowerCase()) return 1;
+          if (a[key].text.toLowerCase() > b[key].text.toLowerCase()) return -1;
           return 0;
         } else {
-          if (a[key].toLowerCase() < b[key].toLowerCase())
-            return 1;
-          if (a[key].toLowerCase() > b[key].toLowerCase())
-            return -1;
+          if (a[key].toLowerCase() < b[key].toLowerCase()) return 1;
+          if (a[key].toLowerCase() > b[key].toLowerCase()) return -1;
           return 0;
         }
       };
@@ -190,48 +177,45 @@ class Table extends Component {
     });
   }
 
-  _toggleSelection(e){
-
-    e.target.classList.toggle("active")
-    if(e.target.classList.contains("active")){
+  _toggleSelection(e) {
+    e.target.classList.toggle("active");
+    if (e.target.classList.contains("active")) {
       //console.log("toggle")
       let arrayCopy = [...this.props.data];
       for (var i in arrayCopy) {
         const row = arrayCopy[i];
-        if(row.selection === "true")
-          row.visible = true;
-        else
-          row.visible = false;
+        if (row.selection === "true") row.visible = true;
+        else row.visible = false;
       }
       this.setState({
         filtered: true,
         data: arrayCopy
       });
-    }else{
-      this._reset()
-    }  
+    } else {
+      this._reset();
+    }
   }
 
-  _onToggle(){
+  _onToggle() {
     //console.log(e,d)
-    const { data } = this.props
+    const { data } = this.props;
     setTimeout(() => {
-      const collapsedLength = document.querySelectorAll(".is-collapsed").length
+      const collapsedLength = document.querySelectorAll(".is-collapsed").length;
       //console.log(collapsedLength, data.length)
       this.setState({
-        collapse: (collapsedLength === data.length)
-      })
-    }, 50)
+        collapse: collapsedLength === data.length
+      });
+    }, 50);
   }
 
-  _toggle(){
-    const { collapse } = this.state
+  _toggle() {
+    const { collapse } = this.state;
     //console.log("collapse",collapse)
 
-    if(!collapse){
-      PubSub.publish("TABLE.COLLAPSE", {status: true})
-    }else{
-      PubSub.publish("TABLE.COLLAPSE", {status: false})
+    if (!collapse) {
+      PubSub.publish("TABLE.COLLAPSE", { status: true });
+    } else {
+      PubSub.publish("TABLE.COLLAPSE", { status: false });
     }
   }
 
@@ -253,18 +237,21 @@ class Table extends Component {
                   <div className="_td col-md-8 ">
                     <ul className="table-actions">
                       <li>
-                        <div onClick={this._toggleSelection}>{translate["selection"]}</div>
-                      </li>
-                      <li>
-                        <div onClick={this._toggle}> 
-                          {collapse
-                            ? <span>{translate["openAll"]}</span>
-                            : <span>{translate["closeAll"]}</span>
-                          }
+                        <div onClick={this._toggleSelection}>
+                          {translate["selection"]}
                         </div>
                       </li>
                       <li>
-                        <div >{translate["downloadAll"]}</div>
+                        <div onClick={this._toggle}>
+                          {collapse ? (
+                            <span>{translate["openAll"]}</span>
+                          ) : (
+                            <span>{translate["closeAll"]}</span>
+                          )}
+                        </div>
+                      </li>
+                      <li>
+                        <div>{translate["downloadAll"]}</div>
                       </li>
                     </ul>
                   </div>
@@ -299,7 +286,10 @@ class Table extends Component {
                     </div>
                   </div>
                   <div className="_td col-xs">
-                    <div className="_sort" onClick={() => this._sortBy("patrimoine")}>
+                    <div
+                      className="_sort"
+                      onClick={() => this._sortBy("patrimoine")}
+                    >
                       {translate["patrimoine"]}
                     </div>
                   </div>
@@ -316,7 +306,6 @@ class Table extends Component {
             <TableTr key={i} data={tr} collapse={collapse} />
           ))}
         </div>
-        
       </div>
     );
   }

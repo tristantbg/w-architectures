@@ -12,8 +12,8 @@ class Project extends Component {
     const { project } = this.props.data;
     const { locales, locale, previous, next } = this.props.pageContext;
     const i18n = locales[locale];
-// console.log(previous)
-// console.log(next)
+    // console.log(previous)
+    // console.log(next)
     const { title, localisation, year, image_featured, images } = project.data;
 
     return (
@@ -31,16 +31,17 @@ class Project extends Component {
           <div className="project-header b-b pad">
             <div className="row between-xs">
               <h1 className="col-xs fM fP">
-                <ProjectTitle 
-                title={title.text}
-                localisation={localisation.text}
-                year={year.text} />
+                <ProjectTitle
+                  title={title.text}
+                  localisation={localisation.text}
+                  year={year.text}
+                />
               </h1>
               <div className="col-xs ">
                 <ul className="related">
                   <li>
                     <LocalizedLink to={previous.uid}>
-                      {i18n["prev"]} 
+                      {i18n["prev"]}
                     </LocalizedLink>
                   </li>{" "}
                   /{" "}

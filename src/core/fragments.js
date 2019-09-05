@@ -97,9 +97,9 @@ export const query = graphql`
       texte {
         text
       }
-      images{
+      images {
         column
-        image{
+        image {
           localFile {
             ...fluidImage
           }

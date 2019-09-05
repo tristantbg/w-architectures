@@ -1,12 +1,11 @@
 //import React from "react";
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { Link } from "gatsby";
 import website from "../../config/website";
 import locales from "../../config/i18n";
 //import { LocaleContext } from "./Layout";
 import { ContextHoc } from "../context/ContextHoc";
 import LocalizedLink from "./LocalizedLink";
-
 
 class Header extends Component {
   constructor(props) {
@@ -19,35 +18,41 @@ class Header extends Component {
     this._toggle = this._toggle.bind(this);
   }
 
-  _toggle(){
+  _toggle() {
     this.setState({
       active: !this.state.active
-    })
+    });
   }
 
   render() {
     //console.log(this)
-    const {locale} = this.props.context
-    const i18n = this.props.context.i18n[locale]
-    const {active} = this.state
-    
-    const _headerClass = active 
-    ? "active"
-    : ""
+    const { locale } = this.props.context;
+    const i18n = this.props.context.i18n[locale];
+    const { active } = this.state;
+
+    const _headerClass = active ? "active" : "";
     return (
-      <header className={_headerClass}
-      onMouseEnter={this._toggle}
-      onMouseLeave={this._toggle} >
+      <header
+        className={_headerClass}
+        onMouseEnter={this._toggle}
+        onMouseLeave={this._toggle}
+      >
         <div className="inner">
           <div className="top-header b-b ">
             <div className="row between-xs">
               <div className="col-xs">
-                <LocalizedLink to="/" aria-label="Back to Home" className="site-title ">
+                <LocalizedLink
+                  to="/"
+                  aria-label="Back to Home"
+                  className="site-title "
+                >
                   <div className="title">{website.title}</div>
                   <div className="title-detail">
                     <div className="plus">+</div>
-                    <div className="detail"><span>{website.titleDetail}</span></div>
-                  </div>  
+                    <div className="detail">
+                      <span>{website.titleDetail}</span>
+                    </div>
+                  </div>
                 </LocalizedLink>
               </div>
               <div className="col-xs text-right">

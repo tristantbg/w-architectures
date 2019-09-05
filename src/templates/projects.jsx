@@ -9,19 +9,22 @@ import Table from "../components/table";
 
 const Projects = ({
   pageContext: { locale },
-  data: { page : {data : {title, texte, projects}} },
+  data: {
+    page: {
+      data: { title, texte, projects }
+    }
+  },
   location
 }) => {
   const _LocaleContext = React.useContext(LocaleContext);
   const i18n = _LocaleContext.i18n[locale];
 
-  const _projects = projects.map(el =>  {
-    el.project.document[0].data.uid = el.project.document[0].uid
-    return el.project.document[0].data
-    
-  })
+  const _projects = projects.map(el => {
+    el.project.document[0].data.uid = el.project.document[0].uid;
+    return el.project.document[0].data;
+  });
   //console.log(_projects[0])
-  
+
   return (
     <>
       <SEO
@@ -42,8 +45,7 @@ export default Projects;
 
 export const pageQuery = graphql`
   query Projects($locale: String!) {
-
-    page: prismicProjects(lang: {eq: $locale}) {
+    page: prismicProjects(lang: { eq: $locale }) {
       data {
         title {
           text

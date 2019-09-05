@@ -5,26 +5,17 @@ import ProjectTitle from "./project-title";
 
 class Card extends Component {
   render() {
-    const { 
-      url, 
-      title, 
-      localisation,
-      year,
-      column,
-      image
-    } = this.props;
-// console.log(title)
+    const { url, title, localisation, year, column, image } = this.props;
+    // console.log(title)
     return (
       <div className={"card col-xs col-md-" + column}>
         <LocalizedLink to={url} aria-label="go to project">
-          {image.localFile &&
+          {image.localFile && (
             <Img fluid={image.localFile.childImageSharp.fluid} />
-          }
-          {!image.localFile &&
-            <img src={image.url} />
-          }
+          )}
+          {!image.localFile && <img src={image.url} />}
           <h2 className="fM">
-            <ProjectTitle 
+            <ProjectTitle
               title={title}
               localisation={localisation}
               year={year}

@@ -14,17 +14,17 @@ class TableTr extends Component {
     this._toggle = this._toggle.bind(this);
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     PubSub.unsubscribe("TABLE.COLLAPSE", this._onCollapse.bind(this));
   }
 
-  componentDidMount(){
+  componentDidMount() {
     PubSub.subscribe("TABLE.COLLAPSE", this._onCollapse.bind(this));
   }
-  componentWillReceiveProps(){
+  componentWillReceiveProps() {
     // console.log(this.props)
   }
-  _onCollapse(e,d){
+  _onCollapse(e, d) {
     // console.log(d.status)
     this.setState({
       collapsed: d.status
@@ -32,25 +32,25 @@ class TableTr extends Component {
   }
 
   _toggle() {
-    const collapsed = !this.state.collapsed
+    const collapsed = !this.state.collapsed;
     this.setState({
       collapsed: collapsed
     });
-    
-    PubSub.publish("TABLE", {status: collapsed})
+
+    PubSub.publish("TABLE", { status: collapsed });
   }
 
   render() {
     const { collapsed } = this.state;
     const { data } = this.props;
-console.log(data)
+    // console.log(data)
     if (!data.visible) {
       return null;
     } else {
       //const isSelection = (data.selection === 'true')
-      const collapsedClass = collapsed ? "is-collapsed" : ""
+      const collapsedClass = collapsed ? "is-collapsed" : "";
       return (
-        <div className={"tr b-b " + collapsedClass} >
+        <div className={"tr b-b " + collapsedClass}>
           <div className="row-header _row" onClick={this._toggle}>
             <div className="row">
               <div className="col-xs-12 col-md-6">
@@ -58,7 +58,9 @@ console.log(data)
                   <div className="_td col-xs-12 col-md-8">
                     <h2>{data.title.text}</h2>
                   </div>
-                  <div className="_td col-xs-4 hidden-xs">{data.localisation.text}</div>
+                  <div className="_td col-xs-4 hidden-xs">
+                    {data.localisation.text}
+                  </div>
                 </div>
               </div>
               <div className="col-xs-12 col-md-6">
@@ -67,9 +69,9 @@ console.log(data)
                   <div className="_td col-xs">{data.program}</div>
                   <div className="_td col-xs">{data.type}</div>
                   <div className="_td col-xs">
-                    {data.patrimoine && data.patrimoine === "true" &&
+                    {data.patrimoine && data.patrimoine === "true" && (
                       <span className="">×</span>
-                    }
+                    )}
                   </div>
                 </div>
               </div>
@@ -85,8 +87,11 @@ console.log(data)
                     //fixed={image.localFile.childImageSharp.fixed}
                     fluid={image.localFile.childImageSharp.fluid}
                     style={{
-                      width: (100 * image.localFile.childImageSharp.fluid.aspectRatio)+"px",
-                      height:100+"px"
+                      width:
+                        100 *
+                          image.localFile.childImageSharp.fluid.aspectRatio +
+                        "px",
+                      height: 100 + "px"
                     }}
                     Tag="figure"
                   />
