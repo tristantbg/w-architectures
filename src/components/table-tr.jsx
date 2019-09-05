@@ -43,7 +43,7 @@ class TableTr extends Component {
   render() {
     const { collapsed } = this.state;
     const { data } = this.props;
-//console.log(data)
+console.log(data)
     if (!data.visible) {
       return null;
     } else {
@@ -82,7 +82,12 @@ class TableTr extends Component {
                 {data.images.map(({ image }, i) => (
                   <Img
                     key={i}
-                    fixed={image.localFile.childImageSharp.fixed}
+                    //fixed={image.localFile.childImageSharp.fixed}
+                    fluid={image.localFile.childImageSharp.fluid}
+                    style={{
+                      width: (100 * image.localFile.childImageSharp.fluid.aspectRatio)+"px",
+                      height:100+"px"
+                    }}
                     Tag="figure"
                   />
                 ))}

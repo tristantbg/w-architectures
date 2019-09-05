@@ -81,7 +81,7 @@ export const query = graphql`
         image {
           localFile {
             ...fluidImage
-            ...thumbnail
+            # ...thumbnail
           }
         }
       }
