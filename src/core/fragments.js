@@ -22,7 +22,8 @@ export const query = graphql`
   fragment fluidImage on File {
     childImageSharp {
       fluid(maxWidth: 2500, quality: 80) {
-        ...GatsbyImageSharpFluid_withWebp
+        # ...GatsbyImageSharpFluid_withWebp
+        ...GatsbyImageSharpFluid_noBase64
       }
     }
   }
