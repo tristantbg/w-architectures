@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Img from "gatsby-image";
 import PubSub from "pubsub-js";
+import LocalizedLink from "./LocalizedLink";
 // import ProjectTitle from "./project-title";
 import ProjectInfos from "./project-infos";
 
@@ -47,7 +48,7 @@ class TableTr extends Component {
     if (!data.visible) {
       return null;
     } else {
-      //const isSelection = (data.selection === 'true')
+      // console.log(data)
       const collapsedClass = collapsed ? "is-collapsed" : "";
       return (
         <div className={"tr b-b " + collapsedClass}>
@@ -80,7 +81,9 @@ class TableTr extends Component {
 
           {!collapsed && (
             <div className={"row-content " + (collapsed ? "collapsed" : "")}>
+              <LocalizedLink to={data.uid}>
               <div className="images-grid">
+
                 {data.images.map(({ image }, i) => (
                   <Img
                     key={i}
@@ -97,6 +100,7 @@ class TableTr extends Component {
                   />
                 ))}
               </div>
+              </LocalizedLink>
               <ProjectInfos data={data} embed={true} />
             </div>
           )}

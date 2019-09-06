@@ -32,7 +32,7 @@ class Carousel extends Component {
       fade: true,
       dots: false,
       //autoplay: false,
-      autoplaySpeed: 5000,
+      //autoplaySpeed: 5000,
       //accessibility: true,
       infinite: true,
       speed: 0,
@@ -59,16 +59,14 @@ class Carousel extends Component {
                     fluid={image.localFile.childImageSharp.fluid}
                     fadeIn={false}
                     style={{
-                      backgroundPosition: "center top",
-                      backgroundSize: isPortrait ? "contain" : "cover"
+                      backgroundPosition: "left top",
+                      backgroundSize: "contain"
                     }}
                   />
                 </div>
               );
             }
           })}
-          
-       
         </Slider>
       </div>
     );

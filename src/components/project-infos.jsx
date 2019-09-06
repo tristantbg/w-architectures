@@ -18,6 +18,9 @@ const ProjectInfos = ({ data, embed }) => {
                   {i18n["openProject"]}
                 </LocalizedLink>
               )}
+              {embed && data.download && data.download.url &&
+                <span className="sep">/</span>
+              }
               {data.download && data.download.url && (
                 <a href={data.download.url} target="_blank">
                   {i18n["download"]}
