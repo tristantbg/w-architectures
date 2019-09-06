@@ -19,7 +19,7 @@ const ProjectInfos = ({ data, embed }) => {
                 </LocalizedLink>
               )}
               {embed && data.download && data.download.url &&
-                <span className="sep">/</span>
+                <span className="sep">|</span>
               }
               {data.download && data.download.url && (
                 <a href={data.download.url} target="_blank">
