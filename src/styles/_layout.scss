@@ -17,4 +17,8 @@ main{
 @media all and (max-width:$s){
     .xs-only{display: block}
     .hidden-xs{display: none;}
+
+    main{
+        padding: $headerHeight $margeXS;
+    }
 }

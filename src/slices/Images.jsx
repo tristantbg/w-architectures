@@ -10,7 +10,7 @@ const Images = ({ input }) => {
       <div className="content ">
         {input.items.map((item, i) => (
           <div className="row" key={i}>
-            <div className={"col-md-" + item.column}>
+            <div className={"col-xs-12 col-md-" + item.column}>
               <Img
                 fluid={item.image.localFile.childImageSharp.fluid}
                 Tag="figure"

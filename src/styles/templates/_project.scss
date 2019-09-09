@@ -32,6 +32,10 @@
         bottom: 0; left: 0;
         width: 100%;
         padding: 0 $margeS;
+
+        @media all and (max-width:$s){
+            padding: 0 $margeXS;
+        }
         //background: white;
         z-index: 250;
         &.is-collapsed{
@@ -65,5 +69,9 @@
 
 
 @media all and (max-width:$s){
-    
+    // .template-project{
+    //     .project-footer{
+    //         padding: 0 $margeXS;
+    //     }
+    // }
 }

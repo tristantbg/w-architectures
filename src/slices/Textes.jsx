@@ -8,7 +8,7 @@ const Textes = ({ input }) => {
       <div className="content pad">
         <div className="row">
           {input.items.map((item, i) => (
-            <div className={"col-md-" + column} key={i}>
+            <div className={"col-xs-12 col-md-" + column} key={i}>
               <div
                 className="texte"
                 dangerouslySetInnerHTML={{ __html: item.texte.html }}

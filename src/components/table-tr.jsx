@@ -64,7 +64,7 @@ class TableTr extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-xs-12 col-md-6">
+              <div className="col-xs-12 col-md-6 hidden-xs">
                 <div className="row between-xs">
                   <div className="_td col-xs">{data.year.text}</div>
                   <div className="_td col-xs">{data.program}</div>
@@ -86,7 +86,21 @@ class TableTr extends Component {
 
                 {data.images.map(({ image }, i) => (
                   <LocalizedLink key={i} to={data.uid+"?idx="+i}>
-                  <Img
+                    {image.localFile && (
+                      <Img 
+                      fluid={image.localFile.childImageSharp.fluid} 
+                      style={{
+                        width:
+                          100 *
+                            image.localFile.childImageSharp.fluid.aspectRatio +
+                          "px",
+                        height: 100 + "px"
+                      }}
+                      Tag="figure" />
+                    )}
+                    {!image.localFile && <img src={image.url} />}
+
+                  {/* <Img
                     //fixed={image.localFile.childImageSharp.fixed}
                     fluid={image.localFile.childImageSharp.fluid}
                     style={{
@@ -97,7 +111,7 @@ class TableTr extends Component {
                       height: 100 + "px"
                     }}
                     Tag="figure"
-                  />
+                  /> */}
                   </LocalizedLink>
                 ))}
               </div>

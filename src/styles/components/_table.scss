@@ -45,6 +45,10 @@
         figure{
             margin-right: $rowHeight;
             margin-bottom: $rowHeight;
+            @media all and (max-width:$s){
+                margin-right: $rowHeight / 2;
+                margin-bottom: $rowHeight / 2;
+            }
         }
     }
 }

@@ -18,6 +18,10 @@ footer{
 
 @media all and (max-width:$s){
     footer{
-        
+        padding: 0 $margeXS;
+        .row,
+        ul{@include flex-direction(column)}
+        ul li:after{display: none}
+        ul.footer-right{margin-top: $rowHeight!important}
     }
 }

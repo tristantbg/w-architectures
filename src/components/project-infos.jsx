@@ -48,8 +48,8 @@ const ProjectInfos = ({ data, embed }) => {
                       <span>{data[col].text}</span>
                     )}
                   </div>
-                  <div className="col-xs"></div>
-                  <div className="col-xs"></div>
+                  <div className="col-xs hidden-xs"></div>
+                  <div className="col-xs hidden-xs"></div>
                 </div>
               ))}
 
@@ -57,8 +57,8 @@ const ProjectInfos = ({ data, embed }) => {
                 <div className="row" key={i}>
                   <div className="col-xs label">{item.label.text}</div>
                   <div className="col-xs value">{item.value.text}</div>
-                  <div className="col-xs"></div>
-                  <div className="col-xs"></div>
+                  <div className="col-xs hidden-xs"></div>
+                  <div className="col-xs hidden-xs"></div>
                 </div>
               ))}
             </div>
