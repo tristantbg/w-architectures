@@ -81,12 +81,12 @@ class TableTr extends Component {
 
           {!collapsed && (
             <div className={"row-content " + (collapsed ? "collapsed" : "")}>
-              <LocalizedLink to={data.uid}>
+              
               <div className="images-grid">
 
                 {data.images.map(({ image }, i) => (
+                  <LocalizedLink key={i} to={data.uid+"?idx="+i}>
                   <Img
-                    key={i}
                     //fixed={image.localFile.childImageSharp.fixed}
                     fluid={image.localFile.childImageSharp.fluid}
                     style={{
@@ -98,9 +98,10 @@ class TableTr extends Component {
                     }}
                     Tag="figure"
                   />
+                  </LocalizedLink>
                 ))}
               </div>
-              </LocalizedLink>
+       
               <ProjectInfos data={data} embed={true} />
             </div>
           )}

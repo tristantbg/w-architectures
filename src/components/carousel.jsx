@@ -3,11 +3,32 @@ import BackgroundImage from "gatsby-background-image";
 import Slider from "react-slick";
 
 class Carousel extends Component {
+  constructor(props) {
+    super(props);
+
+    // this.state = {
+    //   idx: 0
+    // };
+
+  }
+
   componentWillUnmount() {
     document.removeEventListener("keyup", this._onKeyboard);
   }
   componentDidMount() {
     document.addEventListener("keyup", this._onKeyboard);
+
+    //const idx = window.location.search.split('idx')
+    if(window.location.search){
+      console.log(this.slider)
+      const searchParams = new URLSearchParams(window.location.search);
+      const idx = parseInt(searchParams.get('idx'))
+      this.slider.slickGoTo(idx)
+      // console.log(idx, typeof idx)
+      // this.setState({
+      //   idx: idx
+      // })
+    }
   }
 
   _onKeyboard(e) {
@@ -27,6 +48,7 @@ class Carousel extends Component {
     }
   }
   render() {
+    // const { idx } = this.state;
     const { images } = this.props;
     const settings = {
       fade: true,
@@ -36,6 +58,7 @@ class Carousel extends Component {
       //accessibility: true,
       infinite: true,
       speed: 0,
+      //initialSlide: idx,
       slidesToShow: 1,
       slidesToScroll: 1,
       lazyLoad: "progressive"
@@ -48,11 +71,12 @@ class Carousel extends Component {
 
     return (
       <div className="carousel">
-        <Slider {...settings}>
+        <Slider 
+        ref={slider => (this.slider = slider)}
+        {...settings}>
           {images.map(({ image }, i) => {
             if (image.localFile) {
-              const isPortrait = image.localFile.childImageSharp.fluid.aspectRatio < 1
-
+              //const isPortrait = image.localFile.childImageSharp.fluid.aspectRatio < 1
               return (
                 <div key={i} className="slide">
                   <BackgroundImage
