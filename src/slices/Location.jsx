@@ -7,11 +7,30 @@ class Location extends Component {
   constructor() {
     super();
     this.state = {
-      active: false
+      active: false,
+      icon: null
     };
     this._toggle = this._toggle.bind(this);
   }
 
+  componentDidMount(){
+    const L = require('leaflet');
+    console.log(L)
+    const pointerIcon = L.icon({
+      //iconUrl: 'public/marker-icon.png',
+      iconUrl: require('../images/marker-icon.svg'),
+      iconSize: [38, 95],
+      iconAnchor: [22, 94],
+      popupAnchor: [-3, -76],
+      shadowUrl: require('../images/marker-shadow.png'),
+      shadowSize: [68, 95],
+      shadowAnchor: [22, 94]
+    });
+    this.setState({
+      icon: pointerIcon
+    })
+
+  }
   _toggle() {
     this.setState({
       active: !this.state.active
@@ -19,12 +38,12 @@ class Location extends Component {
   }
 
   render() {
-    const { active } = this.state;
+    const { active, icon } = this.state;
     const { item } = this.props;
 
-    //https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png
-    //const key = "c92f820ec8abcfd7f51b075e3efa157e";
-    //const layerUrl = "https://tile.geofabrik.de/" + key + "/{z}/{x}/{y}.png"
+    //const layerUrl = "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png"
+    // const key = "c92f820ec8abcfd7f51b075e3efa157e";
+    // const layerUrl = "https://tile.geofabrik.de/" + key + "/{z}/{x}/{y}.png"
     const layerUrl = "http://a.tile.stamen.com/toner/{z}/{x}/{y}.png"
 
   //   const pointerIcon = L.icon({
@@ -66,7 +85,7 @@ class Location extends Component {
                     />
                     <Marker
                       position={[item.geoloc.latitude, item.geoloc.longitude]}
-                      //icon={pointerIcon}
+                      icon={icon ? icon : null}
                     >
                       <Popup>
                         {item.title1.text} <br /> {item.texte1.text}

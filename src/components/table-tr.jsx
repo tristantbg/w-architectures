@@ -9,7 +9,8 @@ class TableTr extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      collapsed: true
+      collapsed: true,
+      thumbnailHeight: 100
     };
 
     this._toggle = this._toggle.bind(this);
@@ -21,6 +22,15 @@ class TableTr extends Component {
 
   componentDidMount() {
     PubSub.subscribe("TABLE.COLLAPSE", this._onCollapse.bind(this));
+
+    const isTouch = 'ontouchstart' in window;
+    if(isTouch){
+      this.setState({
+        thumbnailHeight: 50
+      })
+    }
+
+    
   }
   componentWillReceiveProps() {
     // console.log(this.props)
@@ -42,7 +52,7 @@ class TableTr extends Component {
   }
 
   render() {
-    const { collapsed } = this.state;
+    const { collapsed, thumbnailHeight } = this.state;
     const { data } = this.props;
     // console.log(data)
     if (!data.visible) {
@@ -91,10 +101,10 @@ class TableTr extends Component {
                       fluid={image.localFile.childImageSharp.fluid} 
                       style={{
                         width:
-                          100 *
+                          thumbnailHeight *
                             image.localFile.childImageSharp.fluid.aspectRatio +
                           "px",
-                        height: 100 + "px"
+                        height: thumbnailHeight + "px"
                       }}
                       Tag="figure" />
                     )}
