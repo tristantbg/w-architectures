@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Map, Marker, Popup, TileLayer } from "react-leaflet-universal";
-// import { Map, Marker, Popup, TileLayer } from "react-leaflet";
+// import { Map, Marker, Popup, TileLayer } from "react-leaflet-universal";
+import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 // import L from 'leaflet'
 
 class Location extends Component {
@@ -15,9 +15,7 @@ class Location extends Component {
 
   componentDidMount(){
     const L = require('leaflet');
-    console.log(L)
     const pointerIcon = L.icon({
-      //iconUrl: 'public/marker-icon.png',
       iconUrl: require('../images/marker-icon.svg'),
       iconSize: [38, 95],
       iconAnchor: [22, 94],
@@ -44,20 +42,8 @@ class Location extends Component {
     //const layerUrl = "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png"
     // const key = "c92f820ec8abcfd7f51b075e3efa157e";
     // const layerUrl = "https://tile.geofabrik.de/" + key + "/{z}/{x}/{y}.png"
-    const layerUrl = "http://a.tile.stamen.com/toner/{z}/{x}/{y}.png"
+    const layerUrl = "//a.tile.stamen.com/toner/{z}/{x}/{y}.png"
 
-  //   const pointerIcon = L.icon({
-  //     //iconUrl: 'public/marker-icon.png',
-  //     iconUrl: require('../images/marker-icon.svg'),
-  //     iconSize: [38, 95],
-  //     iconAnchor: [22, 94],
-  //     popupAnchor: [-3, -76],
-  //     shadowUrl: require('../images/marker-shadow.png'),
-  //     shadowSize: [68, 95],
-  //     shadowAnchor: [22, 94]
-  // });
-
-    //console.log(input)
     return (
       <div className={"location " + (active ? "active" : "")}>
         <div className="row">
