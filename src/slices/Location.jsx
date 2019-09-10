@@ -42,7 +42,7 @@ class Location extends Component {
     //const layerUrl = "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png"
     // const key = "c92f820ec8abcfd7f51b075e3efa157e";
     // const layerUrl = "https://tile.geofabrik.de/" + key + "/{z}/{x}/{y}.png"
-    const layerUrl = "//a.tile.stamen.com/toner/{z}/{x}/{y}.png"
+    const layerUrl = "http://a.tile.stamen.com/toner/{z}/{x}/{y}.png"
 
     return (
       <div className={"location " + (active ? "active" : "")}>
