@@ -41,7 +41,12 @@ header{
         @include flexbox();
         &:hover,
         &:active{color: $color1}
-        .title{margin-right: .4em}
+        .title{
+            margin-right: .4em;
+            @media all and (max-width:$s){
+                white-space: nowrap
+            }
+        }
         .title-detail{
             @include flexbox();
             @include justify-content(space-between);

@@ -19,9 +19,12 @@ footer{
 @media all and (max-width:$s){
     footer{
         padding: 0 $margeXS;
-        .row,
-        ul{@include flex-direction(column)}
+        .row{@include flex-direction(column-reverse)}
+        ul{
+            @include flex-direction(column);
+            text-align: center;
+        }
         ul li:after{display: none}
-        ul.footer-right{margin-top: $rowHeight!important}
+        ul.footer-right{margin-bottom: $rowHeight!important}
     }
 }

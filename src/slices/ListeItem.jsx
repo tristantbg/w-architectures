@@ -23,7 +23,7 @@ class Distinction extends Component {
     return (
       <div className={"liste-item " + (active ? "active" : "")}>
         <div className="row">
-          <div className={"col-md-12"}>
+          <div className={"col-xs-12"}>
             <div className="title b-b pad" onClick={this._toggle}>
               {item.title1.text}
             </div>

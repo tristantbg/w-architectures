@@ -1,0 +1,26 @@
+.slice.liste{
+    .liste-item{
+        &.active .item-content{
+            display: block;
+            border-bottom: $border;
+        }
+        .item-content{
+            display: none;
+            .texte{
+                columns: 3;
+                @media all and (max-width:$s){
+                    columns: 1;
+                }
+            }
+            figure{
+                padding: $rowHeight 0;
+            }
+        }
+        &:last-of-type{
+            //background: red
+            &.active .title{border-bottom: $border}
+            .title,
+            .item-content{border: none}
+        }
+    }
+}

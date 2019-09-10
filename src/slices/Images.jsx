@@ -5,7 +5,7 @@ const Images = ({ input }) => {
   const column = 12 / input.items.length;
   //console.log(input);
   return (
-    <section className="images">
+    <section className="slice images">
       <h2 className="headline b-b pad">{input.primary.title1.text}</h2>
       <div className="content liste-images">
         {input.items.map((item, i) => (

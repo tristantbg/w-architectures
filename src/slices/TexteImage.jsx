@@ -3,7 +3,7 @@ import Img from "gatsby-image";
 
 const TexteImage = ({ input }) => {
   return (
-    <section className="texte-image">
+    <section className="slice texte-image">
       <h2 className="headline b-b pad">{input.primary.title1.text}</h2>
       <div className="content pad">
         <div className="row">

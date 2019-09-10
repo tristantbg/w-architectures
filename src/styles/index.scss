@@ -21,11 +21,12 @@
 @import "templates/page";
 @import "templates/common";
 
+@import "slices/liste";
+@import "slices/images";
 
 @import "components/header";
 @import "components/footer";
 @import "components/table";
-
 
 
 @import "components/ui/carousel";

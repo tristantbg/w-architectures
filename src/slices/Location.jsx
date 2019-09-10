@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Map, Marker, Popup, TileLayer } from "react-leaflet-universal";
-// import { Map, Marker, Popup, TileLayer } from "react-leaflet";
+// import { Map, Marker, Popup, TileLayer } from "react-leaflet-universal";
+import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import L from 'leaflet'
 
 class Location extends Component {
@@ -42,7 +42,7 @@ class Location extends Component {
     return (
       <div className={"location " + (active ? "active" : "")}>
         <div className="row">
-          <div className={"col-md-12"}>
+          <div className={"col-xs-12"}>
             <div className="title b-b pad" onClick={this._toggle}>
               {item.title1.text}
             </div>

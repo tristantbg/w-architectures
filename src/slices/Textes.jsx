@@ -3,7 +3,7 @@ import React from "react";
 const Textes = ({ input }) => {
   const column = 12 / input.items.length;
   return (
-    <section className="textes">
+    <section className="slice textes">
       <h2 className="headline b-b pad">{input.primary.title1.text}</h2>
       <div className="content pad">
         <div className="row">

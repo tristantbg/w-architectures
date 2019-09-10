@@ -230,9 +230,9 @@ class Table extends Component {
     return (
       <div className={"table " + orderClass} ref="table">
         <div className="table-header">
-          <div className="_row b-b">
+          <div className="_row b-b hidden-xs">
             <div className="row">
-              <div className="col-xs col-md-6 hidden-xs">
+              <div className="col-xs col-md-6 ">
                 <div className="row between-xs">
                   <div className="_td col-md-8 ">
                     <ul className="table-actions">
@@ -265,7 +265,7 @@ class Table extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-xs col-md-6">
+              <div className="col-xs col-md-6 ">
                 <div className="row between-xs">
                   <div className="_td col-xs">
                     <div className="_sort" onClick={() => this._sortBy("year")}>
