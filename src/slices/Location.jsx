@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet-universal";
 // import { Map, Marker, Popup, TileLayer } from "react-leaflet";
-import L from 'leaflet'
+// import L from 'leaflet'
 
 class Location extends Component {
   constructor() {
@@ -27,16 +27,16 @@ class Location extends Component {
     //const layerUrl = "https://tile.geofabrik.de/" + key + "/{z}/{x}/{y}.png"
     const layerUrl = "http://a.tile.stamen.com/toner/{z}/{x}/{y}.png"
 
-    const pointerIcon = L.icon({
-      //iconUrl: 'public/marker-icon.png',
-      iconUrl: require('../images/marker-icon.svg'),
-      iconSize: [38, 95],
-      iconAnchor: [22, 94],
-      popupAnchor: [-3, -76],
-      shadowUrl: require('../images/marker-shadow.png'),
-      shadowSize: [68, 95],
-      shadowAnchor: [22, 94]
-  });
+  //   const pointerIcon = L.icon({
+  //     //iconUrl: 'public/marker-icon.png',
+  //     iconUrl: require('../images/marker-icon.svg'),
+  //     iconSize: [38, 95],
+  //     iconAnchor: [22, 94],
+  //     popupAnchor: [-3, -76],
+  //     shadowUrl: require('../images/marker-shadow.png'),
+  //     shadowSize: [68, 95],
+  //     shadowAnchor: [22, 94]
+  // });
 
     //console.log(input)
     return (
@@ -66,7 +66,7 @@ class Location extends Component {
                     />
                     <Marker
                       position={[item.geoloc.latitude, item.geoloc.longitude]}
-                      icon={pointerIcon}
+                      //icon={pointerIcon}
                     >
                       <Popup>
                         {item.title1.text} <br /> {item.texte1.text}
