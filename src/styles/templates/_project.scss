@@ -11,6 +11,11 @@
                     padding: 0 .3em
                 }
             }
+            @media all and (max-width:$s){
+                @include flex-direction(column);
+                text-align: right;
+                li:last-child:before{display: none}
+            }
         }
     }
     $viewHeight: calc(100vh - (#{$rowHeight} * 5));

@@ -70,7 +70,7 @@ class TableTr extends Component {
                   <div className="_td col-xs">{data.program}</div>
                   <div className="_td col-xs">{data.type}</div>
                   <div className="_td col-xs">
-                    {data.patrimoine && data.patrimoine === "true" && (
+                    {data.patrimoine && data.patrimoine === "oui" && (
                       <span className="">×</span>
                     )}
                   </div>
@@ -100,18 +100,7 @@ class TableTr extends Component {
                     )}
                     {!image.localFile && <img src={image.url} />}
 
-                  {/* <Img
-                    //fixed={image.localFile.childImageSharp.fixed}
-                    fluid={image.localFile.childImageSharp.fluid}
-                    style={{
-                      width:
-                        100 *
-                          image.localFile.childImageSharp.fluid.aspectRatio +
-                        "px",
-                      height: 100 + "px"
-                    }}
-                    Tag="figure"
-                  /> */}
+              
                   </LocalizedLink>
                 ))}
               </div>

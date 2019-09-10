@@ -184,7 +184,7 @@ class Table extends Component {
       let arrayCopy = [...this.props.data];
       for (var i in arrayCopy) {
         const row = arrayCopy[i];
-        if (row.selection === "true") row.visible = true;
+        if (row.selection === "oui") row.visible = true;
         else row.visible = false;
       }
       this.setState({
