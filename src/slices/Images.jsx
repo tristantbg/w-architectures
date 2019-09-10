@@ -2,7 +2,7 @@ import React from "react";
 import Img from "gatsby-image";
 
 const Images = ({ input }) => {
-  const column = 12 / input.items.length;
+  //const column = 12 / input.items.length;
   //console.log(input);
   return (
     <section className="slice images">

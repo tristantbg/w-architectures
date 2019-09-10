@@ -13,7 +13,7 @@ module.exports = {
   favicon: 'src/favicon.png', // Used for manifest favicon generation
   shortName: 'Website', // shortname for manifest. MUST be shorter than 12 characters
   author: 'aeai', // Author for schemaORGJSONLD
-  themeColor: '#ffff00',
+  themeColor: '#ffffff',
   backgroundColor: '#ffffff',
 
   twitter: '@aeai', // Twitter Username
