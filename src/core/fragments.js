@@ -100,6 +100,9 @@ export const query = graphql`
       images {
         column
         image {
+          dimensions {
+            width
+          }
           localFile {
             ...fluidImage
           }
@@ -146,6 +149,9 @@ export const query = graphql`
                 html
               }
               image {
+                dimensions {
+                  width
+                }
                 localFile {
                   ...fluidImage
                 }
@@ -167,6 +173,9 @@ export const query = graphql`
                 html
               }
               image {
+                dimensions {
+                  width
+                }
                 localFile {
                   ...fluidImage
                 }

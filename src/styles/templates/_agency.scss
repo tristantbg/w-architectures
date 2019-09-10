@@ -3,7 +3,14 @@
         
         
         &.featured-images{
-            .content{display: block}
+            .content{
+                display: block;
+                padding-top: $rowHeight;
+                .row{
+                    margin-bottom: $rowHeight;
+                    &:last-child{margin-bottom: 0}
+                }
+            }
         }
    
         

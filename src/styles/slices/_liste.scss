@@ -8,12 +8,15 @@
             display: none;
             .texte{
                 columns: 3;
+                padding-bottom: $rowHeight;
                 @media all and (max-width:$s){
                     columns: 1;
+                    
                 }
             }
             figure{
                 padding: $rowHeight 0;
+                margin-bottom: $rowHeight;
             }
         }
         &:last-of-type{

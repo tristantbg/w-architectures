@@ -19,7 +19,7 @@ class Distinction extends Component {
   render() {
     const { active } = this.state;
     const { item } = this.props;
-    //console.log(input)
+    console.log(item.image)
     return (
       <div className={"liste-item " + (active ? "active" : "")}>
         <div className="row">
@@ -33,9 +33,13 @@ class Distinction extends Component {
                 dangerouslySetInnerHTML={{ __html: item.texte1.html }}
               />
               {item.image && (
-                <figure>
-                  <Img fluid={item.image.localFile.childImageSharp.fluid} />
-                </figure>
+                <Img 
+                style={{
+                  maxWidth: item.image.dimensions.width
+                }}
+                fluid={item.image.localFile.childImageSharp.fluid} 
+                Tag="figure" />
+              
               )}
             </div>
           </div>
