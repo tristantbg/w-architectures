@@ -44,14 +44,15 @@ class Contact extends Component {
   render() {
     const { locales, locale } = this.props.pageContext;
     const i18n = locales[locale];
-    const { data, datePublished } = this.props.data.page;
+    const { uid, data, datePublished } = this.props.data.page;
     
     return (
       <>
         <SEO
           title={`Contact | ${i18n.defaultTitleAlt}`}
           locale={locale}
-          desc={data.texte.text}
+          pathname={uid}
+          description={data.texte.text}
           datePublished={datePublished}
         />
         <Helmet>
@@ -75,6 +76,7 @@ export default Contact;
 export const pageQuery = graphql`
   query ContactQuery($locale: String!) {
     page: prismicContact(lang: { eq: $locale }) {
+      uid
       datePublished: first_publication_date(formatString: "YYYY-MM-DD")
       ...contact
     }

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet-universal";
 // import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 // import L from 'leaflet'
-import JsonLd from '../components/ui/JsonLd'
+// import JsonLd from '../components/ui/JsonLd'
 
 class Location extends Component {
   constructor() {
@@ -18,12 +18,12 @@ class Location extends Component {
     const L = require('leaflet');
     const pointerIcon = L.icon({
       iconUrl: require('../images/marker-icon.svg'),
-      iconSize: [38, 95],
-      iconAnchor: [22, 94],
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
       popupAnchor: [-3, -76],
       shadowUrl: require('../images/marker-shadow.png'),
-      shadowSize: [68, 95],
-      shadowAnchor: [22, 94]
+      shadowSize: [25, 41],
+      shadowAnchor: [5, 41]
     });
     this.setState({
       icon: pointerIcon

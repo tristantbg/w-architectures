@@ -8,6 +8,7 @@ const Projects = ({
   pageContext: { locale },
   data: {
     page: {
+      uid,
       data: { title, texte, projects }
     }
   },
@@ -20,15 +21,16 @@ const Projects = ({
     el.project.document[0].data.uid = el.project.document[0].uid;
     return el.project.document[0].data;
   });
-  //console.log(_projects[0])
 
   return (
     <>
       <SEO
         title={`${title.text} | ${i18n.defaultTitleAlt}`}
-        desc={texte.text}
-        pathname={location.pathname}
+        description={texte.text}
+        pathname={uid}
         locale={locale}
+        liste={true}
+        items={_projects}
       />
       <div className="template-projects">
         <h1 className="b-b pad">{title.text}</h1>
@@ -43,6 +45,7 @@ export default Projects;
 export const pageQuery = graphql`
   query Projects($locale: String!) {
     page: prismicProjects(lang: { eq: $locale }) {
+      uid
       data {
         title {
           text

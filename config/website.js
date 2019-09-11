@@ -5,7 +5,7 @@ module.exports = {
   titleDetail: 'Voinchet & Architectes Associés',
   description: 'desc here',
   headline: '', // Headline for schema.org JSONLD
-  url: 'https://w-architectures.netlify.com', // Domain of your site. No trailing slash!
+  url: 'https://w-architectures.netlify.com/', // Domain of your site. No trailing slash!
   logo: '/logos/logo-1024.png', // Used for SEO
   ogLanguage: 'fr_FR', // Facebook Language
 

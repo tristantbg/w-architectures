@@ -21,7 +21,7 @@ class Project extends Component {
           title={`${title.text} | ${i18n.defaultTitleAlt}`}
           pathname={project.uid}
           locale={locale}
-          desc={texte.text}
+          description={texte.text}
           banner={image_featured.url}
           node={project}
           article

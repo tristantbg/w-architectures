@@ -50,14 +50,14 @@ class Agency extends Component {
     const { locales, locale } = this.props.pageContext;
     const i18n = locales[locale];
 
-    const { data, datePublished } = this.props.data.page;
-    // console.log(data)
+    const { uid, data, datePublished } = this.props.data.page;
+    //console.log(this.props.data)
     return (
       <>
         <SEO
           title={`${data.title.text} | ${i18n.defaultTitleAlt}`}
-          desc={data.texte.text}
-          //pathname={location.pathname}
+          description={data.texte.text}
+          pathname={uid}
           locale={locale}
           datePublished={datePublished}
         />
@@ -93,6 +93,7 @@ export default Agency;
 export const pageQuery = graphql`
   query AgencyQuery($locale: String!) {
     page: prismicAgency(lang: { eq: $locale }) {
+      uid
       datePublished: first_publication_date(formatString: "YYYY-MM-DD")
       ...agency
     }

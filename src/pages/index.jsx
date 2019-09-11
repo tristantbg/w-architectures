@@ -17,9 +17,10 @@ const HomePage = ({
     <div className="template-home">
       <SEO
         title={`${i18n.defaultTitleAlt}`}
-        desc={homepage.data.texte.text}
+        description={homepage.data.texte.text}
         pathname={location.pathname}
         locale={locale}
+        homePage={true}
       />
 
       <div className="projects-liste liste-images">

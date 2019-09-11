@@ -8,93 +8,70 @@ import i18n from '../../../config/i18n'
 
 // Complete tutorial: https://www.gatsbyjs.org/docs/add-seo-component/
 
-const SEO = ({ title, desc, banner, pathname, article, datePublished, node, locale }) => {
+const SEO = ({ title, description, banner, datePublished, pathname, homePage=false, locale, article, liste, items }) => {
   const { site } = useStaticQuery(query)
   const { defaultTitle, defaultDescription, siteLanguage } = i18n[locale]
-console.log("siteLanguage", siteLanguage)
-console.log("datePublished", datePublished)
-console.log("pathname", pathname)
+// console.log("siteLanguage", siteLanguage)
+// console.log("datePublished", datePublished)
+// console.log("homePage", homePage)
   const {
     buildTime,
     siteMetadata: { siteUrl, defaultBanner, ogLanguage, author, twitter, facebook },
   } = site
 
-  const localizedPath = i18n[locale].default ? '' : `/${i18n[locale].path}`
-  const homeURL = `${siteUrl}${localizedPath}`
+  // const localizedPath = i18n[locale].default ? '' : `/${i18n[locale].path}`
+  // const homeURL = `${siteUrl}${localizedPath}`
 
   const seo = {
-    // title: title || defaultTitle,
-    // description: desc || defaultDescription,
-    // image: `${siteUrl}${banner || defaultBanner}`,
-    // url: `${siteUrl}${pathname || ''}`,
-
-    title: article ? title+" - "+defaultTitle : defaultTitle,
-    description: article ? desc : defaultDescription,
-    image: `${banner || defaultBanner}`,
+    title: homePage ? defaultTitle: title+" - "+defaultTitle,
+    description: description,
+    image: article ? banner : `${siteUrl}${defaultBanner}`,
     url: `${siteUrl}${pathname || ''}`,
-
   }
-
+// console.log(seo.url)
   // schema.org in JSONLD format
   // https://developers.google.com/search/docs/guides/intro-structured-data
   // You can fill out the 'author', 'creator' with more data or another type (e.g. 'Organization')
 
-  const schemaOrgWebPage = {
-    '@context': 'http://schema.org',
-    '@type': 'WebPage',
-    url: homeURL,
-    inLanguage: siteLanguage,
-    mainEntityOfPage: homeURL,
-    description: defaultDescription,
-    name: defaultTitle,
-    author: {
-      '@type': 'Person',
-      name: author,
-    },
-    copyrightHolder: {
-      '@type': 'Person',
-      name: author,
-    },
-    copyrightYear: new Date().getFullYear(),
-    creator: {
-      '@type': 'Person',
-      name: author,
-    },
-    publisher: {
-      '@type': 'Person',
-      name: author,
-    },
-    datePublished: '2019-01-18T10:30:00+01:00',
-    dateModified: buildTime,
-    image: {
-      '@type': 'ImageObject',
-      url: `${siteUrl}${defaultBanner}`,
-    },
+  let schemaOrgWebPage = null
+  if(homePage){
+    schemaOrgWebPage = {
+      '@context': 'http://schema.org',
+      '@type': 'WebPage',
+      url: seo.url,
+      inLanguage: siteLanguage,
+      mainEntityOfPage: seo.url,
+      description: seo.description,
+      name: seo.itle,
+      author: {
+        '@type': 'Person',
+        name: author,
+      },
+      copyrightHolder: {
+        '@type': 'Person',
+        name: author,
+      },
+      copyrightYear: new Date().getFullYear(),
+      creator: {
+        '@type': 'Person',
+        name: author,
+      },
+      publisher: {
+        '@type': 'Person',
+        name: author,
+      },
+      datePublished: '2019-01-18T10:30:00+01:00',
+      dateModified: buildTime,
+      image: {
+        '@type': 'ImageObject',
+        url: seo.image,
+      },
+    }
   }
 
-  // Initial breadcrumb list
-
-  // const itemListElement = [
-  //   {
-  //     '@type': 'ListItem',
-  //     item: {
-  //       '@id': siteUrl,
-  //       name: 'Homepage',
-  //     },
-  //     position: 1,
-  //   },
-  //   // {
-  //   //   '@type': 'ListItem',
-  //   //   item: {
-  //   //     '@id': `${homeURL}/categories`,
-  //   //     name: categories,
-  //   //   },
-  //   //   position: 2,
-  //   // },
-  // ]
-
+  //console.log(schemaOrgWebPage)
+  
   let schemaArticle = null
-
   if (article) {
     schemaArticle = {
       '@context': 'http://schema.org',
@@ -115,10 +92,10 @@ console.log("pathname", pathname)
       publisher: {
         '@type': 'Organization',
         name: author,
-        logo: {
-          '@type': 'ImageObject',
-          url: `${siteUrl}${defaultBanner}`,
-        },
+        // logo: {
+        //   '@type': 'ImageObject',
+        //   url: `${siteUrl}${defaultBanner}`,
+        // },
       },
       datePublished: datePublished,
       dateModified: buildTime,
@@ -133,15 +110,59 @@ console.log("pathname", pathname)
       },
       mainEntityOfPage: seo.url,
     }
-    // Push current blogpost into breadcrumb list
-    // itemListElement.push({
-    //   '@type': 'ListItem',
-    //   item: {
-    //     '@id': seo.url,
-    //     name: seo.title,
-    //   },
-    //   position: 3,
-    // })
+  }
+
+  let schemaListe = null
+  if (liste) {
+    //console.log(items)
+    const itemListElement = items.map((el, i) => {
+      return {
+        "@type": "ListItem",
+        "position": i,
+        "url": `${siteUrl}${el.uid}`
+      }
+    })
+    schemaListe = {
+      "@context":"https://schema.org",
+      "@type":"ItemList",
+      "itemListElement": itemListElement
+    }
+    //console.log(itemList)
+  }
+
+  if(!homePage && !article && !liste){
+    schemaOrgWebPage = {
+      '@context': 'http://schema.org',
+      '@type': 'WebPage',
+      url: seo.url,
+      inLanguage: siteLanguage,
+      mainEntityOfPage: seo.url,
+      description: seo.description,
+      name: seo.itle,
+      author: {
+        '@type': 'Person',
+        name: author,
+      },
+      copyrightHolder: {
+        '@type': 'Person',
+        name: author,
+      },
+      copyrightYear: new Date().getFullYear(),
+      creator: {
+        '@type': 'Person',
+        name: author,
+      },
+      publisher: {
+        '@type': 'Person',
+        name: author,
+      },
+      datePublished: '2019-01-18T10:30:00+01:00',
+      dateModified: buildTime,
+      image: {
+        '@type': 'ImageObject',
+        url: seo.image,
+      },
+    }
   }
 
   // const breadcrumb = {
@@ -151,7 +172,7 @@ console.log("pathname", pathname)
   //   name: 'Breadcrumbs',
   //   itemListElement,
   // }
-  console.log(schemaArticle)
+  // console.log(schemaArticle)
   return (
     <>
       <Helmet title={seo.title}>
@@ -160,8 +181,10 @@ console.log("pathname", pathname)
         <meta name="image" content={seo.image} />
         <meta name="gatsby-starter" content="Gatsby Starter Prismic i18n" />
         {/* Insert schema.org data conditionally (webpage/article) + everytime (breadcrumbs) */}
-        {!article && <script type="application/ld+json">{JSON.stringify(schemaOrgWebPage)}</script>}
+        {homePage && <script type="application/ld+json">{JSON.stringify(schemaOrgWebPage)}</script>}
         {article && <script type="application/ld+json">{JSON.stringify(schemaArticle)}</script>}
+        {liste && <script type="application/ld+json">{JSON.stringify(schemaListe)}</script>}
+        {!homePage && !article && !liste && <script type="application/ld+json">{JSON.stringify(schemaOrgWebPage)}</script>}
         {/* <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script> */}
         
       </Helmet>
@@ -174,7 +197,11 @@ console.log("pathname", pathname)
         locale={ogLanguage}
         name={facebook}
       />
-      <Twitter title={seo.title} image={seo.image} desc={seo.description} username={twitter} />
+      <Twitter 
+      title={seo.title} 
+      image={seo.image} 
+      desc={seo.description} 
+      username={twitter} />
     </>
   )
 }
