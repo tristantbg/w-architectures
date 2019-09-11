@@ -11,7 +11,7 @@ import i18n from '../../../config/i18n'
 const SEO = ({ title, desc, banner, pathname, article, datePublished, node, locale }) => {
   const { site } = useStaticQuery(query)
   const { defaultTitle, defaultDescription, siteLanguage } = i18n[locale]
-//console.log("siteLanguage", siteLanguage)
+console.log("siteLanguage", siteLanguage)
 console.log("datePublished", datePublished)
 console.log("pathname", pathname)
   const {
@@ -30,7 +30,7 @@ console.log("pathname", pathname)
 
     title: article ? title+" - "+defaultTitle : defaultTitle,
     description: article ? desc : defaultDescription,
-    image: `${siteUrl}${banner || defaultBanner}`,
+    image: `${banner || defaultBanner}`,
     url: `${siteUrl}${pathname || ''}`,
 
   }
@@ -107,7 +107,7 @@ console.log("pathname", pathname)
         '@type': 'Person',
         name: author,
       },
-      copyrightYear: '2019',
+      copyrightYear: new Date().getFullYear(),
       creator: {
         '@type': 'Person',
         name: author,
@@ -124,7 +124,7 @@ console.log("pathname", pathname)
       dateModified: buildTime,
       description: seo.description,
       headline: seo.title,
-      inLanguage: 'en',
+      inLanguage: siteLanguage,
       url: seo.url,
       name: seo.title,
       image: {
