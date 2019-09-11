@@ -3,14 +3,16 @@
     .location{
         &.active{
             .title{
-                cursor: n-resize;
+                //cursor: n-resize;
+                cursor: url('../images/arrow-n.png'), auto;
             }
             .location-content{
                 display: block
             }
         } 
         .title{
-            cursor: s-resize;
+            // cursor: s-resize;
+            cursor: url('../images/arrow-s.png'), auto;
         }
         .location-content{
             display: none;

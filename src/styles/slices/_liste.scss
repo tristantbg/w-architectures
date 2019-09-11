@@ -1,8 +1,16 @@
 .slice.liste{
     .liste-item{
-        &.active .item-content{
-            display: block;
-            border-bottom: $border;
+        &.active{
+            .title{
+                cursor: url('../images/arrow-n.png'), auto;
+            }
+            .item-content{
+                display: block;
+                border-bottom: $border;
+            }
+        } 
+        .title{
+            cursor: url('../images/arrow-s.png'), auto;
         }
         .item-content{
             display: none;

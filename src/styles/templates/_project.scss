@@ -48,12 +48,14 @@
                 @include slide(bottom, 0)
             }
             .toggle{
-                cursor: n-resize;
+                // cursor: n-resize;
+                cursor: url('../images/arrow-n.png'), auto;
             }
         }
         .toggle{
             width: 100%;
-            cursor: s-resize;
+            // cursor: s-resize;
+            cursor: url('../images/arrow-s.png'), auto;
             z-index: 20;
             background: white;
             //&:hover 

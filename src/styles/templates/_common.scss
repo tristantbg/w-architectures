@@ -22,9 +22,15 @@
 }
 
 section{
-    h2{cursor: s-resize;}
+    h2{
+        // cursor: s-resize;
+        cursor: url('../images/arrow-s.png'), auto;
+    }
     &.active{
-        h2{cursor: n-resize;}
+        h2{
+            // cursor: n-resize;
+            cursor: url('../images/arrow-n.png'), auto;
+        }
         .content{
             display: block;
             border-bottom: $border;

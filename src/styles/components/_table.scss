@@ -3,12 +3,18 @@
         padding:$rowPad; 
     }
     .tr{
-        .row-header{cursor: n-resize;}
+        .row-header{
+            //cursor: n-resize;
+            cursor: url('../images/arrow-n.png'), auto;
+        }
         &.is-collapsed{
             &:hover{
                 background: $color2
             }
-            .row-header{cursor: s-resize;}
+            .row-header{
+                // cursor: s-resize;
+                cursor: url('../images/arrow-s.png'), auto;
+            }
         } 
         
     }

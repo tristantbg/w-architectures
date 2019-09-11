@@ -8,11 +8,13 @@
         text-indent: -9999px;
         //cursor: none;
         &.slick-prev{
-            cursor: w-resize;
+            // cursor: w-resize;
+            cursor: url('../images/arrow-w.png'), auto;
         }
         &.slick-next{
             right: 0;
-            cursor: e-resize;
+            // cursor: e-resize;
+            cursor: url('../images/arrow-e.png'), auto;
         }
     }
 }
