@@ -5,19 +5,19 @@ module.exports = {
   titleDetail: 'Voinchet & Architectes Associés',
   description: 'desc here',
   headline: '', // Headline for schema.org JSONLD
-  url: 'https://www.w-architectures.com/', // Domain of your site. No trailing slash!
+  url: 'https://w-architectures.netlify.com', // Domain of your site. No trailing slash!
   logo: '/logos/logo-1024.png', // Used for SEO
   ogLanguage: 'fr_FR', // Facebook Language
 
   // JSONLD / Manifest
   favicon: 'src/favicon.png', // Used for manifest favicon generation
-  shortName: 'Website', // shortname for manifest. MUST be shorter than 12 characters
-  author: 'aeai', // Author for schemaORGJSONLD
+  shortName: 'waw', // shortname for manifest. MUST be shorter than 12 characters
+  author: 'w-architectures', // Author for schemaORGJSONLD
   themeColor: '#ffffff',
   backgroundColor: '#ffffff',
 
-  twitter: '@aeai', // Twitter Username
-  facebook: 'aeai', // Facebook Site Name
+  twitter: '@w-architectures', // Twitter Username
+  facebook: 'w-architectures', // Facebook Site Name
   googleAnalyticsID: 'UA-XXXXXX-X',
 
   skipNavId: 'reach-skip-nav', // ID for the "Skip to content" a11y feature

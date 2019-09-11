@@ -50,7 +50,7 @@ class Agency extends Component {
     const { locales, locale } = this.props.pageContext;
     const i18n = locales[locale];
 
-    const { data } = this.props.data.page;
+    const { data, datePublished } = this.props.data.page;
     // console.log(data)
     return (
       <>
@@ -59,6 +59,7 @@ class Agency extends Component {
           desc={data.texte.text}
           //pathname={location.pathname}
           locale={locale}
+          datePublished={datePublished}
         />
         <div className="template-agency">
           <h1 className="b-b pad">{data.title.text}</h1>
@@ -92,6 +93,7 @@ export default Agency;
 export const pageQuery = graphql`
   query AgencyQuery($locale: String!) {
     page: prismicAgency(lang: { eq: $locale }) {
+      datePublished: first_publication_date(formatString: "YYYY-MM-DD")
       ...agency
     }
   }

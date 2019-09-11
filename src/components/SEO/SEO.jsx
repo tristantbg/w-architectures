@@ -8,10 +8,12 @@ import i18n from '../../../config/i18n'
 
 // Complete tutorial: https://www.gatsbyjs.org/docs/add-seo-component/
 
-const SEO = ({ title, desc, banner, pathname, article, node, locale }) => {
+const SEO = ({ title, desc, banner, pathname, article, datePublished, node, locale }) => {
   const { site } = useStaticQuery(query)
   const { defaultTitle, defaultDescription, siteLanguage } = i18n[locale]
-
+//console.log("siteLanguage", siteLanguage)
+console.log("datePublished", datePublished)
+console.log("pathname", pathname)
   const {
     buildTime,
     siteMetadata: { siteUrl, defaultBanner, ogLanguage, author, twitter, facebook },
@@ -21,10 +23,16 @@ const SEO = ({ title, desc, banner, pathname, article, node, locale }) => {
   const homeURL = `${siteUrl}${localizedPath}`
 
   const seo = {
-    title: title || defaultTitle,
-    description: desc || defaultDescription,
+    // title: title || defaultTitle,
+    // description: desc || defaultDescription,
+    // image: `${siteUrl}${banner || defaultBanner}`,
+    // url: `${siteUrl}${pathname || ''}`,
+
+    title: article ? title+" - "+defaultTitle : defaultTitle,
+    description: article ? desc : defaultDescription,
     image: `${siteUrl}${banner || defaultBanner}`,
     url: `${siteUrl}${pathname || ''}`,
+
   }
 
   // schema.org in JSONLD format
@@ -47,7 +55,7 @@ const SEO = ({ title, desc, banner, pathname, article, node, locale }) => {
       '@type': 'Person',
       name: author,
     },
-    copyrightYear: '2019',
+    copyrightYear: new Date().getFullYear(),
     creator: {
       '@type': 'Person',
       name: author,
@@ -66,24 +74,24 @@ const SEO = ({ title, desc, banner, pathname, article, node, locale }) => {
 
   // Initial breadcrumb list
 
-  const itemListElement = [
-    {
-      '@type': 'ListItem',
-      item: {
-        '@id': siteUrl,
-        name: 'Homepage',
-      },
-      position: 1,
-    },
-    // {
-    //   '@type': 'ListItem',
-    //   item: {
-    //     '@id': `${homeURL}/categories`,
-    //     name: categories,
-    //   },
-    //   position: 2,
-    // },
-  ]
+  // const itemListElement = [
+  //   {
+  //     '@type': 'ListItem',
+  //     item: {
+  //       '@id': siteUrl,
+  //       name: 'Homepage',
+  //     },
+  //     position: 1,
+  //   },
+  //   // {
+  //   //   '@type': 'ListItem',
+  //   //   item: {
+  //   //     '@id': `${homeURL}/categories`,
+  //   //     name: categories,
+  //   //   },
+  //   //   position: 2,
+  //   // },
+  // ]
 
   let schemaArticle = null
 
@@ -112,8 +120,8 @@ const SEO = ({ title, desc, banner, pathname, article, node, locale }) => {
           url: `${siteUrl}${defaultBanner}`,
         },
       },
-      // datePublished: node.first_publication_date,
-      // dateModified: node.last_publication_date,
+      datePublished: datePublished,
+      dateModified: buildTime,
       description: seo.description,
       headline: seo.title,
       inLanguage: 'en',
@@ -126,24 +134,24 @@ const SEO = ({ title, desc, banner, pathname, article, node, locale }) => {
       mainEntityOfPage: seo.url,
     }
     // Push current blogpost into breadcrumb list
-    itemListElement.push({
-      '@type': 'ListItem',
-      item: {
-        '@id': seo.url,
-        name: seo.title,
-      },
-      position: 3,
-    })
+    // itemListElement.push({
+    //   '@type': 'ListItem',
+    //   item: {
+    //     '@id': seo.url,
+    //     name: seo.title,
+    //   },
+    //   position: 3,
+    // })
   }
 
-  const breadcrumb = {
-    '@context': 'http://schema.org',
-    '@type': 'BreadcrumbList',
-    description: 'Breadcrumbs list',
-    name: 'Breadcrumbs',
-    itemListElement,
-  }
-
+  // const breadcrumb = {
+  //   '@context': 'http://schema.org',
+  //   '@type': 'BreadcrumbList',
+  //   description: 'Breadcrumbs list',
+  //   name: 'Breadcrumbs',
+  //   itemListElement,
+  // }
+  console.log(schemaArticle)
   return (
     <>
       <Helmet title={seo.title}>
@@ -154,7 +162,7 @@ const SEO = ({ title, desc, banner, pathname, article, node, locale }) => {
         {/* Insert schema.org data conditionally (webpage/article) + everytime (breadcrumbs) */}
         {!article && <script type="application/ld+json">{JSON.stringify(schemaOrgWebPage)}</script>}
         {article && <script type="application/ld+json">{JSON.stringify(schemaArticle)}</script>}
-        <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
+        {/* <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script> */}
         
       </Helmet>
       <Facebook

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet-universal";
 // import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 // import L from 'leaflet'
+import JsonLd from '../components/ui/JsonLd'
 
 class Location extends Component {
   constructor() {
@@ -44,6 +45,18 @@ class Location extends Component {
     // const layerUrl = "https://tile.geofabrik.de/" + key + "/{z}/{x}/{y}.png"
     //const layerUrl = "http://a.tile.stamen.com/toner/{z}/{x}/{y}.png"
     const layerUrl = "https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png"
+
+    // const data = {
+    //   "@context": "https://schema.org",
+    //   "@type": "Organization",
+    //   "url": "https://www.w-architectures.com/",
+    //   "contactPoint": [
+    //     { "@type": "ContactPoint",
+    //       "telephone": "+1-401-555-1212",
+    //       "contactType": "customer service"
+    //     }
+    //   ]
+    // };
 
     return (
       <div className={"location " + (active ? "active" : "")}>

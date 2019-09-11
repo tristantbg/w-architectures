@@ -11,20 +11,22 @@ class Project extends Component {
     const { project } = this.props.data;
     const { locales, locale, previous, next } = this.props.pageContext;
     const i18n = locales[locale];
-    // console.log(previous)
+    
     // console.log(next)
-    const { title, localisation, year, image_featured, images } = project.data;
-
+    const { title, texte, localisation, year, image_featured, images } = project.data;
+    //console.log(image_featured)
     return (
       <>
         <SEO
           title={`${title.text} | ${i18n.defaultTitleAlt}`}
-          //pathname={location.pathname}
+          pathname={project.uid}
           locale={locale}
-          desc={title.text}
+          desc={texte.text}
           banner={image_featured.url}
           node={project}
           article
+          datePublished={project.datePublished}
+          
         />
         <div className="template-project">
           <div className="project-header b-b pad">
@@ -64,6 +66,7 @@ export const pageQuery = graphql`
   query ProjectBySlug($uid: String!, $locale: String!) {
     project: prismicProject(uid: { eq: $uid }, lang: { eq: $locale }) {
       uid
+      datePublished: first_publication_date(formatString: "YYYY-MM-DD")
       ...project
     }
   }

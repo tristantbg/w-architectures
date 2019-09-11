@@ -20,14 +20,9 @@ class Carousel extends Component {
 
     //const idx = window.location.search.split('idx')
     if(window.location.search){
-      console.log(this.slider)
       const searchParams = new URLSearchParams(window.location.search);
       const idx = parseInt(searchParams.get('idx'))
       this.slider.slickGoTo(idx)
-      // console.log(idx, typeof idx)
-      // this.setState({
-      //   idx: idx
-      // })
     }
   }
 

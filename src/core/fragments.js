@@ -51,6 +51,7 @@ export const query = graphql`
       }
       texte {
         html
+        text
       }
       selection
       year {
@@ -74,6 +75,7 @@ export const query = graphql`
         url
       }
       image_featured {
+        url
         localFile {
           ...fluidImage
         }
