@@ -49,13 +49,13 @@
             }
             .toggle{
                 // cursor: n-resize;
-                cursor: url('../images/arrow-n.png'), auto;
+                cursor: url('../images/arrow-n.png'), n-resize;
             }
         }
         .toggle{
             width: 100%;
             // cursor: s-resize;
-            cursor: url('../images/arrow-s.png'), auto;
+            cursor: url('../images/arrow-s.png'), s-resize;
             z-index: 20;
             background: white;
             //&:hover 

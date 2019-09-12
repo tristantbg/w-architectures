@@ -5,7 +5,7 @@
     .tr{
         .row-header{
             //cursor: n-resize;
-            cursor: url('../images/arrow-n.png'), auto;
+            cursor: url('../images/arrow-n.png'), n-resize;
         }
         &.is-collapsed{
             &:hover{
@@ -13,7 +13,7 @@
             }
             .row-header{
                 // cursor: s-resize;
-                cursor: url('../images/arrow-s.png'), auto;
+                cursor: url('../images/arrow-s.png'), s-resize;
             }
         } 
         

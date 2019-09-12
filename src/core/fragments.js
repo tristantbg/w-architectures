@@ -198,43 +198,59 @@ export const query = graphql`
         text
       }
       body {
-        ... on PrismicContactBodyLocation {
-          slice_type
-          primary {
-            title1 {
-              text
+        ... on Node {
+          ... on PrismicContactBodyLocation {
+            slice_type
+            primary {
+              title1 {
+                text
+              }
             }
-          }
-          items {
-            title1 {
-              text
-            }
-            texte1 {
-              html
-              text
-            }
-            geoloc {
-              longitude
-              latitude
-            }
-          }
-        }
-        ... on PrismicContactBodyTexteImage {
-          slice_type
-          primary {
-            title1 {
-              text
-            }
-            texte {
-              html
-            }
-            image {
-              url
-              localFile {
-                ...fluidImage
+            items {
+              title1 {
+                text
+              }
+              texte1 {
+                html
+                text
+              }
+              geoloc {
+                longitude
+                latitude
               }
             }
           }
+
+          ... on PrismicContactBodyTextes {
+            slice_type
+            primary {
+              title1 {
+                text
+              }
+            }
+            items {
+              texte1 {
+                html
+              }
+            }
+          }
+        # ... on PrismicContactBodyTexteImage {
+        #   slice_type
+        #   primary {
+        #     title1 {
+        #       text
+        #     }
+        #     texte {
+        #       html
+        #     }
+        #     image {
+        #       url
+        #       localFile {
+        #         ...fluidImage
+        #       }
+        #     }
+        #   }
+        # }
         }
       }
     }

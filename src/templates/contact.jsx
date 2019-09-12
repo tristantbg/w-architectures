@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { graphql } from "gatsby";
 import Helmet from "react-helmet";
 import SEO from "../components/SEO/SEO";
-import { TexteImage, Locations } from "../slices";
+import { Textes, TexteImage, Locations } from "../slices";
 
 class Contact extends Component {
   componentDidMount() {
@@ -29,7 +29,10 @@ class Contact extends Component {
   _sliceZone(slices) {
     //const slice = "slice"
     const slice = slices.map((slice, i) => {
+      console.log(slice.slice_type)
       switch (slice.slice_type) {
+        case "textes":
+          return <Textes key={i} input={slice} />;
         case "location":
           return <Locations key={i} input={slice} />;
         case "texte_image":

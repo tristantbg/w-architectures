@@ -27,7 +27,7 @@ class Agency extends Component {
     parent.classList.toggle("active");
   }
 
-  _sliceZone(slices) {
+  _renderSlices(slices) {
     const slice = slices.map((slice, i) => {
       //console.log(slice.slice_type)
       switch (slice.slice_type) {
@@ -64,7 +64,7 @@ class Agency extends Component {
         <div className="template-agency">
           <h1 className="b-b pad">{data.title.text}</h1>
 
-          {this._sliceZone(data.body)}
+          {this._renderSlices(data.body)}
 
           {data.images && (
             <section className="featured-images images liste-images">

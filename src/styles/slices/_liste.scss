@@ -2,7 +2,7 @@
     .liste-item{
         &.active{
             .title{
-                cursor: url('../images/arrow-n.png'), auto;
+                cursor: url('../images/arrow-n.png'), n-resize;
             }
             .item-content{
                 display: block;
@@ -10,12 +10,12 @@
             }
         } 
         .title{
-            cursor: url('../images/arrow-s.png'), auto;
+            cursor: url('../images/arrow-s.png'), s-resize;
         }
         .item-content{
             display: none;
             .texte{
-                columns: 3;
+                //columns: 3;
                 padding-bottom: $rowHeight;
                 @media all and (max-width:$s){
                     columns: 1;

@@ -9,10 +9,16 @@ const Textes = ({ input }) => {
         <div className="row">
           {input.items.map((item, i) => (
             <div className={"col-xs-12 col-md-" + column} key={i}>
-              <div
-                className="texte"
-                dangerouslySetInnerHTML={{ __html: item.texte.html }}
-              />
+              {item.texte &&
+                <div
+                  className="texte"
+                  dangerouslySetInnerHTML={{ __html: item.texte.html }} />
+              }
+              {item.texte1 &&
+                <div
+                  className="texte"
+                  dangerouslySetInnerHTML={{ __html: item.texte1.html }} />
+              }
             </div>
           ))}
         </div>

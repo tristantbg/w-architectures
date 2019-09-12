@@ -24,12 +24,12 @@
 section{
     h2{
         // cursor: s-resize;
-        cursor: url('../images/arrow-s.png'), auto;
+        cursor: url('../images/arrow-s.png'), s-resize;
     }
     &.active{
         h2{
             // cursor: n-resize;
-            cursor: url('../images/arrow-n.png'), auto;
+            cursor: url('../images/arrow-n.png'), n-resize;
         }
         .content{
             display: block;

@@ -9,12 +9,12 @@
         //cursor: none;
         &.slick-prev{
             // cursor: w-resize;
-            cursor: url('../images/arrow-w.png'), auto;
+            cursor: url('../images/arrow-w.png'), w-resize;
         }
         &.slick-next{
             right: 0;
             // cursor: e-resize;
-            cursor: url('../images/arrow-e.png'), auto;
+            cursor: url('../images/arrow-e.png'), e-resize;
         }
     }
 }
