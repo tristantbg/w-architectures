@@ -9,14 +9,27 @@ export const wrapRootElement = ({ element }) => {
     return (
       <>
         <Helmet>
-        <script src="https://unpkg.com/pace-js@1.0.2/pace.min.js"></script>
+          <script src="https://unpkg.com/pace-js@1.0.2/pace.min.js"></script>
         </Helmet>
         {element}
       </>
     );
 }
 
+export const onClientEntry = () => {
+  console.log("We've started!")
+  // callAnalyticsAPI()
+  const isTouch = 'ontouchstart' in window ? true : false;
+  console.log(isTouch)
+  if(isTouch){
+    document.documentElement.classList.add("touch")
+  }else{
+    document.documentElement.classList.add("no-touch")
+  }
+}
+
 export const onRouteUpdate = ({ location }) => {
+  //console.log("")
     //console.log('new pathname', location.pathname)
     // if(document){
     //     const header = document.querySelector("header")

@@ -1,8 +1,9 @@
 //import React from "react";
 import React, { Component } from "react";
-import { Link } from "gatsby";
+// import { Link } from "gatsby";
+import PubSub from 'pubsub-js';
 import website from "../../config/website";
-import locales from "../../config/i18n";
+// import locales from "../../config/i18n";
 //import { LocaleContext } from "./Layout";
 import { ContextHoc } from "../context/ContextHoc";
 import LocalizedLink from "./LocalizedLink";
@@ -18,9 +19,26 @@ class Header extends Component {
     this._toggle = this._toggle.bind(this);
   }
 
-  _toggle() {
+  componentWillUnmount(){
+    PubSub.unsubscribe(this.token)
+  }
+
+  componentDidMount(){
+    this.isTouch = 'ontouchstart' in window ? true : false;
+    
+    this.token = PubSub.subscribe("ROUTE_UPDATE", (e,d) => {
+      console.log(d)
+      document.querySelector("main").focus()
+      this.setState({
+        active: false
+      });
+    })
+  }
+
+  _toggle(value) {
+
     this.setState({
-      active: !this.state.active
+      active: value
     });
   }
 
@@ -34,8 +52,9 @@ class Header extends Component {
     return (
       <header
         className={_headerClass}
-        onMouseEnter={this._toggle}
-        onMouseLeave={this._toggle}
+        onMouseEnter={ (e) => { if(!this.isTouch)this._toggle(true) }}
+
+        onMouseLeave={ (e) => { if(!this.isTouch)this._toggle(false) }}
       >
         <div className="inner">
           <div className="top-header b-b ">
@@ -55,19 +74,14 @@ class Header extends Component {
                   </div>
                 </LocalizedLink>
               </div>
-              <div className="col-xs text-right">
-                {/* <ul className="locale-switcher">
-                  {Object.values(locales).map((value, i) => (
-                    <li key={i}>
-                      <Link
-                        hrefLang={value.locale}
-                        to={"/" + (value.default ? "" : value.path)}
-                      >
-                        {value.localeName}
-                      </Link>
-                    </li>
-                  ))}
-                </ul> */}
+              <div className="col-xs text-right"></div>
+            </div>
+          </div>
+
+          <div className="xs-only">
+            <div className="row ">
+              <div className=" col-xs">
+                <div className="b-b pad" onClick={this._toggle}>Menu</div>
               </div>
             </div>
           </div>

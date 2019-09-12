@@ -19,6 +19,6 @@ main{
     .hidden-xs{display: none;}
 
     main{
-        padding: $headerHeight $margeXS;
+        padding: $headerHeight * 2 $margeXS $headerHeight;
     }
 }

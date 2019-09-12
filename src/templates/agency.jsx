@@ -71,7 +71,7 @@ class Agency extends Component {
               <div className="content">
                 {data.images.map(({ image, column }, i) => (
                   <div className="row" key={i}>
-                    <div className={"col-md-" + column}>
+                    <div className={"col-xs-12 col-md-" + column}>
                       <Img
                         fluid={image.localFile.childImageSharp.fluid}
                         Tag="figure"

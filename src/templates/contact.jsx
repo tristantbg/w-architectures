@@ -29,7 +29,7 @@ class Contact extends Component {
   _sliceZone(slices) {
     //const slice = "slice"
     const slice = slices.map((slice, i) => {
-      console.log(slice.slice_type)
+      //console.log(slice.slice_type)
       switch (slice.slice_type) {
         case "textes":
           return <Textes key={i} input={slice} />;

@@ -19,7 +19,7 @@ class Distinction extends Component {
   render() {
     const { active } = this.state;
     const { item } = this.props;
-    console.log(item.image)
+    // console.log(item.image)
     return (
       <div className={"liste-item " + (active ? "active" : "")}>
         <div className="row">
