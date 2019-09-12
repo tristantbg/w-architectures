@@ -36,8 +36,10 @@ const ProjectInfos = ({ data, embed }) => {
             />
           </div>
           <div className="col-xs-12 col-md-6">
+            
             <div className="fiche_technique">
-              {columns.map((col, i) => (
+            {!embed &&
+              columns.map((col, i) => (
                 <div className="row" key={i}>
                   <div className="col-xs label">{i18n[col]}</div>
                   <div className="col-xs value">
@@ -51,7 +53,23 @@ const ProjectInfos = ({ data, embed }) => {
                   <div className="col-xs hidden-xs"></div>
                   <div className="col-xs hidden-xs"></div>
                 </div>
-              ))}
+              ))
+            }
+              {/* {columns.map((col, i) => (
+                <div className="row" key={i}>
+                  <div className="col-xs label">{i18n[col]}</div>
+                  <div className="col-xs value">
+                    {data[col] && typeof data[col] === "string" && (
+                      <span>{data[col]}</span>
+                    )}
+                    {data[col] && typeof data[col] === "object" && (
+                      <span>{data[col].text}</span>
+                    )}
+                  </div>
+                  <div className="col-xs hidden-xs"></div>
+                  <div className="col-xs hidden-xs"></div>
+                </div>
+              ))} */}
 
               {data.fiche_technique.map((item, i) => (
                 <div className="row" key={i}>

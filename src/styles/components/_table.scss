@@ -18,6 +18,14 @@
         } 
         
     }
+    .table-header{
+        @media all and (min-width:$s){
+            position: sticky;
+            top: $rowHeight;
+            z-index: 249;
+            background: white;
+        }
+    }
     .table-actions{
         @include flexbox();
         li{
