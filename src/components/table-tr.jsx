@@ -76,7 +76,7 @@ class TableTr extends Component {
               </div>
               <div className="col-xs-12 col-md-6 hidden-xs">
                 <div className="row between-xs">
-                  <div className="_td col-xs">{data.year.text}</div>
+                  <div className="_td col-xs year">{data.year.text}</div>
                   <div className="_td col-xs">{data.program}</div>
                   <div className="_td col-xs">{data.type}</div>
                   <div className="_td col-xs">

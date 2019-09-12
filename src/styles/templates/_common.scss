@@ -18,12 +18,17 @@
         
     }
     .label{
-        flex-basis: 180px;
+        flex-basis: 25%;
+        max-width: 25%;
         @media all and (max-width:$s){
             flex-basis: 90px;
             max-width: 90px;
         }
     }
+}
+.year{
+    flex-basis: 25%;
+    max-width: 25%;
 }
 
 section{
