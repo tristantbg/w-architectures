@@ -13,13 +13,13 @@ const Footer = () => {
         <div className="row between-xs">
           <div className="col-xs">
             <ul>
-              <li>{website.title}</li>
+              {/* <li>{website.title}</li> */}
               <li>
                 <a href={`mailto:${options.data.contact.text}`}>
                   {options.data.contact.text}
                 </a>
               </li>
-              <li>{options.data.tel.text}</li>
+              {/* <li>{options.data.tel.text}</li> */}
             </ul>
           </div>
           <div className="col-xs">
