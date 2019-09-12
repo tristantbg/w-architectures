@@ -15,8 +15,13 @@
     padding: $rowPad!important; 
     li{
         @include flexbox();
-        .label{
-            flex-basis: 180px
+        
+    }
+    .label{
+        flex-basis: 180px;
+        @media all and (max-width:$s){
+            flex-basis: 90px;
+            max-width: 90px;
         }
     }
 }

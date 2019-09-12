@@ -2,20 +2,33 @@
     min-height: calc(100vh - (#{$rowHeight} * 2));
     .project-header{
         margin-bottom: $rowHeight;
+        @media all and (max-width:$s){
+            padding: 0;
+            
+            .row{@include flex-direction(column);}
+            .project-title,
+            .related{
+                padding: $rowPad!important; 
+                
+            }
+            .project-title{
+                border-bottom: $border;
+            }
+        }
         .related{
             @include flexbox();
-            @include justify-content(flex-end);
+            //@include justify-content(flex-end);
             li:last-child{
                 &::before{
                     content: "/";
                     padding: 0 .3em
                 }
             }
-            @media all and (max-width:$s){
-                @include flex-direction(column);
-                text-align: right;
-                li:last-child:before{display: none}
-            }
+            // @media all and (max-width:$s){
+            //     // @include flex-direction(column);
+            //     // text-align: right;
+            //     // li:last-child:before{display: none}
+            // }
         }
     }
     $viewHeight: calc(100vh - (#{$rowHeight} * 5));

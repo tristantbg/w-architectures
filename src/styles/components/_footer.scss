@@ -19,12 +19,17 @@ footer{
 @media all and (max-width:$s){
     footer{
         padding: 0 $margeXS;
+        .inner{padding-top: 0!important}
         .row{@include flex-direction(column-reverse)}
         ul{
             @include flex-direction(column);
-            text-align: center;
+            //text-align: center;
+            li{
+                padding: $rowPad;
+                border-bottom: $border;
+            }
         }
         ul li:after{display: none}
-        ul.footer-right{margin-bottom: $rowHeight!important}
+        // ul.footer-right{margin-bottom: $rowHeight!important}
     }
 }
