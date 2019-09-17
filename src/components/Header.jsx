@@ -1,7 +1,7 @@
 //import React from "react";
 import React, { Component } from "react";
 // import { Link } from "gatsby";
-import PubSub from 'pubsub-js';
+import PubSub from "pubsub-js";
 import website from "../../config/website";
 // import locales from "../../config/i18n";
 //import { LocaleContext } from "./Layout";
@@ -19,24 +19,23 @@ class Header extends Component {
     this._toggle = this._toggle.bind(this);
   }
 
-  componentWillUnmount(){
-    PubSub.unsubscribe(this.token)
+  componentWillUnmount() {
+    PubSub.unsubscribe(this.token);
   }
 
-  componentDidMount(){
-    this.isTouch = 'ontouchstart' in window ? true : false;
-    
-    this.token = PubSub.subscribe("ROUTE_UPDATE", (e,d) => {
-      console.log(d)
-      document.querySelector("main").focus()
+  componentDidMount() {
+    this.isTouch = "ontouchstart" in window ? true : false;
+
+    this.token = PubSub.subscribe("ROUTE_UPDATE", (e, d) => {
+      console.log(d);
+      document.querySelector("main").focus();
       this.setState({
         active: false
       });
-    })
+    });
   }
 
   _toggle(value) {
-
     this.setState({
       active: value
     });
@@ -52,9 +51,12 @@ class Header extends Component {
     return (
       <header
         className={_headerClass}
-        onMouseEnter={ (e) => { if(!this.isTouch)this._toggle(true) }}
-
-        onMouseLeave={ (e) => { if(!this.isTouch)this._toggle(false) }}
+        onMouseEnter={e => {
+          if (!this.isTouch) this._toggle(true);
+        }}
+        onMouseLeave={e => {
+          if (!this.isTouch) this._toggle(false);
+        }}
       >
         <div className="inner">
           <div className="top-header b-b ">
@@ -81,7 +83,9 @@ class Header extends Component {
           <div className="xs-only">
             <div className="row ">
               <div className=" col-xs">
-                <div className="b-b pad" onClick={this._toggle}>Menu</div>
+                <div className="b-b pad" onClick={this._toggle}>
+                  Menu
+                </div>
               </div>
             </div>
           </div>

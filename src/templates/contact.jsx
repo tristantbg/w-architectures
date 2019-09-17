@@ -48,7 +48,7 @@ class Contact extends Component {
     const { locales, locale } = this.props.pageContext;
     const i18n = locales[locale];
     const { uid, data, datePublished } = this.props.data.page;
-    
+
     return (
       <>
         <SEO

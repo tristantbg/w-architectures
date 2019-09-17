@@ -14,11 +14,12 @@ const TexteImage = ({ input }) => {
             />
           </div>
           <div className="col-xs-12 col-md-6">
-            {input.primary.image &&
-              <Img 
-              fluid={input.primary.image.localFile.childImageSharp.fluid} 
-              Tag="figure" />
-            }
+            {input.primary.image && (
+              <Img
+                fluid={input.primary.image.localFile.childImageSharp.fluid}
+                Tag="figure"
+              />
+            )}
           </div>
         </div>
       </div>

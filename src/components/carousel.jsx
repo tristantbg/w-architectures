@@ -9,7 +9,6 @@ class Carousel extends Component {
     // this.state = {
     //   idx: 0
     // };
-
   }
 
   componentWillUnmount() {
@@ -19,10 +18,10 @@ class Carousel extends Component {
     document.addEventListener("keyup", this._onKeyboard);
 
     //const idx = window.location.search.split('idx')
-    if(window.location.search){
+    if (window.location.search) {
       const searchParams = new URLSearchParams(window.location.search);
-      const idx = parseInt(searchParams.get('idx'))
-      this.slider.slickGoTo(idx)
+      const idx = parseInt(searchParams.get("idx"));
+      this.slider.slickGoTo(idx);
     }
   }
 
@@ -66,9 +65,7 @@ class Carousel extends Component {
 
     return (
       <div className="carousel">
-        <Slider 
-        ref={slider => (this.slider = slider)}
-        {...settings}>
+        <Slider ref={slider => (this.slider = slider)} {...settings}>
           {images.map(({ image }, i) => {
             if (image.localFile) {
               //const isPortrait = image.localFile.childImageSharp.fluid.aspectRatio < 1

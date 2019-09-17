@@ -23,14 +23,12 @@ class TableTr extends Component {
   componentDidMount() {
     PubSub.subscribe("TABLE.COLLAPSE", this._onCollapse.bind(this));
 
-    const isTouch = 'ontouchstart' in window;
-    if(isTouch){
+    const isTouch = "ontouchstart" in window;
+    if (isTouch) {
       this.setState({
         thumbnailHeight: 50
-      })
+      });
     }
-
-    
   }
   componentWillReceiveProps() {
     // console.log(this.props)
@@ -91,30 +89,28 @@ class TableTr extends Component {
 
           {!collapsed && (
             <div className={"row-content " + (collapsed ? "collapsed" : "")}>
-              
               <div className="images-grid">
-
                 {data.images.map(({ image }, i) => (
-                  <LocalizedLink key={i} to={data.uid+"?idx="+i}>
+                  <LocalizedLink key={i} to={data.uid + "?idx=" + i}>
                     {image.localFile && (
-                      <Img 
-                      fluid={image.localFile.childImageSharp.fluid} 
-                      style={{
-                        width:
-                          thumbnailHeight *
-                            image.localFile.childImageSharp.fluid.aspectRatio +
-                          "px",
-                        height: thumbnailHeight + "px"
-                      }}
-                      Tag="figure" />
+                      <Img
+                        fluid={image.localFile.childImageSharp.fluid}
+                        style={{
+                          width:
+                            thumbnailHeight *
+                              image.localFile.childImageSharp.fluid
+                                .aspectRatio +
+                            "px",
+                          height: thumbnailHeight + "px"
+                        }}
+                        Tag="figure"
+                      />
                     )}
                     {!image.localFile && <img src={image.url} />}
-
-              
                   </LocalizedLink>
                 ))}
               </div>
-       
+
               <ProjectInfos data={data} embed={true} />
             </div>
           )}

@@ -234,23 +234,23 @@ export const query = graphql`
               }
             }
           }
-        # ... on PrismicContactBodyTexteImage {
-        #   slice_type
-        #   primary {
-        #     title1 {
-        #       text
-        #     }
-        #     texte {
-        #       html
-        #     }
-        #     image {
-        #       url
-        #       localFile {
-        #         ...fluidImage
-        #       }
-        #     }
-        #   }
-        # }
+          # ... on PrismicContactBodyTexteImage {
+          #   slice_type
+          #   primary {
+          #     title1 {
+          #       text
+          #     }
+          #     texte {
+          #       html
+          #     }
+          #     image {
+          #       url
+          #       localFile {
+          #         ...fluidImage
+          #       }
+          #     }
+          #   }
+          # }
         }
       }
     }

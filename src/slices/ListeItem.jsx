@@ -33,13 +33,13 @@ class Distinction extends Component {
                 dangerouslySetInnerHTML={{ __html: item.texte1.html }}
               />
               {item.image && item.image.localFile && (
-                <Img 
-                style={{
-                  maxWidth: item.image.dimensions.width
-                }}
-                fluid={item.image.localFile.childImageSharp.fluid} 
-                Tag="figure" />
-              
+                <Img
+                  style={{
+                    maxWidth: item.image.dimensions.width
+                  }}
+                  fluid={item.image.localFile.childImageSharp.fluid}
+                  Tag="figure"
+                />
               )}
             </div>
           </div>

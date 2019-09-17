@@ -14,21 +14,20 @@ class Location extends Component {
     this._toggle = this._toggle.bind(this);
   }
 
-  componentDidMount(){
-    const L = require('leaflet');
+  componentDidMount() {
+    const L = require("leaflet");
     const pointerIcon = L.icon({
-      iconUrl: require('../images/marker-icon.svg'),
+      iconUrl: require("../images/marker-icon.svg"),
       iconSize: [25, 41],
       iconAnchor: [12, 41],
       popupAnchor: [-3, -76],
-      shadowUrl: require('../images/marker-shadow.png'),
+      shadowUrl: require("../images/marker-shadow.png"),
       shadowSize: [25, 41],
       shadowAnchor: [5, 41]
     });
     this.setState({
       icon: pointerIcon
-    })
-
+    });
   }
   _toggle() {
     this.setState({
@@ -44,7 +43,8 @@ class Location extends Component {
     // const key = "c92f820ec8abcfd7f51b075e3efa157e";
     // const layerUrl = "https://tile.geofabrik.de/" + key + "/{z}/{x}/{y}.png"
     //const layerUrl = "http://a.tile.stamen.com/toner/{z}/{x}/{y}.png"
-    const layerUrl = "https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png"
+    const layerUrl =
+      "https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png";
 
     // const data = {
     //   "@context": "https://schema.org",
