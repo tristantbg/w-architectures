@@ -59,6 +59,10 @@ h1,h2,h3,h4,h5,h6 {
 .headline{
 	font-family: $fontSecondary;
 	font-size: $fontL;
+	@media all and (max-width:$s){
+		font-family: $fontPrimary;
+		font-size: $fontM;
+	}
 }
 
 // .small{

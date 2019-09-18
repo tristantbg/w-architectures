@@ -6,6 +6,7 @@ header{
     //margin-bottom: $margeM;
     padding: 0 $margeS;
     background: $bg;
+    
     &.active{
         .site-title{
             .title-detail{
@@ -69,6 +70,21 @@ header{
                 white-space: nowrap;
                 background: white;
                 opacity: 0;
+            }
+        }
+    }
+
+    @media all and (max-width:$s){
+        .site-title{
+            .title-detail{
+                .plus{
+                    opacity: 0;
+                    //transform: scale(0) translateX(100%);
+                }
+                .detail{
+                    width: 200px;
+                    opacity: 1;
+                }
             }
         }
     }

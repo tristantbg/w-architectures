@@ -18,10 +18,12 @@ class Project extends Component {
       texte,
       localisation,
       year,
+      program,
+      type,
       image_featured,
       images
     } = project.data;
-    //console.log(image_featured)
+    console.log(project.data)
     return (
       <>
         <SEO
@@ -37,13 +39,21 @@ class Project extends Component {
         <div className="template-project">
           <div className="project-header b-b pad">
             <div className="row between-xs">
-              <h1 className="col-xs fM fP">
+              <h1 className="col-xs fM fP hidden-xs">
                 <ProjectTitle
                   title={title.text}
                   localisation={localisation.text}
                   year={year.text}
                 />
               </h1>
+              <h1 className="col-xs fM fP hidden-m ">
+                <div className="b-b pad">{title.text}</div>
+              </h1>
+              <div className="col-xs hidden-m metas ">
+                <div className="b-b pad">
+                  <span>{localisation.text}</span>, <span>{year.text}</span>, <span>{program}</span>, <span>{type}</span>
+                </div>
+              </div>
               <div className="col-xs ">
                 <ul className="related">
                   <li>
