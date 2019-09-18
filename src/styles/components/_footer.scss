@@ -18,7 +18,7 @@ footer{
 
 @media all and (max-width:$s){
     footer{
-        padding: 0 $margeXS;
+        padding: 0 $margeS;
         .inner{padding-top: 0!important}
         .row{@include flex-direction(column-reverse)}
         ul{

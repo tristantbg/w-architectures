@@ -11,7 +11,8 @@ class Agency extends Component {
       el.addEventListener("click", this._toggle);
     });
 
-    headlines[0].click();
+    const isTouch = ('ontouchstart' in window);
+    if(!isTouch)headlines[0].click();
   }
 
   componentWillUnmount() {
