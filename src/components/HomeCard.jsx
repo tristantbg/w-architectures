@@ -21,7 +21,7 @@ class HomeCard extends Component {
               year={year}
             />
           </h2>
-          <h2 className="fM hidden-m ">
+          <h2 className="fM xs-only ">
           {title}
           </h2>
         </LocalizedLink>
