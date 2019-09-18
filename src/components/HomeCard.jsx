@@ -14,12 +14,15 @@ class HomeCard extends Component {
             <Img fluid={image.localFile.childImageSharp.fluid} />
           )}
           {!image.localFile && <img src={image.url} />}
-          <h2 className="fM">
+          <h2 className="fM hidden-xs">
             <ProjectTitle
               title={title}
               localisation={localisation}
               year={year}
             />
+          </h2>
+          <h2 className="fM hidden-m ">
+          {title}
           </h2>
         </LocalizedLink>
       </div>
