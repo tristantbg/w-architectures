@@ -16,8 +16,12 @@ const Projects = ({
 }) => {
   const _LocaleContext = React.useContext(LocaleContext);
   const i18n = _LocaleContext.i18n[locale];
+// console.log(projects)
+  const _projectsF = projects.filter(el => {
+    return el.project !== null;
+  });
 
-  const _projects = projects.map(el => {
+  const _projects = _projectsF.map(el => {
     el.project.document[0].data.uid = el.project.document[0].uid;
     return el.project.document[0].data;
   });
