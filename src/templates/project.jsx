@@ -46,10 +46,10 @@ class Project extends Component {
                   year={year.text}
                 />
               </h1>
-              <h1 className="col-xs fM fP hidden-m ">
+              <h1 className="col-xs fM fP xs-only ">
                 <div className="b-b pad">{title.text}</div>
               </h1>
-              <div className="col-xs hidden-m metas ">
+              <div className="col-xs xs-only metas ">
                 <div className="b-b pad">
                   <span>{localisation.text}</span>, <span>{year.text}</span>, <span>{program}</span>, <span>{type}</span>
                 </div>
