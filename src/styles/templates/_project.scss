@@ -53,9 +53,9 @@
         width: 100%;
         padding: 0 $margeS;
 
-        @media all and (max-width:$s){
-            padding: 0 $margeXS;
-        }
+        // @media all and (max-width:$s){
+        //     padding: 0 $margeS;
+        // }
         //background: white;
         z-index: 250;
         &.is-collapsed{
