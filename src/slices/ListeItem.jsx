@@ -19,7 +19,9 @@ class Distinction extends Component {
   render() {
     const { active } = this.state;
     const { item } = this.props;
-    // console.log(item.image)
+    //console.log(item)
+    const texteClass = item.column === 1 ? "" : "column-"+item.column
+    //console.log(texteClass)
     return (
       <div className={"liste-item " + (active ? "active" : "")}>
         <div className="row">
@@ -29,7 +31,7 @@ class Distinction extends Component {
             </div>
             <div className="item-content">
               <div
-                className="texte pad"
+                className={"texte pad "+texteClass}
                 dangerouslySetInnerHTML={{ __html: item.texte1.html }}
               />
               {item.image && item.image.localFile && (

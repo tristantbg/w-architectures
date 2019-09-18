@@ -84,6 +84,8 @@ a,.btn {
 
 .texte{
 	//max-width: 500px;
+	&.column-2{@include column(2, $margeS)}
+	&.column-3{@include column(3, $margeS)}
 }
 p{
 	a{

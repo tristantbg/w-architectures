@@ -174,6 +174,7 @@ export const query = graphql`
               texte1 {
                 html
               }
+              column
               image {
                 dimensions {
                   width
