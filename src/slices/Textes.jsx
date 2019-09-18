@@ -2,6 +2,8 @@ import React from "react";
 
 const Textes = ({ input }) => {
   const column = 12 / input.items.length;
+  //const texteClass = item.column === 1 ? "" : "column-"+item.column
+  console.log(input)
   return (
     <section className="slice textes">
       <h2 className="headline b-b pad">{input.primary.title1.text}</h2>
@@ -11,7 +13,7 @@ const Textes = ({ input }) => {
             <div className={"col-xs-12 col-md-" + column} key={i}>
               {item.texte && (
                 <div
-                  className="texte"
+                  className={"texte "+ (item.column === 1 ? "" : "column-"+item.column)}
                   dangerouslySetInnerHTML={{ __html: item.texte.html }}
                 />
               )}

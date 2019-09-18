@@ -123,6 +123,7 @@ export const query = graphql`
               texte {
                 html
               }
+              column
             }
           }
           ... on PrismicAgencyBodyImages {
@@ -150,6 +151,7 @@ export const query = graphql`
               texte {
                 html
               }
+              column
               image {
                 dimensions {
                   width
