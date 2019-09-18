@@ -53,8 +53,9 @@ const ProjectInfos = ({ data, embed }) => {
                     <div className="col-xs hidden-xs"></div>
                   </div>
                 ))}
-              {/* {columns.map((col, i) => (
-                <div className="row" key={i}>
+              {columns.map((col, i) => (
+                <div className="xs-only">
+                <div className="row " key={i}>
                   <div className="col-xs label">{i18n[col]}</div>
                   <div className="col-xs value">
                     {data[col] && typeof data[col] === "string" && (
@@ -67,7 +68,8 @@ const ProjectInfos = ({ data, embed }) => {
                   <div className="col-xs hidden-xs"></div>
                   <div className="col-xs hidden-xs"></div>
                 </div>
-              ))} */}
+                </div>
+              ))}
 
               {data.fiche_technique.map((item, i) => (
                 <div className="row" key={i}>
