@@ -83,6 +83,7 @@
             background: white;
             @include anime();
             padding: 0;
+            padding-top: $rowHeight;
             @media all and (max-width:$s){
                 max-height: calc(100vh - (#{$rowHeight} * 2));
                 overflow: hidden;

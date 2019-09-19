@@ -9,10 +9,10 @@ const ProjectInfos = ({ data, embed }) => {
   // console.log(data)
   return (
     <div className="project-infos ">
-      <div className="infos b-t">
+      <div className="infos ">
         <div className="row">
           <div className="col-xs-12">
-            <div className="b-b pad">
+            <div className="b-b b-t pad">
               {embed && (
                 <LocalizedLink to={data.uid}>
                   {i18n["openProject"]}
