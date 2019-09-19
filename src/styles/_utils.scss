@@ -17,6 +17,9 @@ img{
     padding: $rowPad; 
     &:empty{display: none;}
 }
+.n-p{
+    padding: 0;
+}
 .headline.pad{
     padding-top: 0.43em;
 }

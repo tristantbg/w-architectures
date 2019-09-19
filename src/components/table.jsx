@@ -297,7 +297,7 @@ class Table extends Component {
               </div>
             </div>
           </div>
-          <div className="_row b-b">
+          <div className="_row b-b n-p">
             <Search />
           </div>
         </div>

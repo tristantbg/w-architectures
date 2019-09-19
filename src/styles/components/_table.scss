@@ -1,11 +1,15 @@
 .table{
-    ._row{
+    ._row:not(.n-p){
         padding:$rowPad; 
     }
     .tr{
         .row-header{
             //cursor: n-resize;
             cursor: url('../images/arrow-n.png'), n-resize;
+            position: sticky;
+            top: $rowHeight * 3;
+            z-index: 248;
+            background: white;
         }
         &.is-collapsed{
             &:hover{
@@ -44,6 +48,7 @@
     .search{
         input{
             width: 100%;
+            height: $rowHeight;
             @include _placeholder{
                 color: #909090;
             }
