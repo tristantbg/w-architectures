@@ -1,9 +1,9 @@
 footer{
     padding: 0 $margeS;
-    position: fixed; width: 100%;
-    bottom: 0;
-    z-index: 250;
-    background: white;
+    // position: fixed; width: 100%;
+    // bottom: 0;
+    // z-index: 250;
+    // background: white;
     ul{
         @include flexbox()
         &.footer-right{

@@ -92,14 +92,14 @@ class Header extends Component {
 
           <nav className="nav-wrap headline">
             <ul>
-              <li className="b-b pad">
-                <LocalizedLink to="/projects">{i18n["projects"]}</LocalizedLink>
+              <li>
+                <LocalizedLink className="b-b pad" to="/projects">{i18n["projects"]}</LocalizedLink>
               </li>
-              <li className="b-b pad">
-                <LocalizedLink to="/agence">{i18n["agency"]}</LocalizedLink>
+              <li>
+                <LocalizedLink className="b-b pad" to="/agence">{i18n["agency"]}</LocalizedLink>
               </li>
-              <li className="b-b pad">
-                <LocalizedLink to="/contact">{i18n["contact"]}</LocalizedLink>
+              <li>
+                <LocalizedLink className="b-b pad" to="/contact">{i18n["contact"]}</LocalizedLink>
               </li>
             </ul>
           </nav>
