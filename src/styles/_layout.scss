@@ -3,8 +3,13 @@ html,body{
 }
 
 main{
-    padding: $headerHeight $margeS;
+    padding: $rowHeight $margeS;
     min-height: calc(100vh - (#{$rowHeight} * 1))
+}
+body:not(.page-projet){
+    main{
+        padding: $rowHeight $margeS $rowHeight * 2;
+    }
 }
 
 

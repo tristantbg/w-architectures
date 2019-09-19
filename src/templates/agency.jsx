@@ -61,6 +61,7 @@ class Agency extends Component {
           pathname={uid}
           locale={locale}
           datePublished={datePublished}
+          bodyClass="page-agency"
         />
         <div className="template-agency">
           <h1 className="b-b pad">{data.title.text}</h1>

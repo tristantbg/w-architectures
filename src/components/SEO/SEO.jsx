@@ -8,7 +8,7 @@ import i18n from '../../../config/i18n'
 
 // Complete tutorial: https://www.gatsbyjs.org/docs/add-seo-component/
 
-const SEO = ({ title, description, banner, datePublished, pathname, homePage=false, locale, article, liste, items }) => {
+const SEO = ({ title, description, banner, bodyClass, datePublished, pathname, homePage=false, locale, article, liste, items }) => {
   const { site } = useStaticQuery(query)
   const { defaultTitle, defaultDescription, siteLanguage } = i18n[locale]
 // console.log("siteLanguage", siteLanguage)
@@ -186,7 +186,7 @@ const SEO = ({ title, description, banner, datePublished, pathname, homePage=fal
         {liste && <script type="application/ld+json">{JSON.stringify(schemaListe)}</script>}
         {!homePage && !article && !liste && <script type="application/ld+json">{JSON.stringify(schemaOrgWebPage)}</script>}
         {/* <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script> */}
-        
+        <body className={bodyClass} />
       </Helmet>
       <Facebook
         desc={seo.description}

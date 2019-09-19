@@ -35,6 +35,7 @@ const Projects = ({
         locale={locale}
         liste={true}
         items={_projects}
+        bodyClass="page-projets"
       />
       <div className="template-projects">
         <h1 className="b-b pad">{title.text}</h1>

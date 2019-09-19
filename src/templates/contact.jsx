@@ -58,6 +58,7 @@ class Contact extends Component {
           pathname={uid}
           description={data.texte.text}
           datePublished={datePublished}
+          bodyClass="page-contact"
         />
         <Helmet>
           <link

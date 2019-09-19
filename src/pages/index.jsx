@@ -21,6 +21,7 @@ const HomePage = ({
         pathname={location.pathname}
         locale={locale}
         homePage={true}
+        bodyClass="page-home"
       />
 
       <div className="projects-liste liste-images">

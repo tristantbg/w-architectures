@@ -35,6 +35,7 @@ class Project extends Component {
           node={project}
           article
           datePublished={project.datePublished}
+          bodyClass="page-projet"
         />
         <div className="template-project">
           <div className="project-header b-b pad">
