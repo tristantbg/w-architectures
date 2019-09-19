@@ -45,7 +45,7 @@ exports.createPages = async ({ graphql, actions }) => {
   //   },
   // })
   const projectTemplate = require.resolve('./src/templates/project.jsx')
-  const pageTemplate = require.resolve('./src/templates/page.jsx')
+  // const pageTemplate = require.resolve('./src/templates/page.jsx')
   const projectsTemplate = require.resolve('./src/templates/projects.jsx')
   const contactTemplate = require.resolve('./src/templates/contact.jsx')
   const agencyTemplate = require.resolve('./src/templates/agency.jsx')
@@ -92,56 +92,72 @@ exports.createPages = async ({ graphql, actions }) => {
       },
   })
 
+  // projects: allPrismicProject(filter: {lang: {eq: "fr-fr"}}) {
+  //   edges {
+  //     node {
+  //       uid
+  //       lang
+  //     }
+  //   }
+  // }
+
   const result = await wrapper(
     graphql(`
       {
-        projects: allPrismicProject(filter: {lang: {eq: "fr-fr"}}) {
-          edges {
-            node {
-              uid
-              lang
+        projectsFr: prismicProjects(lang: {eq: "fr-fr"}) {
+          data {
+            projects {
+              project {
+                uid
+                lang
+              }
             }
           }
         }
-        
       }
     `)
   )
-
-  const projectsFr = result.data.projects.edges
-  
-  
-  
-  // const projectsEn = projectsList.filter(function (p) {
-  //   return p.node.lang === "en-gb";
-  // });
-
+  const projectsFr = result.data.projectsFr.data.projects
   const lengthFr = projectsFr.length
+// console.log(result.data.projectsFr.data.projects)
+// console.log(JSON.stringify(projectsFr, null, 4));
+//   const projectsFr = result.data.projects.edges
+  
+  
+  
+//   // const projectsEn = projectsList.filter(function (p) {
+//   //   return p.node.lang === "en-gb";
+//   // });
 
-  projectsFr.forEach((edge, index) => {
+  
+
+  projectsFr.forEach(({project}, index) => {
+    if(project){
+      const previous = index === 0 
+        ? projectsFr[lengthFr - 1].project 
+        : projectsFr[index - 1].project
+
+      const next = index === lengthFr - 1 
+        ? projectsFr[0].project 
+        : projectsFr[index + 1].project
+  // console.log(previous)
+  // console.log(JSON.stringify(project, null, 4))
+  console.log(localizedSlug(project))
+      createPage({
+        path: localizedSlug(project),
+        component: projectTemplate,
+        context: {
+          // Pass the unique ID (uid) through context so the template can filter by it
+          uid: project.uid,
+          locales: locales,
+          locale: project.lang,
+          previous: previous,
+          next: next,
+          template: 'project'
+        },
+      })
+    }
     
-    const previous = index === 0 
-    ? projectsFr[lengthFr - 1].node 
-    : projectsFr[index - 1].node
-
-    const next = index === lengthFr - 1 
-    ? projectsFr[0].node 
-    : projectsFr[index + 1].node
-// console.log(previous)
-// console.log(localizedSlug(edge.node))
-    createPage({
-      path: localizedSlug(edge.node),
-      component: projectTemplate,
-      context: {
-        // Pass the unique ID (uid) through context so the template can filter by it
-        uid: edge.node.uid,
-        locales: locales,
-        locale: edge.node.lang,
-        previous: previous,
-        next: next,
-        template: 'project'
-      },
-    })
   })
 
   // if(projectsEn.length){
@@ -174,15 +190,5 @@ exports.createPages = async ({ graphql, actions }) => {
   // }
   
 
-  
-  // pageList.forEach(edge => {
-  //   createPage({
-  //     path: localizedSlug(edge.node),
-  //     component: pageTemplate,
-  //     context: {
-  //       uid: edge.node.uid,
-  //       locale: edge.node.lang,
-  //     },
-  //   })
-  // })
+
 }
