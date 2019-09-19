@@ -61,6 +61,10 @@
         vertical-align: top;
         @include flexbox();
         @include flex-wrap(wrap);
+        @media all and (max-width:$s){
+            overflow: auto;
+            width: 100%;
+        }
         figure{
             margin-right: $rowHeight;
             margin-bottom: $rowHeight;
