@@ -36,6 +36,7 @@ class Header extends Component {
   }
 
   _toggle(value) {
+    console.log(value)
     this.setState({
       active: value
     });
@@ -83,7 +84,9 @@ class Header extends Component {
           <div className="xs-only">
             <div className="row ">
               <div className=" col-xs">
-                <div className="b-b pad" onClick={this._toggle}>
+                <div className="b-b pad" onClick={e => {
+                  this._toggle(!active)
+                }}>
                   Menu
                 </div>
               </div>

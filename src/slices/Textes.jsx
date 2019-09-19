@@ -3,7 +3,7 @@ import React from "react";
 const Textes = ({ input }) => {
   const column = 12 / input.items.length;
   //const texteClass = item.column === 1 ? "" : "column-"+item.column
-  console.log(input)
+  // console.log(input)
   return (
     <section className="slice textes">
       <h2 className="headline b-b pad">{input.primary.title1.text}</h2>
