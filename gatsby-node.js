@@ -142,7 +142,7 @@ exports.createPages = async ({ graphql, actions }) => {
         : projectsFr[index + 1].project
   // console.log(previous)
   // console.log(JSON.stringify(project, null, 4))
-  console.log(localizedSlug(project))
+  // console.log(localizedSlug(project))
       createPage({
         path: localizedSlug(project),
         component: projectTemplate,

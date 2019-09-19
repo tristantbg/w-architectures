@@ -84,7 +84,7 @@ class Header extends Component {
           <div className="xs-only">
             <div className="row ">
               <div className=" col-xs">
-                <div className="b-b pad" onClick={e => {
+                <div className="b-b pad menu-cta" onClick={e => {
                   this._toggle(!active)
                 }}>
                   Menu

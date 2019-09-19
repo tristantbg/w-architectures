@@ -52,8 +52,8 @@ header{
             @include flexbox();
             @include justify-content(space-between);
             min-width: 18px;
-            &::before,
-            &::after{}
+            // &::before,
+            // &::after{}
             &::before{content: "["}
             &::after{content: "]"}
             .plus,
@@ -88,7 +88,10 @@ header{
             }
         }
     }
-    
+    .menu-cta{
+        z-index: 251;
+        background: white;
+    }
     nav{
         &.collapsed{display: none}
         z-index: 1;
