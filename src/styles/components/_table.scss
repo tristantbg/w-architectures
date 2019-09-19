@@ -6,10 +6,10 @@
         .row-header{
             //cursor: n-resize;
             cursor: url('../images/arrow-n.png'), n-resize;
-            position: sticky;
-            top: $rowHeight * 3;
-            z-index: 248;
-            background: white;
+            // position: sticky;
+            // top: $rowHeight * 3;
+            // z-index: 248;
+            // background: white;
         }
         &.is-collapsed{
             &:hover{
