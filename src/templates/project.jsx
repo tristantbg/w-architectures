@@ -57,14 +57,19 @@ class Project extends Component {
               </div>
               <div className="col-xs ">
                 <ul className="related">
+                  {previous &&
                   <li>
-                    <LocalizedLink to={previous.uid}>
-                      {i18n["prev"]}
-                    </LocalizedLink>
+                  <LocalizedLink to={previous.uid}>
+                    {i18n["prev"]}
+                  </LocalizedLink>
                   </li>
+                  }
+                  
+                  {next &&
                   <li>
                     <LocalizedLink to={next.uid}>{i18n["next"]}</LocalizedLink>
                   </li>
+                  }
                 </ul>
               </div>
             </div>
