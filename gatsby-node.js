@@ -110,6 +110,13 @@ exports.createPages = async ({ graphql, actions }) => {
               project {
                 uid
                 lang
+                document {
+                  data {
+                    title {
+                      text
+                    }
+                  }
+                }
               }
             }
           }

@@ -20,6 +20,13 @@
         .related{
             @include flexbox();
             @include justify-content(flex-end);
+            li{
+                span.value{display: none}
+                &:hover{
+                    span.label{display: none}
+                    span.value{display: inline-block}
+                }
+            }
             li:last-child{
                 &::before{
                     content: "/";

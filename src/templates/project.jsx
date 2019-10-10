@@ -12,7 +12,7 @@ class Project extends Component {
     const { locales, locale, previous, next } = this.props.pageContext;
     const i18n = locales[locale];
 
-    // console.log(next)
+    console.log(next)
     const {
       title,
       texte,
@@ -59,15 +59,19 @@ class Project extends Component {
                 <ul className="related">
                   {previous &&
                   <li>
-                  <LocalizedLink to={previous.uid}>
-                    {i18n["prev"]}
+                  <LocalizedLink to={previous.uid} >
+                    <span className="label">{i18n["prev"]}</span>
+                    <span className="value">{previous.document[0].data.title.text}</span>
                   </LocalizedLink>
                   </li>
                   }
                   
                   {next &&
                   <li>
-                    <LocalizedLink to={next.uid}>{i18n["next"]}</LocalizedLink>
+                    <LocalizedLink to={next.uid}>
+                      <span className="label">{i18n["next"]}</span>
+                      <span className="value">{next.document[0].data.title.text}</span>
+                    </LocalizedLink>
                   </li>
                   }
                 </ul>
