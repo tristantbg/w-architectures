@@ -44,7 +44,8 @@ class Location extends Component {
     // const layerUrl = "https://tile.geofabrik.de/" + key + "/{z}/{x}/{y}.png"
     //const layerUrl = "http://a.tile.stamen.com/toner/{z}/{x}/{y}.png"
     const layerUrl =
-      "https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png";
+      //"https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png";
+      "https://stamen-tiles.a.ssl.fastly.net/toner-background/{z}/{x}/{y}.png";
 
     // const data = {
     //   "@context": "https://schema.org",
