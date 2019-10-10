@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Transition from "./Transition";
 import Header from "./Header";
 import Footer from "./Footer";
+import FaviconLetter from "./ui/FaviconLetter";
 // import SkipNavLink from "./SkipNavLink";
 import i18n from "../../config/i18n";
 
@@ -23,6 +24,8 @@ const Layout = ({ children, location, pageContext: { locale, template } }) => {
         </main>
 
         {template !== "project" && <Footer />}
+
+        <FaviconLetter texte="W" background="black" foreground="white" />
       </>
     </LocaleContext.Provider>
   );

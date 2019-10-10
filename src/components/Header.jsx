@@ -27,7 +27,7 @@ class Header extends Component {
     this.isTouch = "ontouchstart" in window ? true : false;
 
     this.token = PubSub.subscribe("ROUTE_UPDATE", (e, d) => {
-      console.log(d);
+      //console.log(d);
       document.querySelector("main").focus();
       this.setState({
         active: false
@@ -36,7 +36,7 @@ class Header extends Component {
   }
 
   _toggle(value) {
-    console.log(value)
+    //console.log(value)
     this.setState({
       active: value
     });

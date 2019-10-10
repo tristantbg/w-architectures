@@ -23,7 +23,7 @@ class Project extends Component {
       image_featured,
       images
     } = project.data;
-    console.log(project.data)
+    //console.log(project.data)
     return (
       <>
         <SEO
