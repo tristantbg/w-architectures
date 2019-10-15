@@ -7,6 +7,7 @@ import website from "../../config/website";
 //import { LocaleContext } from "./Layout";
 import { ContextHoc } from "../context/ContextHoc";
 import LocalizedLink from "./LocalizedLink";
+import LocaleSwitcher from "./ui/LocaleSwitcher"
 
 class Header extends Component {
   constructor(props) {
@@ -77,7 +78,9 @@ class Header extends Component {
                   </div>
                 </LocalizedLink>
               </div>
-              <div className="col-xs text-right"></div>
+              <div className="col-xs text-right">
+                <LocaleSwitcher />
+              </div>
             </div>
           </div>
 

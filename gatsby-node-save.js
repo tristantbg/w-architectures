@@ -34,7 +34,7 @@ exports.onCreatePage = ({ page, actions }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  //const lang = "fr-fr"
+  const lang = "fr-fr"
   // 
   // createPage({
   //   path: "/projects",
@@ -50,56 +50,46 @@ exports.createPages = async ({ graphql, actions }) => {
   const contactTemplate = require.resolve('./src/templates/contact.jsx')
   const agencyTemplate = require.resolve('./src/templates/agency.jsx')
 
+  //////////////////////////////////
+  const localizedProjectsPath = '/projects' 
+  console.log(localizedProjectsPath)
+  createPage({
+      path: localizedProjectsPath,
+      component: projectsTemplate,
+      context: {
+          template: 'projects',
+          locale: lang,
+          locales: locales,
+          //i18n: locales[lang]
+      },
+  })
 
-  Object.keys(locales).map(lang => {
-    //////////////////////////////////
-    //////////////////////////////////
-    const localizedProjectsPath = locales[lang].default 
-      ? '/projects' 
-      : `/${locales[lang].path}/projects`
-    createPage({
-        path: localizedProjectsPath,
-        component: projectsTemplate,
-        context: {
-            template: 'projects',
-            locale: lang,
-            locales: locales,
-            //i18n: locales[lang]
-        },
-    })
+  //////////////////////////////////
+  const localizedAgencePath = '/agence' 
+  console.log(localizedAgencePath)
+  createPage({
+      path: localizedAgencePath,
+      component: agencyTemplate,
+      context: {
+          template: 'agence',
+          locale: lang,
+          locales: locales,
+          //i18n: locales[lang]
+      },
+  })
 
-    //////////////////////////////////
-    const localizedAgencePath = locales[lang].default 
-      ? '/agence' 
-      : `/${locales[lang].path}/agence`
-    createPage({
-        path: localizedAgencePath,
-        component: agencyTemplate,
-        context: {
-            template: 'agence',
-            locale: lang,
-            locales: locales,
-            //i18n: locales[lang]
-        },
-    })
-
-    //////////////////////////////////
-    const localizedContactPath = locales[lang].default 
-    ? '/contact' 
-    : `/${locales[lang].path}/contact`
-    createPage({
-        path: localizedContactPath,
-        component: contactTemplate,
-        context: {
-            template: 'contact',
-            locale: lang,
-            locales: locales,
-            //i18n: locales[lang]
-        },
-    })
-
-    //////////////////////////////////
-    //////////////////////////////////
+  //////////////////////////////////
+  const localizedContactPath = '/contact' 
+  console.log(localizedProjectsPath)
+  createPage({
+      path: localizedContactPath,
+      component: contactTemplate,
+      context: {
+          template: 'contact',
+          locale: lang,
+          locales: locales,
+          //i18n: locales[lang]
+      },
   })
 
   // projects: allPrismicProject(filter: {lang: {eq: "fr-fr"}}) {
@@ -131,31 +121,11 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
-        projectsEn: prismicProjects(lang: {eq: "en-gb"}) {
-          data {
-            projects {
-              project {
-                uid
-                lang
-                document {
-                  data {
-                    title {
-                      text
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
       }
     `)
   )
   const projectsFr = result.data.projectsFr.data.projects
   const lengthFr = projectsFr.length
-
-  const projectsEn = result.data.projectsEn.data.projects
-  const lengthEn = projectsEn.length
 // console.log(result.data.projectsFr.data.projects)
 // console.log(JSON.stringify(projectsFr, null, 4));
 //   const projectsFr = result.data.projects.edges
@@ -177,35 +147,6 @@ exports.createPages = async ({ graphql, actions }) => {
       const next = index === lengthFr - 1 
         ? projectsFr[0].project 
         : projectsFr[index + 1].project
-  // console.log(previous)
-  // console.log(JSON.stringify(project, null, 4))
-  // console.log(localizedSlug(project))
-      createPage({
-        path: localizedSlug(project),
-        component: projectTemplate,
-        context: {
-          // Pass the unique ID (uid) through context so the template can filter by it
-          uid: project.uid,
-          locales: locales,
-          locale: project.lang,
-          previous: previous,
-          next: next,
-          template: 'project'
-        },
-      })
-    }
-    
-  })
-
-  projectsEn.forEach(({project}, index) => {
-    if(project){
-      const previous = index === 0 
-        ? projectsEn[lengthFr - 1].project 
-        : projectsEn[index - 1].project
-
-      const next = index === lengthFr - 1 
-        ? projectsEn[0].project 
-        : projectsEn[index + 1].project
   // console.log(previous)
   // console.log(JSON.stringify(project, null, 4))
   // console.log(localizedSlug(project))
