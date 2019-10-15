@@ -32,6 +32,9 @@ footer{
                 padding: $rowPad;
                 border-bottom: $border;
             }
+            &.footer-left{
+                li:last-child{border: none}
+            }
         }
         ul li:after{display: none}
         // ul.footer-right{margin-bottom: $rowHeight!important}

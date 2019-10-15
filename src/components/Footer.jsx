@@ -12,7 +12,7 @@ const Footer = () => {
       <div className="inner pad b-t">
         <div className="row between-xs">
           <div className="col-xs">
-            <ul>
+            <ul className="footer-left">
               {/* <li>{website.title}</li> */}
               <li>
                 <a href={`mailto:${options.data.contact.text}`}>

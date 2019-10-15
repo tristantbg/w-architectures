@@ -126,22 +126,22 @@ export const query = graphql`
               column
             }
           }
-          ... on PrismicAgencyBodyImages {
-            slice_type
-            primary {
-              title1 {
-                text
-              }
-            }
-            items {
-              column
-              image {
-                localFile {
-                  ...fluidImage
-                }
-              }
-            }
-          }
+          # ... on PrismicAgencyBodyImages {
+          #   slice_type
+          #   primary {
+          #     title1 {
+          #       text
+          #     }
+          #   }
+          #   items {
+          #     column
+          #     image {
+          #       localFile {
+          #         ...fluidImage
+          #       }
+          #     }
+          #   }
+          # }
           ... on PrismicAgencyBodyTexteImage {
             slice_type
             primary {
@@ -177,14 +177,14 @@ export const query = graphql`
                 html
               }
               column
-              image {
-                dimensions {
-                  width
-                }
-                localFile {
-                  ...fluidImage
-                }
-              }
+              # image {
+              #   dimensions {
+              #     width
+              #   }
+              #   localFile {
+              #     ...fluidImage
+              #   }
+              # }
             }
           }
         }
