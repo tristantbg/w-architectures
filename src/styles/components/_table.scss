@@ -4,8 +4,13 @@
     }
     .tr{
         .row-header{
-            //cursor: n-resize;
-            cursor: url('../images/arrow-n.png'), n-resize;
+            // &:before{
+            //     content: "↓";
+            //     color: red;
+            // }
+            cursor: n-resize;
+            //cursor: url('../images/arrow-n.png'), n-resize;
+            //cursor: url("data:image/svg+xml,%3Csvg version='1.1' id='Calque_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 16 20' style='enable-background:new 0 0 16 20;' xml:space='preserve' height='16' width='20' %3E%3Cg%3E%3Cpath d='M16,10.5L9,3.4V20H6.9V3.4L0,10.5V8l8-8l8,8V10.5z'/%3E%3C/g%3E%3C/svg%3E%0A"), n-resize;
             // position: sticky;
             // top: $rowHeight * 3;
             // z-index: 248;
@@ -16,8 +21,10 @@
                 background: $color2
             }
             .row-header{
-                // cursor: s-resize;
-                cursor: url('../images/arrow-s.png'), s-resize;
+                //cursor: s-resize;
+                cursor: crosshair;
+                // cursor: url('../images/arrow-s.png'), s-resize;
+                //cursor: url("data:image/svg+xml,%3Csvg version='1.1' id='Calque_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 16 20' style='enable-background:new 0 0 16 20;' xml:space='preserve' height='16' width='20' %3E%3Cg%3E%3Cpath d='M0,9.5l6.9,7.1V0H9v16.6L16,9.5V12l-8,8l-8-8V9.5z'/%3E%3C/g%3E%3C/svg%3E%0A"), s-resize;
             }
         } 
         
@@ -66,11 +73,11 @@
             width: 100%;
         }
         figure{
-            margin-right: $rowHeight;
-            margin-bottom: $rowHeight;
+            margin-right: $rowHeight / 2;
+            margin-bottom: $rowHeight / 2;
             @media all and (max-width:$s){
-                margin-right: $rowHeight / 2;
-                margin-bottom: $rowHeight / 2;
+                // margin-right: $rowHeight / 2;
+                // margin-bottom: $rowHeight / 2;
             }
         }
     }

@@ -15,8 +15,20 @@ header{
                     //transform: scale(0) translateX(100%);
                 }
                 .detail{
-                    width: 200px;
+                    //width: 200px;
+                    width: 203px;
                     opacity: 1;
+
+                    @media all and (max-width:$s){
+                        width: 204px;
+                    }
+                    @-moz-document url-prefix() {
+                        width: 204px;
+                    }
+                    @media not all and (min-resolution:.001dpcm)
+                        { @supports (-webkit-appearance:none) {
+                            width: 204px;
+                        }}
                 }
             }
         }
@@ -32,11 +44,7 @@ header{
         padding: $rowPad;
         background: white;
         z-index: 2;
-        .locale-switcher{
-            @include flexbox()
-            @include justify-content(flex-end);
-            a{padding-left: .4em}
-        }
+        
     }
     .site-title{
         @include flexbox();
@@ -52,8 +60,10 @@ header{
             @include flexbox();
             @include justify-content(space-between);
             min-width: 18px;
-            // &::before,
-            // &::after{}
+            &::before,
+            &::after{
+                font-feature-settings: "case";
+            }
             &::before{content: "["}
             &::after{content: "]"}
             .plus,
@@ -82,8 +92,22 @@ header{
                     //transform: scale(0) translateX(100%);
                 }
                 .detail{
-                    width: 200px;
+                    width: 203px;
                     opacity: 1;
+                }
+            }
+        }
+    }
+    @media all and (max-width:$xxs){
+        .site-title{
+            .title-detail{
+                .plus{
+                    opacity: 1;
+                    //transform: scale(0) translateX(100%);
+                }
+                .detail{
+                    width: 0;
+                    opacity: 0;
                 }
             }
         }
@@ -106,7 +130,7 @@ header{
             //@include flexbox();
             li{
                 a:hover{
-                    color: $color2;
+                    color: $color3;
                     border-color: black;
                 }
                 a{
@@ -116,6 +140,18 @@ header{
             }
         }
     }
+
+    .locale-switcher{
+        @include flexbox()
+        @include justify-content(flex-end);
+        a{padding-left: .4em}
+        li.active a{
+            text-decoration: underline;
+            text-decoration-color: $color3;
+        }
+    }
+
+
 }
 
 .pace-running header{

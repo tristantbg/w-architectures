@@ -7,10 +7,14 @@ $max-width: 1800px;
 $headerHeight: 25px;
 $rowHeight: 25px;
 $headerHeightMobile: 25px;
-$rowPad: 0.36em 0;
+//$rowPad: 0.48em 0 0.31em;
+//$rowPad: 7px 0 3px;
+$rowPad: 0.500em 0 0.214em;
+$rowPadHeadline: 0.548em 0 0.286em;
 /* Colors */
 $color1: #000;
 $color2: #F3F3F3;
+$color3: #999999;
 
 //$links: $color1;
 //$hover: $color2;
@@ -43,3 +47,4 @@ $cap: 1920px;
 $m: 1024px;
 $s: 768px;
 $xs: 500px;
+$xxs: 320px;

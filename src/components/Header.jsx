@@ -78,21 +78,21 @@ class Header extends Component {
                   </div>
                 </LocalizedLink>
               </div>
-              <div className="col-xs text-right">
+              <div className="col-xs text-right hidden-xs">
                 <LocaleSwitcher />
               </div>
             </div>
           </div>
 
-          <div className="xs-only">
-            <div className="row ">
-              <div className=" col-xs">
-                <div className="b-b pad menu-cta" onClick={e => {
-                  this._toggle(!active)
-                }}>
-                  Menu
-                </div>
+          <div className="xs-only b-b top-header">
+            <div className="row between-xs">
+              <div className="col-xs menu-cta" onClick={e => {
+                this._toggle(!active)
+              }}>Menu</div>
+              <div className="col-xs text-right">
+                <LocaleSwitcher />
               </div>
+              
             </div>
           </div>
 
@@ -116,60 +116,3 @@ class Header extends Component {
 }
 
 export default ContextHoc(Header);
-
-/*
-const Header = () => {
-  const lang = React.useContext(LocaleContext);
-  const i18n = lang.i18n[lang.locale];
-
-  return (
-    <header>
-      <div className="inner">
-        <div className="top-header b-b ">
-          <div className="row between-xs">
-            <div className="col-xs">
-              <LocalizedLink to="/" aria-label="Back to Home" className="site-title ">
-                <div className="title">{website.title}</div>
-                <div className="title-detail">
-                  <div className="plus">+</div>
-                  <div className="detail"><span>{website.titleDetail}</span></div>
-                </div>  
-              </LocalizedLink>
-            </div>
-            <div className="col-xs text-right">
-              <ul className="locale-switcher">
-                {Object.values(locales).map((value, i) => (
-                  <li key={i}>
-                    <Link
-                      hrefLang={value.locale}
-                      to={"/" + (value.default ? "" : value.path)}
-                    >
-                      {value.localeName}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <nav className="nav-wrap headline">
-          <ul>
-            <li className="b-b pad">
-              <LocalizedLink to="/projects">{i18n["projects"]}</LocalizedLink>
-            </li>
-            <li className="b-b pad">
-              <LocalizedLink to="/agence">{i18n["agency"]}</LocalizedLink>
-            </li>
-            <li className="b-b pad">
-              <LocalizedLink to="/contact">{i18n["contact"]}</LocalizedLink>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-  );
-};
-
-export default Header;
-*/

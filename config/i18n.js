@@ -49,7 +49,7 @@ module.exports = {
     infos: 'Informations',
     close: 'Close',
     openProject: 'Open the project page',
-    download: 'Download la fiche projet',
+    download: 'Download the project sheet',
     localisation: 'Localisation',
     year: 'Year',
     program: 'Program',

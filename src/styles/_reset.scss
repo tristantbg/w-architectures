@@ -267,9 +267,9 @@ textarea {
 img[data-sizes="auto"] { display: block; width: 100%; }
 
 ::-moz-selection { /* Code for Firefox */
-  color: blue;
+  color: $color3;
 }
 
 ::selection {
-  color: blue; 
+  color: $color3; 
 }

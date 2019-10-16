@@ -20,8 +20,18 @@ img{
 .n-p{
     padding: 0;
 }
-.headline.pad{
-    padding-top: 0.43em;
+// .headline.pad{
+//     //padding-top: 0.43em;
+//     @-moz-document url-prefix() {
+//         padding-top: 0.53em;
+//         padding-bottom: 0.29em;
+//     }
+// }
+.headline{
+    &.pad,
+    .pad{
+        padding: $rowPadHeadline;
+    }
 }
 .collapsed{display: none}
 img{vertical-align: top}
