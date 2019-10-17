@@ -8,7 +8,7 @@ exports.onCreatePage = ({ page, actions }) => {
 
   // Only create one 404 page at /404.html
   if (page.path.includes('404')) {
-    return
+    //return
   }
 
   // First delete the pages so we can re-create them
@@ -171,6 +171,10 @@ exports.createPages = async ({ graphql, actions }) => {
   )
   const {projectsFr, projectsEn, projectsDe} = result.data
 
+  // const _projectsF = projects.filter(el => {
+  //   return el.project !== null;
+  // });
+
   const projectsAll = [projectsFr, projectsEn, projectsDe]
 
   projectsAll.forEach((_projects, _index) => {
@@ -179,7 +183,9 @@ exports.createPages = async ({ graphql, actions }) => {
     const length = projects.length
 
     _projects.data.projects.forEach(({project}, index) => {
-      if(project){
+      
+      if(project !== null){
+        console.log(project !== null)
         const previous = index === 0 
           ? projects[length - 1].project 
           : projects[index - 1].project
@@ -187,7 +193,7 @@ exports.createPages = async ({ graphql, actions }) => {
         const next = index === length - 1 
           ? projects[0].project 
           : projects[index + 1].project
-  
+
         createPage({
           path: localizedSlug(project),
           component: projectTemplate,

@@ -50,6 +50,7 @@ class Header extends Component {
     const { active } = this.state;
 
     const _headerClass = active ? "active" : "";
+    console.log(typeof i18n)
     return (
       <header
         className={_headerClass}
@@ -97,17 +98,19 @@ class Header extends Component {
           </div>
 
           <nav className="nav-wrap headline">
+            
             <ul>
               <li>
-                <LocalizedLink className="b-b pad" to="/projects">{i18n["projects"]}</LocalizedLink>
+                <LocalizedLink className="b-b pad" to="/projects">{i18n.projects}</LocalizedLink>
               </li>
               <li>
-                <LocalizedLink className="b-b pad" to="/agence">{i18n["agency"]}</LocalizedLink>
+                <LocalizedLink className="b-b pad" to="/agence">{i18n.agency}</LocalizedLink>
               </li>
               <li>
-                <LocalizedLink className="b-b pad" to="/contact">{i18n["contact"]}</LocalizedLink>
+                <LocalizedLink className="b-b pad" to="/contact">{i18n.contact}</LocalizedLink>
               </li>
-            </ul>
+            </ul>  
+            
           </nav>
         </div>
       </header>

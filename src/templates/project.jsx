@@ -12,7 +12,7 @@ class Project extends Component {
     const { locales, locale, previous, next } = this.props.pageContext;
     const i18n = locales[locale];
 
-    console.log(next)
+    // console.log("i18n",i18n.prev)
     const {
       title,
       texte,

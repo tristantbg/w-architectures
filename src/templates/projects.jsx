@@ -20,7 +20,7 @@ const Projects = ({
   const _projectsF = projects.filter(el => {
     return el.project !== null;
   });
-
+// console.log(_projectsF)
   const _projects = _projectsF.map(el => {
     el.project.document[0].data.uid = el.project.document[0].uid;
     return el.project.document[0].data;
