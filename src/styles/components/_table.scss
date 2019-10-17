@@ -13,6 +13,14 @@
             // top: $rowHeight * 3;
             // z-index: 248;
             // background: white;
+            @media all and (max-width:$s){
+                h2{
+                    width: 100%;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
         }
         &.is-collapsed{
             &:hover{
@@ -35,6 +43,7 @@
             top: $rowHeight;
             z-index: 249;
             background: white;
+            
         }
     }
     .table-actions{
