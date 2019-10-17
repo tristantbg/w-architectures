@@ -185,7 +185,7 @@ exports.createPages = async ({ graphql, actions }) => {
     _projects.data.projects.forEach(({project}, index) => {
       
       if(project !== null){
-        console.log(project !== null)
+        //console.log(project !== null)
         const previous = index === 0 
           ? projects[length - 1].project 
           : projects[index - 1].project
