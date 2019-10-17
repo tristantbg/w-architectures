@@ -51,7 +51,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
 
   Object.keys(locales).map(lang => {
-    console.log(lang)
+    // console.log(lang)
     //////////////////////////////////
     //////////////////////////////////
     const localizedProjectsPath = locales[lang].default 
