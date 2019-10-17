@@ -5,11 +5,11 @@ import locales from "../../../config/i18n";
 
 const LocaleSwitcher = () => {
     const { locale } = React.useContext(LocaleContext);
-console.log(locale)
+// console.log(locale)
     return (
         <ul className="locale-switcher">
         {Object.values(locales).map((value, i) => {
-            console.log(value)
+            // console.log(value)
             const _liClassName = value.locale === locale ? 'active' : ''
             return(
                 <li key={i} className={_liClassName}>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.13 14.53">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <title>arrow-Fichier 1</title>
+  <g id="Calque_2" data-name="Calque 2">
+    <g id="Calque_1-2" data-name="Calque 1">
+      <g id="blanc">
+        <rect class="cls-1" x="2.13" y="5.76" width="14" height="3"/>
+        <polygon class="cls-2" points="7.28 1.41 7.97 2.11 2.83 7.26 7.97 12.41 7.28 13.11 1.42 7.26 7.28 1.41"/>
+      </g>
+      <g id="noir">
+        <rect x="2.13" y="6.76" width="13" height="1"/>
+        <polygon points="7.28 1.41 7.97 2.11 2.83 7.26 7.97 12.41 7.28 13.11 1.42 7.26 7.28 1.41"/>
+      </g>
+    </g>
+  </g>
+</svg>

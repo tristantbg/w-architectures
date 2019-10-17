@@ -80,14 +80,14 @@ export const query = graphql`
           ...fluidImage
         }
       }
-      images {
-        image {
-          localFile {
-            ...fluidImage
-            # ...thumbnail
-          }
-        }
-      }
+       images {
+         image {
+           localFile {
+             ...fluidImage
+             # ...thumbnail
+           }
+         }
+       }
     }
   }
 
@@ -254,6 +254,24 @@ export const query = graphql`
           #     }
           #   }
           # }
+        }
+      }
+    }
+  }
+
+  fragment _prismicProjects on PrismicProjects{
+    data {
+      projects {
+        project {
+          uid
+          lang
+          document {
+            data {
+              title {
+                text
+              }
+            }
+          }
         }
       }
     }

@@ -7,9 +7,9 @@ exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions
 
   // Only create one 404 page at /404.html
-  // if (page.path.includes('404')) {
-  //   return
-  // }
+  if (page.path.includes('404')) {
+    return
+  }
 
   // First delete the pages so we can re-create them
   deletePage(page)
@@ -17,41 +17,41 @@ exports.onCreatePage = ({ page, actions }) => {
   page.path = replaceTrailing(page.path)
 
   // Remove the leading AND traling slash from path, e.g. --> categories
-  const name = replaceBoth(page.path)
+  //const name = replaceBoth(page.path)
   //console.log(page.path, name)
   // Create the "slugs" for the pages. Unless default language, add prefix àla "/en"
-  const localizedPath = page.path
-  console.log(localizedPath)
-  return createPage({
-    ...page,
-    path: localizedPath,
-    context: {
-      locale: "fr-fr"
-      //name,
-    },
+  Object.keys(locales).map(lang => {
+    //const localizedPath = page.path
+
+    const localizedPath = locales[lang].default 
+      ? '/' 
+      : `/${locales[lang].path}`
+
+    // console.log("onCreatePage",localizedPath)
+    // console.log(JSON.stringify(page))
+    return createPage({
+      ...page,
+      //path: localizedPath,
+      path: localizedPath,
+      context: {
+        locale: lang
+        //name,
+      },
+    })
   })
 }
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  //const lang = "fr-fr"
-  // 
-  // createPage({
-  //   path: "/projects",
-  //   component: projectsTemplate,
-  //   context: {
-  //     //uid: edge.node.uid,
-  //     //locale: edge.node.lang,
-  //   },
-  // })
+
   const projectTemplate = require.resolve('./src/templates/project.jsx')
-  // const pageTemplate = require.resolve('./src/templates/page.jsx')
   const projectsTemplate = require.resolve('./src/templates/projects.jsx')
   const contactTemplate = require.resolve('./src/templates/contact.jsx')
   const agencyTemplate = require.resolve('./src/templates/agency.jsx')
 
 
   Object.keys(locales).map(lang => {
+    console.log(lang)
     //////////////////////////////////
     //////////////////////////////////
     const localizedProjectsPath = locales[lang].default 
@@ -148,113 +148,116 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
+        projectsDe: prismicProjects(lang: {eq: "de-de"}) {
+          data {
+            projects {
+              project {
+                uid
+                lang
+                document {
+                  data {
+                    title {
+                      text
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        
       }
     `)
   )
-  const projectsFr = result.data.projectsFr.data.projects
-  const lengthFr = projectsFr.length
+  const {projectsFr, projectsEn, projectsDe} = result.data
 
-  const projectsEn = result.data.projectsEn.data.projects
-  const lengthEn = projectsEn.length
-// console.log(result.data.projectsFr.data.projects)
-// console.log(JSON.stringify(projectsFr, null, 4));
-//   const projectsFr = result.data.projects.edges
-  
-  
-  
-//   // const projectsEn = projectsList.filter(function (p) {
-//   //   return p.node.lang === "en-gb";
-//   // });
+  const projectsAll = [projectsFr, projectsEn, projectsDe]
 
+  projectsAll.forEach((_projects, _index) => {
   
+    const {projects} = _projects.data
+    const length = projects.length
 
-  projectsFr.forEach(({project}, index) => {
-    if(project){
-      const previous = index === 0 
-        ? projectsFr[lengthFr - 1].project 
-        : projectsFr[index - 1].project
-
-      const next = index === lengthFr - 1 
-        ? projectsFr[0].project 
-        : projectsFr[index + 1].project
-  // console.log(previous)
-  // console.log(JSON.stringify(project, null, 4))
-  // console.log(localizedSlug(project))
-      createPage({
-        path: localizedSlug(project),
-        component: projectTemplate,
-        context: {
-          // Pass the unique ID (uid) through context so the template can filter by it
-          uid: project.uid,
-          locales: locales,
-          locale: project.lang,
-          previous: previous,
-          next: next,
-          template: 'project'
-        },
-      })
-    }
-    
+    _projects.data.projects.forEach(({project}, index) => {
+      if(project){
+        const previous = index === 0 
+          ? projects[length - 1].project 
+          : projects[index - 1].project
+  
+        const next = index === length - 1 
+          ? projects[0].project 
+          : projects[index + 1].project
+  
+        createPage({
+          path: localizedSlug(project),
+          component: projectTemplate,
+          context: {
+            uid: project.uid,
+            locales: locales,
+            locale: project.lang,
+            previous: previous,
+            next: next,
+            template: 'project'
+          },
+        })
+      }
+      
+    })
   })
+  
 
-  projectsEn.forEach(({project}, index) => {
-    if(project){
-      const previous = index === 0 
-        ? projectsEn[lengthFr - 1].project 
-        : projectsEn[index - 1].project
-
-      const next = index === lengthFr - 1 
-        ? projectsEn[0].project 
-        : projectsEn[index + 1].project
-  // console.log(previous)
-  // console.log(JSON.stringify(project, null, 4))
-  // console.log(localizedSlug(project))
-      createPage({
-        path: localizedSlug(project),
-        component: projectTemplate,
-        context: {
-          // Pass the unique ID (uid) through context so the template can filter by it
-          uid: project.uid,
-          locales: locales,
-          locale: project.lang,
-          previous: previous,
-          next: next,
-          template: 'project'
-        },
-      })
-    }
-    
-  })
-
-  // if(projectsEn.length){
-  //   const lengthEn = projectsEn.length
-  //   projectsEn.forEach((edge, index) => {
-    
+  // projectsFr.forEach(({project}, index) => {
+  //   if(project){
   //     const previous = index === 0 
-  //     ? projectsEn[lengthEn - 1].node 
-  //     : projectsEn[index - 1].node
-  
-  //     const next = index === lengthEn - 1 
-  //     ? projectsEn[0].node 
-  //     : projectsEn[index + 1].node
-  // // console.log(previous)
-  // // console.log(localizedSlug(edge.node))
+  //       ? projectsFr[lengthFr - 1].project 
+  //       : projectsFr[index - 1].project
+
+  //     const next = index === lengthFr - 1 
+  //       ? projectsFr[0].project 
+  //       : projectsFr[index + 1].project
+
   //     createPage({
-  //       path: localizedSlug(edge.node),
+  //       path: localizedSlug(project),
   //       component: projectTemplate,
   //       context: {
-  //         // Pass the unique ID (uid) through context so the template can filter by it
-  //         uid: edge.node.uid,
+  //         uid: project.uid,
   //         locales: locales,
-  //         locale: edge.node.lang,
+  //         locale: project.lang,
   //         previous: previous,
   //         next: next,
   //         template: 'project'
   //       },
   //     })
-  //   })
-  // }
-  
+  //   }
+    
+  // })
+
+  // projectsEn.forEach(({project}, index) => {
+  //   if(project){
+  //     const previous = index === 0 
+  //       ? projectsEn[lengthFr - 1].project 
+  //       : projectsEn[index - 1].project
+
+  //     const next = index === lengthFr - 1 
+  //       ? projectsEn[0].project 
+  //       : projectsEn[index + 1].project
+
+  //     createPage({
+  //       path: localizedSlug(project),
+  //       component: projectTemplate,
+  //       context: {
+  //         uid: project.uid,
+  //         locales: locales,
+  //         locale: project.lang,
+  //         previous: previous,
+  //         next: next,
+  //         template: 'project'
+  //       },
+  //     })
+  //   }
+    
+  // })
+
 
 
 }
