@@ -50,7 +50,7 @@ class Header extends Component {
     const { active } = this.state;
 
     const _headerClass = active ? "active" : "";
-    console.log(typeof i18n)
+    // console.log(typeof i18n)
     return (
       <header
         className={_headerClass}
