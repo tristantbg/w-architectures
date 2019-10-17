@@ -5,27 +5,28 @@ const { replaceTrailing, localizedSlug, replaceBoth, wrapper } = require('./src/
 // Take the pages from src/pages and generate pages for all locales, e.g. /index and /en/index
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions
-
+  console.log(page.path)
   // Only create one 404 page at /404.html
   if (page.path.includes('404')) {
     //return
   }
+  
 
   // First delete the pages so we can re-create them
   deletePage(page)
 
-  page.path = replaceTrailing(page.path)
+  // page.path = replaceTrailing(page.path)
 
-  // Remove the leading AND traling slash from path, e.g. --> categories
-  //const name = replaceBoth(page.path)
-  //console.log(page.path, name)
-  // Create the "slugs" for the pages. Unless default language, add prefix àla "/en"
+  // // Remove the leading AND traling slash from path, e.g. --> categories
+  // //const name = replaceBoth(page.path)
+  // //console.log(page.path, name)
+  // // Create the "slugs" for the pages. Unless default language, add prefix àla "/en"
   Object.keys(locales).map(lang => {
     //const localizedPath = page.path
 
     const localizedPath = locales[lang].default 
-      ? '/' 
-      : `/${locales[lang].path}`
+      ? `/${page.path}`
+      : `/${locales[lang].path}/${page.path}`
 
     // console.log("onCreatePage",localizedPath)
     // console.log(JSON.stringify(page))
@@ -44,6 +45,7 @@ exports.onCreatePage = ({ page, actions }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
+  const homeTemplate = require.resolve('./src/templates/home.jsx')
   const projectTemplate = require.resolve('./src/templates/project.jsx')
   const projectsTemplate = require.resolve('./src/templates/projects.jsx')
   const contactTemplate = require.resolve('./src/templates/contact.jsx')
@@ -54,6 +56,20 @@ exports.createPages = async ({ graphql, actions }) => {
     // console.log(lang)
     //////////////////////////////////
     //////////////////////////////////
+    const localizedHomePath = locales[lang].default 
+      ? '/' 
+      : `/${locales[lang].path}`
+    createPage({
+        path: localizedHomePath,
+        component: homeTemplate,
+        context: {
+            template: 'home',
+            locale: lang,
+            locales: locales,
+            //i18n: locales[lang]
+        },
+    })
+
     const localizedProjectsPath = locales[lang].default 
       ? '/projects' 
       : `/${locales[lang].path}/projects`
