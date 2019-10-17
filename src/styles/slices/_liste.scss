@@ -2,7 +2,7 @@
     .liste-item{
         &.active{
             .title{
-                cursor: url('../images/arrow-n.png'), n-resize;
+                cursor: $minus;
             }
             .item-content{
                 display: block;
@@ -10,7 +10,7 @@
             }
         } 
         .title{
-            cursor: url('../images/arrow-s.png'), s-resize;
+            cursor: $plus;
         }
         .item-content{
             display: none;
