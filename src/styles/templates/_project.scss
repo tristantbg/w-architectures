@@ -71,13 +71,13 @@
             }
             .toggle{
                 // cursor: n-resize;
-                cursor: url('../images/arrow-n.png'), n-resize;
+                cursor: $crosshair;
             }
         }
         .toggle{
             width: 100%;
             // cursor: s-resize;
-            cursor: url('../images/arrow-s.png'), s-resize;
+            cursor: $minus;
             z-index: 20;
             background: white;
             //&:hover 
