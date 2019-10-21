@@ -24,6 +24,10 @@
             flex-basis: 90px;
             max-width: 90px;
         }
+        @media all and (max-width:$xxs){
+            flex-basis: 120px;
+            max-width: 120px;
+        }
     }
 }
 .year{
