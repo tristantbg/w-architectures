@@ -22,9 +22,11 @@
             @include justify-content(flex-end);
             li{
                 span.value{display: none}
-                &:hover{
-                    span.label{display: none}
-                    span.value{display: inline-block}
+                @media all and (min-width:$s){
+                    &:hover{
+                        span.label{display: none}
+                        span.value{display: inline-block}
+                    }
                 }
             }
             li:last-child{

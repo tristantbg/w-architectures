@@ -3,6 +3,8 @@ import Img from "gatsby-image";
 import PubSub from "pubsub-js";
 import LocalizedLink from "./LocalizedLink";
 // import ProjectTitle from "./project-title";
+import { ContextHoc } from "../context/ContextHoc";
+
 import ProjectInfos from "./project-infos";
 
 class TableTr extends Component {
@@ -51,8 +53,11 @@ class TableTr extends Component {
 
   render() {
     const { collapsed, thumbnailHeight } = this.state;
-    const { data } = this.props;
+    const { data, context } = this.props;
     // console.log(data)
+    const { i18n, locale } = context;
+    const translate = i18n[locale];
+    console.log(translate)
     if (!data.visible) {
       return null;
     } else {
@@ -75,8 +80,8 @@ class TableTr extends Component {
               <div className="col-xs-12 col-md-6 hidden-xs">
                 <div className="row between-xs">
                   <div className="_td col-xs year">{data.year.text}</div>
-                  <div className="_td col-xs">{data.program}</div>
-                  <div className="_td col-xs">{data.type}</div>
+                  <div className="_td col-xs">{translate[data.program]}</div>
+                  <div className="_td col-xs">{translate[data.type]}</div>
                   <div className="_td col-xs">
                     {data.patrimoine && data.patrimoine === "oui" && (
                       <span className="">×</span>
@@ -120,4 +125,4 @@ class TableTr extends Component {
   }
 }
 
-export default TableTr;
+export default ContextHoc(TableTr);

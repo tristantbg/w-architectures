@@ -3,9 +3,13 @@ import { useStaticQuery, graphql } from "gatsby";
 import website from "../../config/website";
 import BackToTop from "./ui/BackToTop";
 // import { LocaleContext } from "./Layout";
+import { ContextHoc } from "../context/ContextHoc";
 import LocalizedLink from "./LocalizedLink";
 
-const Footer = () => {
+const Footer = (props) => {
+  // console.log(props)
+  const { i18n, locale } = props.context;
+  const translate = i18n[locale];
   const { options } = useStaticQuery(query);
   return (
     <footer>
@@ -28,7 +32,7 @@ const Footer = () => {
                 <BackToTop />
               </li>
               <li>
-                <LocalizedLink to="contact">Contact</LocalizedLink>
+                <LocalizedLink to="contact">{translate['contact']}</LocalizedLink>
                 {/* <a href={`mailto:${options.data.contact.text}`}>Contact</a> */}
               </li>
             </ul>
@@ -39,7 +43,7 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default ContextHoc(Footer);
 
 const query = graphql`
   query Options {

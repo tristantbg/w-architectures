@@ -29,7 +29,15 @@ module.exports = {
     openAll: "Tout ouvrir",
     closeAll: "Tout fermer",
     downloadAll: "Tout télécharger",
-    backToTop: "Retour en haut de page"
+    backToTop: "Retour en haut de page",
+    Musée: "Musée",
+    Équipements: "Équipements",
+    Design: "Design",
+    Bureaux: "Offices",
+    Logements: "Housing",
+    Réalisé: "Completed",
+    Concours: "Competition",
+    "En cours": "In progress"
   },
   'en-gb': {
     active: false,
@@ -59,7 +67,15 @@ module.exports = {
     openAll: "Open all",
     closeAll: "Close all",
     downloadAll: "Download all",
-    backToTop: "Back to top"
+    backToTop: "Back to top",
+    Musée: "Museum",
+    Équipements: "Facilities",
+    Design: "Design",
+    Bureaux: "Offices",
+    Logements: "Housing",
+    Réalisé: "Completed",
+    Concours: "Competition",
+    "En cours": "In progress"
   },
   'de-de': {
     active: false,
@@ -89,6 +105,16 @@ module.exports = {
     openAll: "Alles öffnen",
     closeAll: "Alles schließen",
     downloadAll: "Alles herunterladen",
-    backToTop: "Zurück zum Anfang"
+    backToTop: "Zurück zum Anfang",
+    Musée: "Museum",
+    Équipements: "Anlagen",
+    Design: "Design",
+    Bureaux: "Büroräume",
+    Logements: "Wohnungen",
+    Réalisé: "Realisiert" ,
+    Concours: "Wettbewerb",
+    "En cours": "In Bearbeitung",
+    Internat: "Internat",
+    Collège: "Collège (Gesamtschule)"
   }
 }

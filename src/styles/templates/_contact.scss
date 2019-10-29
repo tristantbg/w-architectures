@@ -4,7 +4,8 @@
         &.active{
             .title{
                 //cursor: n-resize;
-                cursor: url('../images/arrow-n.png'), n-resize;
+                // cursor: url('../images/arrow-n.png'), n-resize;
+                cursor: $minus;
             }
             .location-content{
                 display: block
@@ -12,7 +13,8 @@
         } 
         .title{
             // cursor: s-resize;
-            cursor: url('../images/arrow-s.png'), s-resize;
+            // cursor: url('../images/arrow-s.png'), s-resize;
+            cursor: $crosshair;
         }
         .location-content{
             display: none;
