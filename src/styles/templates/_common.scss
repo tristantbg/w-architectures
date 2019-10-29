@@ -20,9 +20,14 @@
     .label{
         flex-basis: 25%;
         max-width: 25%;
+
         @media all and (max-width:$s){
             flex-basis: 110px;
             max-width: 110px;
+        }
+        @media all and (min-width:$cap){
+            flex-basis: 130px;
+            max-width: 130px;
         }
         // @media all and (max-width:$xxs){
         //     flex-basis: 120px;
