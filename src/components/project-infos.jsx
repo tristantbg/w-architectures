@@ -7,12 +7,13 @@ const ProjectInfos = ({ data, embed }) => {
   const i18n = lang.i18n[lang.locale];
   const columns = ["localisation", "year", "program", "type"];
   // console.log(data)
+  const hasDl = (data.download && data.download.url) ? "has-dl" : ""
   return (
     <div className="project-infos ">
-      <div className="infos ">
+      <div className="infos">
         <div className="row">
           <div className="col-xs-12">
-            <div className="b-b b-t pad">
+            <div className="b-t b-b pad">
               {embed && (
                 <LocalizedLink to={data.uid}>
                   {i18n["openProject"]}
@@ -26,7 +27,12 @@ const ProjectInfos = ({ data, embed }) => {
                   {i18n["download"]}
                 </a>
               )}
+              
             </div>
+
+            {!embed && !data.download.url &&
+                <div className="b-t"></div>
+              }
           </div>
 
           <div className="col-xs-12 col-md-6">
