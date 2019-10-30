@@ -32,6 +32,16 @@ const Footer = (props) => {
                 <BackToTop />
               </li>
               <li>
+                <a href="https://www.linkedin.com/company/w-architectures/about/" target="_blank">
+                  Linkedin
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com" target="_blank">
+                  Instagram
+                </a>
+              </li>
+              <li>
                 <LocalizedLink to="contact">{translate['contact']}</LocalizedLink>
                 {/* <a href={`mailto:${options.data.contact.text}`}>Contact</a> */}
               </li>
