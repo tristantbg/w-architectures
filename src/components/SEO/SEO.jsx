@@ -13,7 +13,8 @@ const SEO = ({ title, description, banner, bodyClass, datePublished, pathname, h
   const { defaultTitle, defaultDescription, siteLanguage } = i18n[locale]
 // console.log("siteLanguage", siteLanguage)
 // console.log("datePublished", datePublished)
-// console.log("homePage", homePage)
+// console.log("title", title)
+// console.log("defaultTitle", defaultTitle)
   const {
     buildTime,
     siteMetadata: { siteUrl, defaultBanner, ogLanguage, author, twitter, facebook },
@@ -23,9 +24,10 @@ const SEO = ({ title, description, banner, bodyClass, datePublished, pathname, h
   // const homeURL = `${siteUrl}${localizedPath}`
 
   const seo = {
-    title: homePage ? defaultTitle: title+" - "+defaultTitle,
+    title: homePage ? title: title+" - "+defaultTitle,
     description: description,
-    image: article ? banner : `${siteUrl}${defaultBanner}`,
+    // image: article ? banner : `${siteUrl}${defaultBanner}`,
+    image: banner,
     url: `${siteUrl}${pathname || ''}`,
   }
 // console.log(seo.url)

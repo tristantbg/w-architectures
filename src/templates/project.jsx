@@ -27,7 +27,7 @@ class Project extends Component {
     return (
       <>
         <SEO
-          title={`${title.text} | ${i18n.defaultTitleAlt}`}
+          title={title.text}
           pathname={project.uid}
           locale={locale}
           description={texte.text}

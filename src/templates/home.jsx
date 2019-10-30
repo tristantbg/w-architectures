@@ -12,12 +12,13 @@ const HomePage = ({
   const lang = React.useContext(LocaleContext);
   //console.log(data)
   const i18n = lang.i18n[lang.locale];
-  // console.log(homepage)
+  console.log(homepage)
   return (
     <div className="template-home">
       <SEO
-        title={`${i18n.defaultTitleAlt}`}
+        title={homepage.data.title.text}
         description={homepage.data.texte.text}
+        banner={homepage.data.poster.url}
         pathname={location.pathname}
         locale={locale}
         homePage={true}
@@ -53,6 +54,9 @@ export const pageQuery = graphql`
         }
         texte {
           text
+        }
+        poster{
+          url
         }
         projects {
           column
