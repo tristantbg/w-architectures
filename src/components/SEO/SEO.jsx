@@ -22,15 +22,15 @@ const SEO = ({ title, description, banner, bodyClass, datePublished, pathname, h
 
   // const localizedPath = i18n[locale].default ? '' : `/${i18n[locale].path}`
   // const homeURL = `${siteUrl}${localizedPath}`
-
+  
   const seo = {
     title: homePage ? title: title+" - "+defaultTitle,
-    description: description,
+    description: description || defaultDescription,
     // image: article ? banner : `${siteUrl}${defaultBanner}`,
-    image: banner,
+    image: banner || defaultBanner,
     url: `${siteUrl}${pathname || ''}`,
   }
-// console.log(seo.url)
+console.log(seo)
   // schema.org in JSONLD format
   // https://developers.google.com/search/docs/guides/intro-structured-data
   // You can fill out the 'author', 'creator' with more data or another type (e.g. 'Organization')

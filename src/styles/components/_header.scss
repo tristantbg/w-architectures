@@ -27,8 +27,10 @@ header{
                     }
                     @media not all and (min-resolution:.001dpcm)
                         { @supports (-webkit-appearance:none) {
-                            width: 203px;
-                        }}
+                            width: 204px;
+                            
+                        }
+                    }
                 }
             }
         }
@@ -92,8 +94,9 @@ header{
                     //transform: scale(0) translateX(100%);
                 }
                 .detail{
-                    width: 203px;
+                    width: 204px;
                     opacity: 1;
+                    
                 }
             }
         }
