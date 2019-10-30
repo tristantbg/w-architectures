@@ -17,10 +17,10 @@ export const wrapRootElement = ({ element }) => {
 }
 
 export const onClientEntry = () => {
-  console.log("We've started!")
+  // console.log("We've started!")
   // callAnalyticsAPI()
   const isTouch = 'ontouchstart' in window ? true : false;
-  console.log(isTouch)
+  // console.log(isTouch)
   if(isTouch){
     document.documentElement.classList.add("touch")
   }else{

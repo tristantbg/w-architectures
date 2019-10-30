@@ -37,7 +37,7 @@ const Footer = (props) => {
                 </a>
               </li>
               <li>
-                <a href="https://www.instagram.com" target="_blank">
+                <a href="https://www.instagram.com/warchitectures/" target="_blank">
                   Instagram
                 </a>
               </li>
