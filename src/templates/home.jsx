@@ -9,10 +9,10 @@ const HomePage = ({
   pageContext: { locale },
   location
 }) => {
-  const lang = React.useContext(LocaleContext);
+  // const lang = React.useContext(LocaleContext);
   //console.log(data)
-  const i18n = lang.i18n[lang.locale];
-  console.log(homepage)
+  // const i18n = lang.i18n[lang.locale];
+  // console.log(homepage)
   return (
     <div className="template-home">
       <SEO
@@ -75,6 +75,7 @@ export const pageQuery = graphql`
                 }
                 image_featured {
                   url
+                  alt
                   localFile {
                     ...fluidImage
                   }

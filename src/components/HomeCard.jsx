@@ -6,12 +6,15 @@ import ProjectTitle from "./project-title";
 class HomeCard extends Component {
   render() {
     const { url, title, localisation, year, column, image } = this.props;
-    // console.log(title)
+    // console.log(image)
     return (
       <div className={"card col-xs col-md-" + column}>
         <LocalizedLink to={url} aria-label="go to project">
           {image.localFile && (
-            <Img fluid={image.localFile.childImageSharp.fluid} />
+            <Img 
+            fluid={image.localFile.childImageSharp.fluid} 
+            alt={image.alt}
+            />
           )}
           {!image.localFile && <img src={image.url} />}
           <h2 className="fM hidden-xs">
