@@ -1,6 +1,10 @@
 .texte-image{
+    .content{
+        
+    }
     .texte{
-        margin-bottom: $rowHeight
+        padding: $rowPad;
+        //margin-bottom: $rowHeight
     }
     .gatsby-image-wrapper{
         margin: $rowHeight 0
