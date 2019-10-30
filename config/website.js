@@ -18,7 +18,7 @@ module.exports = {
 
   twitter: '@w-architectures', // Twitter Username
   facebook: 'w-architectures', // Facebook Site Name
-  googleAnalyticsID: 'UA-XXXXXX-X',
+  googleAnalyticsID: 'UA-22167481-1',
 
   skipNavId: 'reach-skip-nav', // ID for the "Skip to content" a11y feature
 }
