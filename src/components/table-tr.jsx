@@ -57,7 +57,7 @@ class TableTr extends Component {
     // console.log(data)
     const { i18n, locale } = context;
     const translate = i18n[locale];
-    console.log(translate)
+    // console.log(translate)
     if (!data.visible) {
       return null;
     } else {
