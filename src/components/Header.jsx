@@ -70,7 +70,7 @@ class Header extends Component {
                   aria-label="Back to Home"
                   className="site-title "
                 >
-                  <div className="title">{website.title}</div>
+                  <div className="title">{website.titleShort}</div>
                   <div className="title-detail">
                     <div className="plus">+</div>
                     <div className="detail">
