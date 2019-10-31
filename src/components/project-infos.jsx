@@ -34,11 +34,11 @@ const ProjectInfos = ({ data, embed }) => {
               <div className="b-t"></div>
             }
 
-            {!embed && data.prix &&
+            {data.prix &&
               <div className="b-b pad">
                 <div className="row">
                   {data.prix.map(({item},i) => (
-                    <div key={i} className="col-md-6">{item.text}</div>
+                    <div key={i} className="col-xs-12 col-md-6">{item.text}</div>
                   ))}
                 </div>
               </div>
