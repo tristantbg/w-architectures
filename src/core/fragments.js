@@ -71,6 +71,11 @@ export const query = graphql`
           text
         }
       }
+      prix{
+        item{
+          text
+        }
+      }
       download {
         url
       }

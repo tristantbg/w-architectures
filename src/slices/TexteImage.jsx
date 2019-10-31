@@ -9,7 +9,8 @@ const TexteImage = ({ input }) => {
         <div className="row">
           <div className="col-xs-12 col-md-6">
             <div
-              className="texte"
+              // className="texte"
+              className={"texte "+ (input.primary.column === 1 ? "" : "column-"+input.primary.column)}
               dangerouslySetInnerHTML={{ __html: input.primary.texte.html }}
             />
           </div>

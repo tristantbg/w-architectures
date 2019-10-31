@@ -6,8 +6,8 @@ const ProjectInfos = ({ data, embed }) => {
   const lang = React.useContext(LocaleContext);
   const i18n = lang.i18n[lang.locale];
   const columns = ["localisation", "year", "program", "type"];
-  // console.log(data)
-  const hasDl = (data.download && data.download.url) ? "has-dl" : ""
+  console.log(data)
+  // const hasDl = (data.download && data.download.url) ? "has-dl" : ""
   return (
     <div className="project-infos ">
       <div className="infos">
@@ -31,8 +31,18 @@ const ProjectInfos = ({ data, embed }) => {
             </div>
 
             {!embed && !data.download.url &&
-                <div className="b-t"></div>
-              }
+              <div className="b-t"></div>
+            }
+
+            {!embed && data.prix &&
+              <div className="b-b pad">
+                <div className="row">
+                  {data.prix.map(({item},i) => (
+                    <div key={i} className="col-md-6">{item.text}</div>
+                  ))}
+                </div>
+              </div>
+            }
           </div>
 
           <div className="col-xs-12 col-md-6">
