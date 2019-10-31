@@ -199,7 +199,12 @@ p {
 		column-count: 1 !important;
 	}
 }
-
+.ellipsis{
+	width: 100%;
+    white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 strong {
 	font-weight: bold;
 }

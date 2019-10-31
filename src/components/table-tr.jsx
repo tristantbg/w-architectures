@@ -70,10 +70,10 @@ class TableTr extends Component {
               <div className="col-xs-12 col-md-6">
                 <div className="row between-xs">
                   <div className="_td col-xs-12 col-md-8">
-                    <h2>{data.title.text}</h2>
+                    <h2 className="ellipsis">{data.title.text}</h2>
                   </div>
                   <div className="_td col-xs-4 hidden-xs">
-                    {data.localisation.text}
+                    <div className="ellipsis">{data.localisation.text}</div>
                   </div>
                 </div>
               </div>
