@@ -7,6 +7,8 @@ header{
     padding: 0 $margeS;
     background: $bg;
     
+    
+
     &.active{
         .site-title{
             .title-detail{
@@ -29,18 +31,7 @@ header{
                     { @supports (-webkit-appearance:none) {
                         width: 204px;
                     }}
-                    // @media all and (max-width:$s){
-                    //     width: 203px;
-                    // }
-                    // @-moz-document url-prefix() {
-                    //     width: 203px;
-                    // }
-                    // @media not all and (min-resolution:.001dpcm)
-                    //     { @supports (-webkit-appearance:none) {
-                    //         width: 204px;
-                            
-                    //     }
-                    // }
+                    
                 }
             }
         }
@@ -152,12 +143,25 @@ header{
                 }
             }
         }
+        @media all and (max-width:$s){
+            .social{
+                li{
+                    &:last-child::after{display: none;}
+                    a{
+                        display: inline-block;
+                        padding: $rowPad;
+                    }
+                }
+            }
+        }
     }
 
+    
     .locale-switcher{
         @include flexbox()
         @include justify-content(flex-end);
         a{padding-left: .4em}
+        li:first-child a{padding-left: 0;}
         li.active a{
             text-decoration: underline;
             text-decoration-color: $color3;
@@ -181,9 +185,3 @@ header{
 }
 
 
-@media all and (max-width:$s){
-    header{
-        //padding: $margeXS;
-        padding: 0 $margeS;
-    }
-}

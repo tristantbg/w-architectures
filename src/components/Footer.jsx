@@ -1,10 +1,12 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import website from "../../config/website";
-import BackToTop from "./ui/BackToTop";
+// import website from "../../config/website";
+
 // import { LocaleContext } from "./Layout";
 import { ContextHoc } from "../context/ContextHoc";
 import LocalizedLink from "./LocalizedLink";
+import BackToTop from "./ui/BackToTop";
+import Social from "./ui/Social"
 
 const Footer = (props) => {
   // console.log(props)
@@ -16,36 +18,33 @@ const Footer = (props) => {
       <div className="inner pad b-t">
         <div className="row between-xs">
           <div className="col-xs">
-            <ul className="footer-left">
-              {/* <li>{website.title}</li> */}
-              <li>
-                <a href={`mailto:${options.data.contact.text}`}>
-                  {options.data.contact.text}
-                </a>
-              </li>
-              {/* <li>{options.data.tel.text}</li> */}
-            </ul>
+            <div className="footer-left">
+              <div className="fl">
+                <ul>
+                  <li>
+                    <a href={`mailto:${options.data.contact.text}`}>
+                      {options.data.contact.text}
+                    </a>
+                  </li>
+                </ul>
+                
+                <Social />
+              </div>
+            </div>
           </div>
           <div className="col-xs">
-            <ul className="footer-right">
-              <li>
-                <BackToTop />
-              </li>
-              <li>
-                <a href="https://www.linkedin.com/company/w-architectures/about/" target="_blank">
-                  Linkedin
-                </a>
-              </li>
-              <li>
-                <a href="https://www.instagram.com/warchitectures/" target="_blank">
-                  Instagram
-                </a>
-              </li>
-              <li>
-                <LocalizedLink to="contact">{translate['contact']}</LocalizedLink>
-                {/* <a href={`mailto:${options.data.contact.text}`}>Contact</a> */}
-              </li>
-            </ul>
+            <div className="footer-right">
+              <ul className="fl end-xs">
+                <li>
+                  <BackToTop />
+                </li>
+                <li>
+                  <LocalizedLink to="contact">{translate['contact']}</LocalizedLink>
+                </li>
+              </ul>
+            </div>
+
+
           </div>
         </div>
       </div>

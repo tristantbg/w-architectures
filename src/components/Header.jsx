@@ -8,6 +8,7 @@ import website from "../../config/website";
 import { ContextHoc } from "../context/ContextHoc";
 import LocalizedLink from "./LocalizedLink";
 import LocaleSwitcher from "./ui/LocaleSwitcher"
+import Social from "./ui/Social"
 
 class Header extends Component {
   constructor(props) {
@@ -80,7 +81,12 @@ class Header extends Component {
                 </LocalizedLink>
               </div>
               <div className="col-xs text-right hidden-xs">
-                <LocaleSwitcher />
+                <div className="end-xs">
+                  <div className="hidden-xs">
+                    <Social />
+                  </div>
+                  <LocaleSwitcher />
+                </div>
               </div>
             </div>
           </div>
@@ -98,7 +104,6 @@ class Header extends Component {
           </div>
 
           <nav className="nav-wrap headline">
-            
             <ul>
               <li>
                 <LocalizedLink className="b-b pad" to="/projects">{i18n.projects}</LocalizedLink>
@@ -110,7 +115,9 @@ class Header extends Component {
                 <LocalizedLink className="b-b pad" to="/contact">{i18n.contact}</LocalizedLink>
               </li>
             </ul>  
-            
+            <div className="xs-only">
+              <Social />
+            </div>
           </nav>
         </div>
       </header>
