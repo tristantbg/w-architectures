@@ -192,7 +192,7 @@ p {
 		&:last-child{margin-bottom: 0}
 	}
 
-	&.column-2{@include column(4, $gutter)}
+	&.column-2{@include column(2, $gutter)}
 	&.column-3{@include column(3, $gutter)}
 	&.column-4{@include column(4, $gutter)}
 	@media all and (max-width:$s){
