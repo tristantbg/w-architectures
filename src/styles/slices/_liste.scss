@@ -18,9 +18,12 @@
                 //columns: 3;
                 padding-bottom: $rowHeight;
                 @media all and (max-width:$s){
-                    columns: 1;
-                    
+                    columns: 1;   
                 }
+                @media all and (min-width:$s){
+                    &.column-1{max-width: 50%;}
+                }
+                
             }
             figure{
                 padding: $rowHeight 0;
