@@ -34,7 +34,7 @@ const ProjectInfos = ({ data, embed }) => {
               <div className="b-t"></div>
             }
 
-            {data.prix &&
+            {data.prix && data.prix.length > 0 &&
               <div className="b-b pad">
                 <div className="row">
                   {data.prix.map(({item},i) => (
