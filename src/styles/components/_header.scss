@@ -145,6 +145,7 @@ header{
         }
         @media all and (max-width:$s){
             .social{
+                border-bottom: $border;
                 li{
                     &:last-child::after{display: none;}
                     a{
