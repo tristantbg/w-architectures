@@ -16,21 +16,23 @@ header{
                 }
                 .detail{
                     //width: 200px;
-                    width: 203px;
+                    
                     opacity: 1;
-
-                    @media all and (max-width:$s){
+                    @media all and (min-width:$s){
                         width: 203px;
                     }
-                    @-moz-document url-prefix() {
-                        width: 203px;
-                    }
-                    @media not all and (min-resolution:.001dpcm)
-                        { @supports (-webkit-appearance:none) {
-                            width: 204px;
+                    // @media all and (max-width:$s){
+                    //     width: 203px;
+                    // }
+                    // @-moz-document url-prefix() {
+                    //     width: 203px;
+                    // }
+                    // @media not all and (min-resolution:.001dpcm)
+                    //     { @supports (-webkit-appearance:none) {
+                    //         width: 204px;
                             
-                        }
-                    }
+                    //     }
+                    // }
                 }
             }
         }
