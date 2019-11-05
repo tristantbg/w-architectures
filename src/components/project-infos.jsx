@@ -8,6 +8,7 @@ const ProjectInfos = ({ data, embed }) => {
   const columns = ["localisation", "year", "program", "type"];
   // console.log(data)
   // const hasDl = (data.download && data.download.url) ? "has-dl" : ""
+  console.log(data.prix)
   return (
     <div className="project-infos ">
       <div className="infos">
@@ -34,8 +35,9 @@ const ProjectInfos = ({ data, embed }) => {
               <div className="b-t"></div>
             }
 
-            {data.prix && data.prix.length > 0 &&
+            {data.prix && data.prix.length > 0 && data.prix[0].item.text !== null &&
               <div className="b-b pad">
+                {/* <pre>{JSON.stringify(data.prix[0])}</pre> */}
                 <div className="row">
                   {data.prix.map(({item},i) => (
                     <div key={i} className="col-xs-12 col-md-6">{item.text}</div>
