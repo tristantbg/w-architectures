@@ -6,6 +6,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 // import FaviconLetter from "./ui/FaviconLetter";
 // import SkipNavLink from "./SkipNavLink";
+import { useStaticQuery, graphql } from "gatsby";
 import i18n from "../../config/i18n";
 
 require("../styles/index.scss");
@@ -13,8 +14,9 @@ require("../styles/index.scss");
 const LocaleContext = React.createContext();
 
 const Layout = ({ children, location, pageContext: { locale, template } }) => {
+  const { options } = useStaticQuery(query);
   return (
-    <LocaleContext.Provider value={{ locale, i18n }}>
+    <LocaleContext.Provider value={{ locale, i18n, options }}>
       <>
         <Header />
 
@@ -39,3 +41,18 @@ export { LocaleContext, Layout };
 //     locale: PropTypes.string.isRequired
 //   }).isRequired
 // };
+
+const query = graphql`
+  query Options {
+    options: prismicOptions {
+      data {
+        tel {
+          text
+        }
+        contact {
+          text
+        }
+      }
+    }
+  }
+`;
