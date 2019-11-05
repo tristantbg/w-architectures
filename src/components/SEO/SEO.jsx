@@ -179,6 +179,7 @@ const SEO = ({ title, description, banner, bodyClass, datePublished, pathname, h
     <>
       <Helmet title={seo.title}>
         <html lang={siteLanguage} />
+        <meta name="google-site-verification" content="aswRJ1vzvE7_1lDTa794fxa4QSa5es0lN4aYZJkyYG0" />
         <meta name="description" content={seo.description} />
         <meta name="image" content={seo.image} />
         <meta name="gatsby-starter" content="Gatsby Starter Prismic i18n" />
