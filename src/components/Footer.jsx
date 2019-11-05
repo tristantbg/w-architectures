@@ -22,7 +22,7 @@ class Footer extends Component {
   componentDidMount(){
     
     const { hostname } = window.location
-    console.log(hostname)
+    // console.log(hostname)
     let email = this.props.context.options.data.contact.text
     if(hostname.indexOf(".ch") > -1){
       email = email.replace(".com", ".ch")

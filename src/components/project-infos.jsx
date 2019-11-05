@@ -6,7 +6,7 @@ const ProjectInfos = ({ data, embed }) => {
   const lang = React.useContext(LocaleContext);
   const i18n = lang.i18n[lang.locale];
   const columns = ["localisation", "year", "program", "type"];
-  console.log(data)
+  // console.log(data)
   // const hasDl = (data.download && data.download.url) ? "has-dl" : ""
   return (
     <div className="project-infos ">
