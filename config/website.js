@@ -6,7 +6,7 @@ module.exports = {
   titleDetail: 'Voinchet & Architectes Associés',
   description: 'Bureau international d’architecture, d’urbanisme et de design. Fondé en 2002',
   headline: '', // Headline for schema.org JSONLD
-  url: 'https://w-architectures.netlify.com/', // Domain of your site. No trailing slash!
+  url: 'https://www.w-architectures.com', // Domain of your site. No trailing slash!
   logo: '/logos/logo-1024.png', // Used for SEO
   ogLanguage: 'fr_FR', // Facebook Language
 
