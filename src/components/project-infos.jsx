@@ -8,7 +8,7 @@ const ProjectInfos = ({ data, embed }) => {
   const columns = ["localisation", "year", "program", "type"];
   // console.log(data)
   // const hasDl = (data.download && data.download.url) ? "has-dl" : ""
-  console.log(data.prix)
+  // console.log(data.prix)
   return (
     <div className="project-infos ">
       <div className="infos">
