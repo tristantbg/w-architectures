@@ -117,20 +117,20 @@ export const query = graphql`
       }
       body {
         ... on Node {
-          ... on PrismicAgencyBodyTextes {
-            slice_type
-            primary {
-              title1 {
-                text
-              }
-            }
-            items {
-              texte {
-                html
-              }
-              column
-            }
-          }
+          # ... on PrismicAgencyBodyTextes {
+          #   slice_type
+          #   primary {
+          #     title1 {
+          #       text
+          #     }
+          #   }
+          #   items {
+          #     texte {
+          #       html
+          #     }
+          #     column
+          #   }
+          # }
           # ... on PrismicAgencyBodyImages {
           #   slice_type
           #   primary {
