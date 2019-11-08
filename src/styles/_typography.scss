@@ -103,7 +103,8 @@ h1,h2,h3,h4,h5,h6{font-weight: normal;}
 
 /* Links */
 //a{text-decoration: none;}
-a,.btn {
+a,
+.btn {
 	color: $color1;
 	text-decoration: none;
 	cursor: $crosshair;

@@ -51,6 +51,9 @@ header{
     }
     .site-title{
         @include flexbox();
+        @media all and (min-width:$s){
+            max-width: 330px;
+        }
         &:hover,
         &:active{color: $color1}
         .title{
