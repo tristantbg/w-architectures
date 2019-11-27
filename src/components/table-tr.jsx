@@ -99,7 +99,9 @@ class TableTr extends Component {
                   <LocalizedLink key={i} to={data.uid + "?idx=" + i}>
                     {image.localFile && (
                       <Img
-                        fluid={image.localFile.childImageSharp.fluid}
+                        fluid={thumbnailHeight *
+                              image.localFile.childImageSharp.fluid
+                                .aspectRatio}
                         style={{
                           width:
                             thumbnailHeight *
